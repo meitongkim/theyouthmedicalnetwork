@@ -1,0 +1,1201 @@
+{
+  "version": 1,
+  "workflow": [
+    "draft",
+    "review",
+    "published",
+    "archived"
+  ],
+  "common": [
+    {
+      "key": "id",
+      "label": "Stable ID",
+      "type": "id",
+      "required": true,
+      "help": "Lowercase words joined by hyphens. Never change after publishing; other records and links refer to it."
+    },
+    {
+      "key": "owner",
+      "label": "Content owner",
+      "type": "text",
+      "required": true
+    },
+    {
+      "key": "internalNotes",
+      "label": "Internal notes",
+      "type": "textarea",
+      "internal": true,
+      "help": "Never shown on the website."
+    }
+  ],
+  "review": [
+    {
+      "key": "reviewer",
+      "label": "Reviewer",
+      "type": "text",
+      "requiredToPublish": true
+    },
+    {
+      "key": "reviewedAt",
+      "label": "Reviewed on",
+      "type": "date",
+      "requiredToPublish": true
+    },
+    {
+      "key": "reviewDue",
+      "label": "Next review due",
+      "type": "date",
+      "required": true
+    }
+  ],
+  "types": {
+    "events": {
+      "label": "Events",
+      "title": "title",
+      "group": "Website",
+      "usedBy": "Not yet rendered (no events page). Published records feed the homepage “What’s next” list.",
+      "fields": [
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "activityType",
+          "label": "Activity type",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Educational session",
+            "Conversation",
+            "Community service",
+            "Campaign",
+            "Other"
+          ]
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "type": "select",
+          "required": true,
+          "options": [
+            "In person",
+            "Online",
+            "Hybrid",
+            "To be confirmed"
+          ]
+        },
+        {
+          "key": "start",
+          "label": "Starts",
+          "type": "datetime"
+        },
+        {
+          "key": "end",
+          "label": "Ends",
+          "type": "datetime"
+        },
+        {
+          "key": "timezone",
+          "label": "Timezone",
+          "type": "select",
+          "options": [
+            "",
+            "Asia/Singapore (SGT, UTC+8)",
+            "UTC"
+          ]
+        },
+        {
+          "key": "location",
+          "label": "Location",
+          "type": "text"
+        },
+        {
+          "key": "organiser",
+          "label": "Organiser",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "registrationStatus",
+          "label": "Registration status",
+          "type": "select",
+          "required": true,
+          "options": [
+            "To be confirmed",
+            "Not yet open",
+            "Open",
+            "Full",
+            "Closed",
+            "Postponed",
+            "Cancelled"
+          ]
+        },
+        {
+          "key": "registrationUrl",
+          "label": "Registration link",
+          "type": "url"
+        },
+        {
+          "key": "eligibility",
+          "label": "Eligibility",
+          "type": "textarea"
+        },
+        {
+          "key": "access",
+          "label": "Access information",
+          "type": "textarea"
+        }
+      ]
+    },
+    "opportunities": {
+      "label": "Opportunities",
+      "title": "title",
+      "group": "Website",
+      "usedBy": "Not yet rendered (no opportunities page).",
+      "fields": [
+        {
+          "key": "title",
+          "label": "Role or opportunity",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "source",
+          "label": "Source",
+          "type": "select",
+          "required": true,
+          "options": [
+            "YMN",
+            "External"
+          ]
+        },
+        {
+          "key": "organisation",
+          "label": "Organisation",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "type",
+          "label": "Type",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Volunteering",
+            "Role",
+            "Programme",
+            "Competition",
+            "Other"
+          ]
+        },
+        {
+          "key": "scope",
+          "label": "Scope of work",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "requirements",
+          "label": "Requirements",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "commitment",
+          "label": "Time commitment",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "location",
+          "label": "Location",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "deadline",
+          "label": "Deadline",
+          "type": "date"
+        },
+        {
+          "key": "applyUrl",
+          "label": "Application link",
+          "type": "url",
+          "required": true
+        },
+        {
+          "key": "publishedAt",
+          "label": "Published on",
+          "type": "date"
+        },
+        {
+          "key": "verifiedAt",
+          "label": "Details verified on",
+          "type": "date",
+          "required": true
+        }
+      ]
+    },
+    "stories": {
+      "label": "Activity stories",
+      "title": "title",
+      "group": "Website",
+      "usedBy": "Homepage activity explorer, featured stories and photo gallery.",
+      "fields": [
+        {
+          "key": "title",
+          "label": "Headline",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "cat",
+          "label": "Category",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Learning",
+            "Conversations",
+            "Community service"
+          ]
+        },
+        {
+          "key": "summary",
+          "label": "Introduction",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "date",
+          "label": "Activity date",
+          "type": "text",
+          "help": "Leave blank if not confirmed."
+        },
+        {
+          "key": "facts",
+          "label": "Facts",
+          "type": "lines",
+          "help": "One per line, written as “Label: value”."
+        },
+        {
+          "key": "icon",
+          "label": "Illustration",
+          "type": "select",
+          "options": [
+            "book",
+            "hands",
+            "steth",
+            "micro",
+            "mic",
+            "chat",
+            "opp"
+          ]
+        },
+        {
+          "key": "photos",
+          "label": "Photographs",
+          "type": "refs",
+          "ref": "images"
+        },
+        {
+          "key": "featured",
+          "label": "Featured on homepage",
+          "type": "select",
+          "options": [
+            "No",
+            "Yes"
+          ]
+        },
+        {
+          "key": "related",
+          "label": "Related stories",
+          "type": "refs",
+          "ref": "stories"
+        }
+      ]
+    },
+    "images": {
+      "label": "Images",
+      "title": "caption",
+      "group": "Website",
+      "usedBy": "Referenced by stories.",
+      "fields": [
+        {
+          "key": "src",
+          "label": "File path",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "w",
+          "label": "Width (px)",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "h",
+          "label": "Height (px)",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "alt",
+          "label": "Alternative text",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "caption",
+          "label": "Caption",
+          "type": "text"
+        },
+        {
+          "key": "credit",
+          "label": "Credit",
+          "type": "text"
+        },
+        {
+          "key": "fit",
+          "label": "Crop",
+          "type": "select",
+          "options": [
+            "cover",
+            "contain"
+          ],
+          "help": "Use contain for screenshots, grids or anything with faces near the edge."
+        },
+        {
+          "key": "focal",
+          "label": "Focal point",
+          "type": "select",
+          "options": [
+            "center",
+            "top",
+            "bottom",
+            "left",
+            "right"
+          ]
+        },
+        {
+          "key": "permission",
+          "label": "Publication permission",
+          "type": "select",
+          "required": true,
+          "options": [
+            "To confirm",
+            "Confirmed",
+            "Not permitted"
+          ]
+        }
+      ]
+    },
+    "people": {
+      "label": "People profiles",
+      "title": "name",
+      "group": "Website",
+      "usedBy": "Homepage founder profile.",
+      "fields": [
+        {
+          "key": "name",
+          "label": "Name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "first",
+          "label": "First name",
+          "type": "text"
+        },
+        {
+          "key": "role",
+          "label": "Role",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "bio",
+          "label": "Introduction",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "photo",
+          "label": "Portrait path",
+          "type": "text"
+        },
+        {
+          "key": "pw",
+          "label": "Portrait width",
+          "type": "number"
+        },
+        {
+          "key": "phh",
+          "label": "Portrait height",
+          "type": "number"
+        },
+        {
+          "key": "photoAlt",
+          "label": "Portrait alternative text",
+          "type": "text"
+        },
+        {
+          "key": "interests",
+          "label": "Interests",
+          "type": "lines"
+        },
+        {
+          "key": "links",
+          "label": "Approved social links",
+          "type": "lines"
+        },
+        {
+          "key": "publicationApproved",
+          "label": "Profile approved for publication",
+          "type": "select",
+          "required": true,
+          "options": [
+            "No",
+            "Yes"
+          ]
+        }
+      ]
+    },
+    "learningCategories": {
+      "label": "Learning categories",
+      "title": "title",
+      "group": "Learn",
+      "usedBy": "Learn catalogue (shown as In development until a published course uses the category).",
+      "fields": [
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "summary",
+          "label": "Summary",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "art",
+          "label": "Illustration path",
+          "type": "text"
+        },
+        {
+          "key": "topics",
+          "label": "Proposed topics",
+          "type": "lines"
+        }
+      ]
+    },
+    "courses": {
+      "label": "Courses and lecture series",
+      "title": "title",
+      "group": "Learn",
+      "review": true,
+      "usedBy": "Learn catalogue, course pages and My learning.",
+      "fields": [
+        {
+          "key": "kind",
+          "label": "Kind",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Course",
+            "Lecture series"
+          ]
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "category",
+          "label": "Category",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "summary",
+          "label": "Summary",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "objectives",
+          "label": "Learning objectives",
+          "type": "lines"
+        },
+        {
+          "key": "lessons",
+          "label": "Lessons (in order)",
+          "type": "refs",
+          "ref": "lessons"
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "type": "text"
+        },
+        {
+          "key": "art",
+          "label": "Illustration path",
+          "type": "text"
+        },
+        {
+          "key": "author",
+          "label": "Author",
+          "type": "text"
+        }
+      ]
+    },
+    "lessons": {
+      "label": "Lessons",
+      "title": "title",
+      "group": "Learn",
+      "review": true,
+      "usedBy": "Lesson reader.",
+      "fields": [
+        {
+          "key": "course",
+          "label": "Course",
+          "type": "ref",
+          "ref": "courses",
+          "required": true
+        },
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "order",
+          "label": "Order",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "format",
+          "label": "Format",
+          "type": "select",
+          "options": [
+            "Text",
+            "Video",
+            "Audio"
+          ]
+        },
+        {
+          "key": "body",
+          "label": "Lesson text",
+          "type": "textarea",
+          "required": true,
+          "rows": 12,
+          "help": "Blank line between paragraphs. “## ” starts a heading, “- ” starts a list item."
+        },
+        {
+          "key": "check",
+          "label": "Learning check (JSON)",
+          "type": "textarea",
+          "help": "Authored question and justified answers only. Leave blank if none has been reviewed."
+        },
+        {
+          "key": "sources",
+          "label": "Sources",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "revised",
+          "label": "Revision label",
+          "type": "text"
+        }
+      ]
+    },
+    "resources": {
+      "label": "Resources",
+      "title": "title",
+      "group": "Learn",
+      "usedBy": "Not yet rendered (resource library appears once real resources exist).",
+      "fields": [
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "type",
+          "label": "Type",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Article",
+            "Guide",
+            "Video",
+            "Dataset",
+            "Organisation"
+          ]
+        },
+        {
+          "key": "url",
+          "label": "Source link or file",
+          "type": "url",
+          "required": true
+        },
+        {
+          "key": "publisher",
+          "label": "Author or publisher",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "category",
+          "label": "Learning category",
+          "type": "ref",
+          "ref": "learningCategories"
+        }
+      ]
+    },
+    "partners": {
+      "label": "Partner information",
+      "title": "name",
+      "group": "Organisation",
+      "usedBy": "Reference for claims in stories and Double Y.",
+      "fields": [
+        {
+          "key": "name",
+          "label": "Organisation",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "relationship",
+          "label": "Relationship",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Credited organisation",
+            "Proposed collaboration",
+            "Confirmed partner"
+          ]
+        },
+        {
+          "key": "confirmed",
+          "label": "Relationship confirmed in writing",
+          "type": "select",
+          "required": true,
+          "options": [
+            "No",
+            "Yes"
+          ]
+        },
+        {
+          "key": "url",
+          "label": "Website",
+          "type": "url"
+        },
+        {
+          "key": "notes",
+          "label": "Wording guidance",
+          "type": "textarea"
+        }
+      ]
+    },
+    "navigation": {
+      "label": "Navigation links",
+      "title": "label",
+      "group": "Organisation",
+      "usedBy": "Reference list; header and footer links are still set in the page templates.",
+      "fields": [
+        {
+          "key": "label",
+          "label": "Label",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "href",
+          "label": "Destination",
+          "type": "url",
+          "required": true
+        },
+        {
+          "key": "placement",
+          "label": "Placement",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Primary",
+            "Footer · Explore",
+            "Footer · Learn",
+            "Footer · Connect"
+          ]
+        },
+        {
+          "key": "order",
+          "label": "Order",
+          "type": "number"
+        }
+      ]
+    },
+    "contacts": {
+      "label": "Contact links",
+      "title": "label",
+      "group": "Organisation",
+      "usedBy": "Founder profile email.",
+      "fields": [
+        {
+          "key": "label",
+          "label": "Label",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "value",
+          "label": "Address or link",
+          "type": "url",
+          "required": true
+        },
+        {
+          "key": "kind",
+          "label": "Kind",
+          "type": "select",
+          "options": [
+            "Email",
+            "Social"
+          ]
+        }
+      ]
+    },
+    "faqs": {
+      "label": "Questions",
+      "title": "q",
+      "group": "Organisation",
+      "usedBy": "Homepage questions list.",
+      "fields": [
+        {
+          "key": "q",
+          "label": "Question",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "a",
+          "label": "Answer",
+          "type": "textarea",
+          "required": true
+        }
+      ]
+    },
+    "mediaSeries": {
+      "label": "Series",
+      "title": "title",
+      "group": "Talks & Podcast",
+      "usedBy": "Talks & Podcast catalogue (“Watch the series” appears once a playlist URL is added) and talk credits.",
+      "fields": [
+        {
+          "key": "title",
+          "label": "Series title",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "summary",
+          "label": "Summary",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "playlistUrl",
+          "label": "YouTube playlist URL",
+          "type": "url",
+          "help": "Optional. Must contain list=…"
+        },
+        {
+          "key": "channelName",
+          "label": "Channel name",
+          "type": "text"
+        },
+        {
+          "key": "channelUrl",
+          "label": "Channel URL",
+          "type": "url"
+        }
+      ]
+    },
+    "videoTalks": {
+      "label": "Video talks",
+      "title": "shortTitle",
+      "group": "Talks & Podcast",
+      "usedBy": "Talks & Podcast catalogue, talk detail pages and the homepage media preview.",
+      "fields": [
+        {
+          "key": "title",
+          "label": "Original title (as published on YouTube)",
+          "type": "text",
+          "required": true,
+          "help": "Copy exactly. Shown as the original title with channel attribution."
+        },
+        {
+          "key": "shortTitle",
+          "label": "Display heading",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "youtubeUrl",
+          "label": "YouTube video URL",
+          "type": "url",
+          "help": "watch, youtu.be, shorts or embed links. The video ID is read from it. Leave blank until supplied; the page then shows an honest “recording link not added” state."
+        },
+        {
+          "key": "embedStatus",
+          "label": "Embed check",
+          "type": "select",
+          "options": [
+            "Not checked",
+            "Embeddable",
+            "Embedding disabled",
+            "Unavailable"
+          ],
+          "help": "If embedding is disabled or the video is unavailable, the page shows a fallback with the YouTube link instead of a player."
+        },
+        {
+          "key": "channelName",
+          "label": "Channel name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "channelUrl",
+          "label": "Channel URL",
+          "type": "url"
+        },
+        {
+          "key": "series",
+          "label": "Series",
+          "type": "ref",
+          "ref": "mediaSeries"
+        },
+        {
+          "key": "number",
+          "label": "Number in series",
+          "type": "number"
+        },
+        {
+          "key": "publishedAt",
+          "label": "Published on (YouTube)",
+          "type": "date",
+          "help": "Confirmed publication date. Used for ordering."
+        },
+        {
+          "key": "eventDate",
+          "label": "Event / recording date",
+          "type": "date"
+        },
+        {
+          "key": "eventDetails",
+          "label": "Event details",
+          "type": "text"
+        },
+        {
+          "key": "duration",
+          "label": "Duration (h:mm:ss)",
+          "type": "text"
+        },
+        {
+          "key": "speakers",
+          "label": "Speakers",
+          "type": "lines",
+          "help": "One per line: “Name | Role as stated in the talk”. Confirmed credentials only."
+        },
+        {
+          "key": "organisers",
+          "label": "Organisers",
+          "type": "lines"
+        },
+        {
+          "key": "topics",
+          "label": "Topics",
+          "type": "lines"
+        },
+        {
+          "key": "summary",
+          "label": "Editorial summary",
+          "type": "textarea",
+          "required": true,
+          "help": "Only what the video or supplied notes support. No clinical summaries."
+        },
+        {
+          "key": "thumbnail",
+          "label": "Approved thumbnail path",
+          "type": "text"
+        },
+        {
+          "key": "thumbnailAlt",
+          "label": "Thumbnail alternative text",
+          "type": "text"
+        },
+        {
+          "key": "captions",
+          "label": "Captions",
+          "type": "select",
+          "options": [
+            "",
+            "YouTube automatic captions",
+            "Reviewed captions",
+            "None"
+          ]
+        },
+        {
+          "key": "transcript",
+          "label": "Transcript",
+          "type": "textarea",
+          "help": "Only a supplied, checked transcript."
+        },
+        {
+          "key": "notes",
+          "label": "Supporting notes",
+          "type": "textarea"
+        },
+        {
+          "key": "resources",
+          "label": "Relevant resources",
+          "type": "lines",
+          "help": "One per line: “Label: https://…”"
+        },
+        {
+          "key": "related",
+          "label": "Related talks",
+          "type": "refs",
+          "ref": "videoTalks"
+        },
+        {
+          "key": "featured",
+          "label": "Featured",
+          "type": "select",
+          "options": [
+            "No",
+            "Yes"
+          ]
+        }
+      ]
+    },
+    "podcastEpisodes": {
+      "label": "Podcast episodes",
+      "title": "title",
+      "group": "Talks & Podcast",
+      "review": true,
+      "usedBy": "Talks & Podcast catalogue and episode pages. Shown only when published, approved and a real audio source exists.",
+      "fields": [
+        {
+          "key": "title",
+          "label": "Episode title",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "description",
+          "label": "Short description",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "key": "artwork",
+          "label": "Artwork path",
+          "type": "text"
+        },
+        {
+          "key": "artworkAlt",
+          "label": "Artwork alternative text",
+          "type": "text"
+        },
+        {
+          "key": "hosts",
+          "label": "Hosts",
+          "type": "lines",
+          "help": "“Name | Role”. Confirmed only."
+        },
+        {
+          "key": "guests",
+          "label": "Guests",
+          "type": "lines"
+        },
+        {
+          "key": "topics",
+          "label": "Topics",
+          "type": "lines"
+        },
+        {
+          "key": "publishedAt",
+          "label": "Published on",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "duration",
+          "label": "Duration (h:mm:ss)",
+          "type": "text"
+        },
+        {
+          "key": "hostPlatform",
+          "label": "Audio hosted on",
+          "type": "text",
+          "required": true,
+          "help": "The platform that actually hosts the audio."
+        },
+        {
+          "key": "audioUrl",
+          "label": "Audio file URL (https)",
+          "type": "url"
+        },
+        {
+          "key": "embedUrl",
+          "label": "Hosting-platform embed URL",
+          "type": "url"
+        },
+        {
+          "key": "platformLinks",
+          "label": "Listening links",
+          "type": "lines",
+          "help": "One per line: “Spotify: https://…”. Real destinations only."
+        },
+        {
+          "key": "notes",
+          "label": "Episode notes",
+          "type": "textarea"
+        },
+        {
+          "key": "transcript",
+          "label": "Transcript",
+          "type": "textarea"
+        },
+        {
+          "key": "resources",
+          "label": "Related resources",
+          "type": "lines"
+        },
+        {
+          "key": "related",
+          "label": "Related episodes",
+          "type": "refs",
+          "ref": "podcastEpisodes"
+        },
+        {
+          "key": "publicationApproved",
+          "label": "Publication approved",
+          "type": "select",
+          "required": true,
+          "options": [
+            "No",
+            "Yes"
+          ]
+        },
+        {
+          "key": "featured",
+          "label": "Featured",
+          "type": "select",
+          "options": [
+            "No",
+            "Yes"
+          ]
+        }
+      ]
+    },
+    "upcomingEpisodes": {
+      "label": "Upcoming podcast episodes",
+      "title": "title",
+      "group": "Talks & Podcast",
+      "usedBy": "Upcoming section of Talks & Podcast, episode previews, homepage media preview. Drafts are private.",
+      "fields": [
+        {
+          "key": "title",
+          "label": "Title",
+          "type": "text",
+          "required": true,
+          "help": "Confirmed title only. Keep unconfirmed plans in draft."
+        },
+        {
+          "key": "teaser",
+          "label": "Short teaser",
+          "type": "textarea"
+        },
+        {
+          "key": "topic",
+          "label": "Topic",
+          "type": "text"
+        },
+        {
+          "key": "hosts",
+          "label": "Confirmed hosts",
+          "type": "lines"
+        },
+        {
+          "key": "guests",
+          "label": "Confirmed guests",
+          "type": "lines"
+        },
+        {
+          "key": "publicationStatus",
+          "label": "Release status",
+          "type": "select",
+          "required": true,
+          "options": [
+            "In development",
+            "Recording scheduled",
+            "Coming soon",
+            "Scheduled"
+          ],
+          "help": "Separate from the editorial workflow status. “Scheduled” needs a confirmed release date."
+        },
+        {
+          "key": "releaseDate",
+          "label": "Release date (confirmed)",
+          "type": "date"
+        },
+        {
+          "key": "releaseTime",
+          "label": "Exact release time (confirmed)",
+          "type": "datetime",
+          "help": "A countdown appears only when this is set."
+        },
+        {
+          "key": "artwork",
+          "label": "Artwork path",
+          "type": "text"
+        },
+        {
+          "key": "updatesUrl",
+          "label": "Update / reminder destination",
+          "type": "url",
+          "required": true
+        },
+        {
+          "key": "previewNotes",
+          "label": "Preview notes",
+          "type": "textarea"
+        },
+        {
+          "key": "publishedEpisode",
+          "label": "Published as episode",
+          "type": "ref",
+          "ref": "podcastEpisodes",
+          "help": "Once the episode is published with a playable source, link it here; the upcoming card is then removed."
+        }
+      ]
+    }
+  }
+}

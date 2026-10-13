@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&amp;display=swap">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#F7F5EF;color:#18343B;font-family:'DM Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:#087F83}
+a:hover{color:#18343B}
+:focus-visible{outline:3px solid #18343B;outline-offset:3px}
+[data-dark] :focus-visible{outline-color:#CDEBE3}
+@media (hover: hover) and (pointer: fine){
+body{cursor:url('assets/cursor-default-32.png') 4 2,auto}
+a[href],button:not(:disabled),[role='button']:not([aria-disabled='true']),summary,label,input[type='checkbox'],input[type='radio']{cursor:url('assets/cursor-link-32.png') 12 2,pointer !important}
+input:not([type='checkbox']):not([type='radio']):not([type='submit']):not([type='button']),textarea,[contenteditable='true']{cursor:text}
+:disabled,[aria-disabled='true']{cursor:not-allowed}
+html[data-custom-cursor='off'] body{cursor:auto}
+html[data-custom-cursor='off'] :is(a[href],button:not(:disabled),summary,label){cursor:pointer !important}
+}
+@media (forced-colors: active){body{cursor:auto}a[href],button:not(:disabled),summary{cursor:pointer !important}}
+@media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}}
+</style>
+<script src="ymn-media.js"></script>
+</helmet>
+<div id="top" style="background:#F7F5EF;color:#18343B;font-family:'DM Sans',Arial,sans-serif;min-height:100vh;display:flex;flex-direction:column">
+<a href="#main" onClick="{{ skipToMain }}" style="position:absolute;left:-9999px;top:12px;z-index:100;background:#18343B;color:#F7F5EF;padding:14px 24px;border-radius:16px;font-weight:600;text-decoration:none" style-focus="left:16px">Skip to main content</a>
+
+<header style="position:sticky;top:0;z-index:50;background:#F7F5EF;border-bottom:1px solid rgba(24,52,59,.12);padding:0 clamp(20px,4.4vw,48px)">
+  <div style="max-width:1200px;min-height:80px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;padding:8px 0">
+    <a href="YMN Homepage v2.dc.html" style="display:flex;align-items:center;gap:12px;min-height:48px;text-decoration:none;color:#18343B">
+      <img src="assets/14-brand-emblem.png" alt="" width="1342" height="1172" style="display:block;width:44px;height:auto">
+      <span style="display:flex;flex-direction:column;line-height:1.15"><span style="font-size:14px;font-weight:500">The Youth Medical Network</span><span style="font-family:Fraunces,Georgia,serif;font-weight:600;font-size:22px;color:#087F83">Learn</span></span>
+    </a>
+    <nav aria-label="Learn" style="display:flex">
+      <ul style="list-style:none;margin:0;padding:4px;display:flex;flex-wrap:wrap;gap:2px;background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:26px">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+          <li><a href="{{ n.href }}" aria-current="{{ n.current }}" style="display:flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;background:{{ n.bg }};color:#18343B;font-weight:{{ n.weight }};font-size:15px;text-decoration:none;white-space:nowrap" style-hover="background:#CDEBE3;color:#18343B">{{ n.label }}</a></li>
+        </sc-for>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1" style="flex:1;outline:none">
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <section aria-labelledby="learn-h1" style="padding:clamp(40px,6vw,80px) clamp(20px,4.4vw,48px) clamp(40px,5vw,64px)">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:{{ heroCols }};gap:clamp(32px,5vw,64px);align-items:center">
+      <div style="display:flex;flex-direction:column;gap:16px;max-width:620px">
+        <p style="margin:0;display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;letter-spacing:.12em;color:#087F83"><span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#F28C79"></span>THE LEARN TRACK</p>
+        <h1 id="learn-h1" ref="{{ h1Ref }}" tabindex="-1" style="margin:0;outline:none;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(36px,2.6vw + 22px,60px);line-height:1.08;letter-spacing:-.02em;text-wrap:balance">A place to ask questions. A pathway to understanding.</h1>
+        <p style="margin:0;font-size:clamp(17px,.15vw + 16.4px,18px);line-height:1.6;max-width:34em;text-wrap:pretty">Explore healthcare ideas, community perspectives and the skills to read evidence thoughtfully. YMN Learn is being developed as a welcoming home for the network’s educational content.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:8px">
+          <a href="#catalogue" onClick="{{ toCatalogue }}" style="display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:14px 24px;border-radius:16px;background:#087F83;color:#F7F5EF;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#18343B;color:#F7F5EF">Browse the catalogue <span aria-hidden="true">↓</span></a>
+          <a href="https://t.me/+P0w6oXmyPBBjODA1" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12.5px 22px;border-radius:16px;border:1.5px solid #18343B;color:#18343B;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#CDEBE3;color:#18343B">Get updates on Telegram <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <img src="assets/learn/01-learn-hub-hero.png" alt="" width="1536" height="1024" fetchpriority="high" style="display:block;width:100%;max-width:620px;height:auto;justify-self:center">
+    </div>
+  </section>
+
+  <sc-if value="{{ hasResume }}" hint-placeholder-val="{{ false }}">
+    <section aria-labelledby="resume-h" style="padding:0 clamp(20px,4.4vw,48px) clamp(32px,4vw,48px)">
+      <div style="max-width:1200px;margin:0 auto;background:#CDEBE3;border-radius:24px;padding:clamp(20px,3vw,32px);display:flex;flex-wrap:wrap;align-items:center;gap:20px 32px">
+        <img src="assets/learn/06-learner-progress.png" alt="" width="1374" height="1145" style="flex:none;width:96px;height:auto">
+        <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:4px;min-width:0">
+          <h2 id="resume-h" style="margin:0;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">Continue learning</h2>
+          <p style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(22px,.6vw + 19px,26px);line-height:1.25">{{ resume.lessonTitle }}</p>
+          <p style="margin:0;font-size:16px;line-height:1.5">{{ resume.courseTitle }} · {{ resume.progressText }} · Saved on this device</p>
+        </div>
+        <a href="{{ resume.href }}" style="display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:14px 24px;border-radius:16px;background:#18343B;color:#F7F5EF;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#087F83;color:#F7F5EF">Resume lesson <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </sc-if>
+
+  <section id="catalogue" aria-labelledby="cat-h" style="scroll-margin-top:96px;padding:clamp(48px,6vw,80px) clamp(20px,4.4vw,48px);background:#FFFFFF;border-top:1px solid rgba(24,52,59,.12);border-bottom:1px solid rgba(24,52,59,.12)">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 48px">
+        <div style="display:flex;flex-direction:column;gap:12px;max-width:640px">
+          <h2 id="cat-h" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(30px,1.5vw + 19px,40px);line-height:1.18;letter-spacing:-.01em">Catalogue</h2>
+          <p style="margin:0;font-size:17px;line-height:1.6;text-wrap:pretty">The four learning categories are a proposed structure. Their courses are in development; each card opens the planned scope. The platform guide is available now.</p>
+        </div>
+        <label style="flex:0 1 340px;display:flex;flex-direction:column;gap:6px;font-size:15px;font-weight:600">Search the catalogue
+          <input type="search" value="{{ query }}" onInput="{{ onQuery }}" placeholder="Try “evidence” or “volunteer”" style="min-height:48px;padding:0 16px;border-radius:16px;border:1.5px solid rgba(24,52,59,.35);background:#F7F5EF;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-size:16px;font-weight:400">
+        </label>
+      </div>
+      <div role="group" aria-label="Filter by category" style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="6">
+          <button type="button" aria-pressed="{{ f.pressed }}" onClick="{{ f.pick }}" style="min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid {{ f.border }};background:{{ f.bg }};color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-size:15px;font-weight:{{ f.weight }}" style-hover="border-color:#087F83">{{ f.label }}</button>
+        </sc-for>
+      </div>
+      <p aria-live="polite" style="margin:0;font-size:15px">{{ resultText }}</p>
+      <sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}">
+        <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:24px">
+          <sc-for list="{{ cards }}" as="c" hint-placeholder-count="5">
+            <li style="display:flex">
+              <article style="flex:1;display:flex;flex-direction:column;gap:12px;background:#F7F5EF;border:1px solid rgba(24,52,59,.12);border-radius:24px;padding:24px">
+                <img src="{{ c.art }}" alt="" width="1536" height="1024" loading="lazy" style="display:block;width:100%;height:150px;object-fit:contain;margin-bottom:4px">
+                <div style="display:flex;flex-wrap:wrap;gap:8px">
+                  <span style="display:inline-flex;align-items:center;min-height:28px;padding:2px 12px;border-radius:999px;background:{{ c.statusBg }};color:#18343B;font-size:14px;font-weight:600">{{ c.status }}</span>
+                  <span style="display:inline-flex;align-items:center;min-height:28px;font-size:14px">{{ c.category }}</span>
+                </div>
+                <h3 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:24px;line-height:1.25">{{ c.title }}</h3>
+                <p style="margin:0;font-size:16px;line-height:1.6;flex:1;text-wrap:pretty">{{ c.summary }}</p>
+                <p style="margin:0;font-size:14px;line-height:1.5">{{ c.meta }}</p>
+                <a href="{{ c.href }}" aria-label="{{ c.aria }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#087F83;font-weight:600;font-size:16px;text-underline-offset:4px" style-hover="color:#18343B">{{ c.action }} <span aria-hidden="true">→</span></a>
+              </article>
+            </li>
+          </sc-for>
+        </ul>
+      </sc-if>
+      <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+        <div style="border:1.5px dashed rgba(24,52,59,.3);border-radius:24px;padding:32px;display:flex;flex-direction:column;align-items:flex-start;gap:12px">
+          <p style="margin:0;font-family:Fraunces,Georgia,serif;font-size:24px">Nothing matches “{{ query }}”{{ filterSuffix }}.</p>
+          <p style="margin:0;font-size:16px;line-height:1.6">Search covers course titles, summaries and planned topics. Try a broader word, or clear the search and filter.</p>
+          <button type="button" onClick="{{ clearSearch }}" style="min-height:44px;padding:0 20px;border-radius:16px;border:1.5px solid #18343B;background:transparent;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-size:16px;font-weight:600" style-hover="background:#CDEBE3">Clear search and filter</button>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section aria-labelledby="tp-band-h" style="padding:clamp(48px,6vw,80px) clamp(20px,4.4vw,48px) 0">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:20px 40px;border-bottom:1px solid rgba(24,52,59,.15);padding-bottom:clamp(32px,4vw,48px)">
+      <img src="assets/08-sticker-lecture-microphone.png" alt="" width="1312" height="1199" loading="lazy" style="flex:none;width:96px;height:auto">
+      <div style="flex:1 1 360px;display:flex;flex-direction:column;gap:6px">
+        <h2 id="tp-band-h" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(26px,1vw + 20px,32px);line-height:1.2">Talks &amp; Podcast</h2>
+        <p style="margin:0;font-size:17px;line-height:1.6;max-width:40em">Recorded health talks with doctors, and podcast episodes as they are released.</p>
+      </div>
+      <a href="#/talks-and-podcast" style="display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:14px 24px;border-radius:16px;background:#087F83;color:#F7F5EF;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#18343B;color:#F7F5EF">Browse talks and episodes <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <sc-if value="{{ archived }}" hint-placeholder-val="{{ false }}"><!-- ARCHIVED: Double Y (not an ongoing or confirmed project) --><section id="double-y" aria-labelledby="dy-h" style="scroll-margin-top:96px;padding:clamp(48px,6vw,80px) clamp(20px,4.4vw,48px)">
+    <article data-dark="1" style="max-width:1200px;margin:0 auto;background:#18343B;color:#F7F5EF;border-radius:32px;padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:{{ dyCols }};gap:clamp(32px,5vw,64px);align-items:center">
+      <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+        <p style="margin:0;align-self:flex-start;display:inline-flex;align-items:center;min-height:32px;padding:4px 14px;border-radius:999px;background:#F28C79;color:#18343B;font-size:15px;font-weight:600">Proposed healthcare lecture collaboration</p>
+        <h2 id="dy-h" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(40px,2.4vw + 26px,64px);line-height:1.05;letter-spacing:-.02em">Double Y</h2>
+        <p style="margin:0;font-size:clamp(17px,.15vw + 16.4px,18px);line-height:1.6;max-width:34em;text-wrap:pretty">Double Y is a proposed collaboration between The Youth Medical Network and Youth for Sustainable Policy to create and publish youth-led healthcare lectures. Topics, contributors, review arrangements and release dates are being developed.</p>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#CDEBE3">No lectures are published yet. This space will list them once they are reviewed and released.</p>
+        <div style="padding-top:8px">
+          <a href="https://t.me/+P0w6oXmyPBBjODA1" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:14px 24px;border-radius:16px;background:#CDEBE3;color:#18343B;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#F7F5EF;color:#18343B">Get updates <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <img src="assets/08-sticker-lecture-microphone.png" alt="" width="1312" height="1199" loading="lazy" style="display:block;width:100%;max-width:320px;height:auto;justify-self:center">
+    </article>
+  </section></sc-if>
+</sc-if>
+
+<sc-if value="{{ isCourse }}" hint-placeholder-val="{{ false }}">
+  <section aria-labelledby="course-h1" style="padding:clamp(24px,3vw,40px) clamp(20px,4.4vw,48px) clamp(48px,7vw,96px)">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(24px,3vw,40px)">
+      <nav aria-label="Breadcrumb"><ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 8px;font-size:15px">
+        <li><a href="#/" style="color:#087F83">Learn</a></li><li aria-hidden="true">/</li><li aria-current="page">{{ course.title }}</li>
+      </ol></nav>
+      <div style="display:grid;grid-template-columns:{{ courseCols }};gap:clamp(32px,5vw,64px);align-items:start">
+        <div style="display:flex;flex-direction:column;gap:20px;min-width:0;max-width:720px">
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+            <span style="display:inline-flex;align-items:center;min-height:30px;padding:2px 12px;border-radius:999px;background:{{ course.statusBg }};font-size:14px;font-weight:600">{{ course.status }}</span>
+            <span style="font-size:15px">{{ course.category }}</span>
+          </div>
+          <h1 id="course-h1" ref="{{ h1Ref }}" tabindex="-1" style="margin:0;outline:none;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(34px,2vw + 22px,52px);line-height:1.1;letter-spacing:-.02em;text-wrap:balance">{{ course.title }}</h1>
+          <p style="margin:0;font-size:clamp(17px,.15vw + 16.4px,19px);line-height:1.6;text-wrap:pretty">{{ course.summary }}</p>
+
+          <sc-if value="{{ course.hasObjectives }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:10px;padding-top:8px">
+              <h2 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:26px">What you’ll be able to do</h2>
+              <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px;font-size:17px;line-height:1.6">
+                <sc-for list="{{ course.objectives }}" as="o" hint-placeholder-count="3"><li>{{ o }}</li></sc-for>
+              </ul>
+            </div>
+          </sc-if>
+
+          <div style="display:flex;flex-direction:column;gap:12px;padding-top:8px">
+            <h2 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:26px">{{ course.outlineTitle }}</h2>
+            <sc-if value="{{ course.isDev }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:0;font-size:16px;line-height:1.6">Curriculum planning. These topics describe the intended scope; no lessons have been written or reviewed yet.</p>
+            </sc-if>
+            <ol style="list-style:none;margin:0;padding:0;border-top:1px solid rgba(24,52,59,.15)">
+              <sc-for list="{{ course.rows }}" as="r" hint-placeholder-count="4">
+                <li style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;padding:16px 0;border-bottom:1px solid rgba(24,52,59,.15)">
+                  <span style="display:flex;align-items:baseline;gap:14px;min-width:0">
+                    <span style="flex:none;font-family:Fraunces,Georgia,serif;font-size:18px;color:#087F83">{{ r.num }}</span>
+                    <sc-if value="{{ r.href }}" hint-placeholder-val="{{ false }}"><a href="{{ r.href }}" style="font-size:17px;font-weight:600;color:#18343B;text-underline-offset:4px" style-hover="color:#087F83">{{ r.title }}</a></sc-if>
+                    <sc-if value="{{ r.plain }}" hint-placeholder-val="{{ true }}"><span style="font-size:17px;font-weight:600">{{ r.title }}</span></sc-if>
+                  </span>
+                  <span style="font-size:14px">{{ r.meta }}</span>
+                </li>
+              </sc-for>
+            </ol>
+          </div>
+          <p style="margin:0;font-size:15px;line-height:1.6;padding-top:8px">YMN Learn content is general education. It is not accredited training, does not lead to certification and does not indicate competence to perform any medical task.</p>
+        </div>
+
+        <aside aria-label="Course details" style="background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <img src="{{ course.art }}" alt="" width="1536" height="1024" style="display:block;width:100%;height:170px;object-fit:contain">
+          <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:15px;line-height:1.5">
+            <sc-for list="{{ course.facts }}" as="fa" hint-placeholder-count="3">
+              <dt style="font-weight:600">{{ fa.k }}</dt><dd style="margin:0">{{ fa.v }}</dd>
+            </sc-for>
+          </dl>
+          <sc-if value="{{ course.canStart }}" hint-placeholder-val="{{ false }}">
+            <a href="{{ course.startHref }}" style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:14px 20px;border-radius:16px;background:#087F83;color:#F7F5EF;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#18343B;color:#F7F5EF">{{ course.startLabel }} <span aria-hidden="true">→</span></a>
+          </sc-if>
+          <sc-if value="{{ course.isDev }}" hint-placeholder-val="{{ false }}">
+            <a href="https://t.me/+P0w6oXmyPBBjODA1" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:14px 20px;border-radius:16px;background:#087F83;color:#F7F5EF;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#18343B;color:#F7F5EF">Get updates <span aria-hidden="true">↗</span></a>
+          </sc-if>
+          <button type="button" aria-pressed="{{ course.saved }}" onClick="{{ course.toggleSave }}" style="min-height:48px;padding:0 20px;border-radius:16px;border:1.5px solid #18343B;background:{{ course.saveBg }};color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-size:16px;font-weight:600" style-hover="background:#CDEBE3">{{ course.saveLabel }}</button>
+          <p style="margin:0;font-size:14px;line-height:1.5">Saving keeps this course in My learning on this device only.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ isLesson }}" hint-placeholder-val="{{ false }}">
+  <section aria-labelledby="lesson-h1" style="padding:clamp(20px,3vw,32px) clamp(20px,4.4vw,48px) clamp(48px,7vw,96px)">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:24px">
+      <nav aria-label="Breadcrumb"><ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 8px;font-size:15px">
+        <li><a href="#/" style="color:#087F83">Learn</a></li><li aria-hidden="true">/</li>
+        <li><a href="{{ lesson.courseHref }}" style="color:#087F83">{{ lesson.courseTitle }}</a></li><li aria-hidden="true">/</li>
+        <li aria-current="page">{{ lesson.title }}</li>
+      </ol></nav>
+      <div style="display:grid;grid-template-columns:{{ lessonCols }};gap:clamp(24px,4vw,56px);align-items:start">
+        <div style="position:{{ outlinePos }};top:104px;display:flex;flex-direction:column;gap:8px">
+          <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+            <button type="button" aria-expanded="{{ outlineOpen }}" aria-controls="lesson-outline" onClick="{{ toggleOutline }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;min-height:48px;padding:0 16px;border-radius:16px;border:1.5px solid rgba(24,52,59,.3);background:#FFFFFF;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-size:16px;font-weight:600">Lessons ({{ lesson.pos }}) <span aria-hidden="true">{{ outlineSign }}</span></button>
+          </sc-if>
+          <sc-if value="{{ showOutline }}" hint-placeholder-val="{{ true }}">
+            <nav id="lesson-outline" aria-label="Lesson outline" style="background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:24px;padding:16px">
+              <p style="margin:0 0 8px 8px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">Outline</p>
+              <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px">
+                <sc-for list="{{ lesson.outline }}" as="ol" hint-placeholder-count="3">
+                  <li><a href="{{ ol.href }}" aria-current="{{ ol.current }}" onClick="{{ closeOutline }}" style="display:flex;gap:12px;padding:10px 8px;border-radius:12px;background:{{ ol.bg }};color:#18343B;text-decoration:none;font-size:15px;line-height:1.4" style-hover="background:#CDEBE3;color:#18343B"><span style="flex:none;font-family:Fraunces,Georgia,serif;color:#087F83">{{ ol.num }}</span><span style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:{{ ol.weight }}">{{ ol.title }}</span><span style="font-size:13px">{{ ol.state }}</span></span></a></li>
+                </sc-for>
+              </ol>
+            </nav>
+          </sc-if>
+        </div>
+
+        <article style="min-width:0;max-width:680px;display:flex;flex-direction:column;gap:24px;cursor:text">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <p style="margin:0;font-size:15px;font-weight:600;color:#087F83">Lesson {{ lesson.pos }} · {{ lesson.minutes }} · {{ lesson.format }}</p>
+            <h1 id="lesson-h1" ref="{{ h1Ref }}" tabindex="-1" style="margin:0;outline:none;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(32px,1.6vw + 22px,46px);line-height:1.12;letter-spacing:-.015em;text-wrap:balance">{{ lesson.title }}</h1>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:18px;font-size:{{ bodySize }};line-height:1.6">
+            <sc-for list="{{ lesson.blocks }}" as="b" hint-placeholder-count="4">
+              <sc-if value="{{ b.isH }}" hint-placeholder-val="{{ false }}"><h2 style="margin:12px 0 0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:26px;line-height:1.25">{{ b.text }}</h2></sc-if>
+              <sc-if value="{{ b.isP }}" hint-placeholder-val="{{ true }}"><p style="margin:0;text-wrap:pretty">{{ b.text }}</p></sc-if>
+              <sc-if value="{{ b.isList }}" hint-placeholder-val="{{ false }}"><ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px"><sc-for list="{{ b.items }}" as="it" hint-placeholder-count="3"><li>{{ it }}</li></sc-for></ul></sc-if>
+            </sc-for>
+          </div>
+
+          <sc-if value="{{ lesson.hasCheck }}" hint-placeholder-val="{{ false }}">
+            <fieldset style="margin:8px 0 0;border:1.5px solid rgba(24,52,59,.2);border-radius:24px;padding:24px;background:#FFFFFF;display:flex;flex-direction:column;gap:12px;cursor:auto">
+              <legend style="padding:0 8px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">Check your understanding · non-clinical example</legend>
+              <p style="margin:0;font-family:Fraunces,Georgia,serif;font-size:22px;line-height:1.3">{{ lesson.check.q }}</p>
+              <sc-for list="{{ lesson.check.opts }}" as="op" hint-placeholder-count="3">
+                <label style="display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:16px;border:1.5px solid {{ op.border }};background:{{ op.bg }};font-size:17px;line-height:1.5">
+                  <input type="radio" name="check" checked="{{ op.checked }}" onChange="{{ op.pick }}" style="margin:4px 0 0;width:20px;height:20px;accent-color:#087F83">
+                  <span>{{ op.label }}</span>
+                </label>
+              </sc-for>
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+                <button type="button" onClick="{{ lesson.check.submit }}" disabled="{{ lesson.check.noPick }}" style="min-height:48px;padding:0 22px;border-radius:16px;border:0;background:#18343B;color:#F7F5EF;font-family:'DM Sans',Arial,sans-serif;font-size:16px;font-weight:600;opacity:{{ lesson.check.btnOp }}">Check answer</button>
+              </div>
+              <div aria-live="polite">
+                <sc-if value="{{ lesson.check.shown }}" hint-placeholder-val="{{ false }}">
+                  <p style="margin:0;padding:14px 16px;border-radius:16px;background:{{ lesson.check.fbBg }};font-size:17px;line-height:1.6"><b>{{ lesson.check.verdict }}</b> {{ lesson.check.why }}</p>
+                </sc-if>
+              </div>
+            </fieldset>
+          </sc-if>
+
+          <section aria-labelledby="src-h" style="border-top:1px solid rgba(24,52,59,.15);padding-top:20px;display:flex;flex-direction:column;gap:8px">
+            <h2 id="src-h" style="margin:0;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">Sources</h2>
+            <p style="margin:0;font-size:16px;line-height:1.6">{{ lesson.sources }}</p>
+            <p style="margin:0;font-size:14px;line-height:1.5">Revised {{ lesson.revised }}</p>
+          </section>
+
+          <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:8px;cursor:auto">
+            <button type="button" aria-pressed="{{ lesson.done }}" onClick="{{ lesson.toggleDone }}" style="min-height:48px;padding:0 22px;border-radius:16px;border:0;background:{{ lesson.doneBg }};color:{{ lesson.doneFg }};font-family:'DM Sans',Arial,sans-serif;font-size:16px;font-weight:600">{{ lesson.doneLabel }}</button>
+            <button type="button" aria-pressed="{{ lesson.saved }}" onClick="{{ lesson.toggleSave }}" style="min-height:48px;padding:0 22px;border-radius:16px;border:1.5px solid #18343B;background:{{ lesson.saveBg }};color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-size:16px;font-weight:600" style-hover="background:#CDEBE3">{{ lesson.saveLabel }}</button>
+          </div>
+          <nav aria-label="Lesson navigation" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-top:1px solid rgba(24,52,59,.15);padding-top:20px;cursor:auto">
+            <sc-if value="{{ lesson.prev }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ lesson.prev.href }}" style="display:flex;flex-direction:column;gap:2px;min-height:48px;color:#18343B;text-decoration:none" style-hover="color:#087F83"><span style="font-size:14px">← Previous</span><span style="font-weight:600;font-size:16px">{{ lesson.prev.title }}</span></a>
+            </sc-if>
+            <span aria-hidden="true"></span>
+            <sc-if value="{{ lesson.next }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ lesson.next.href }}" style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;min-height:48px;color:#18343B;text-decoration:none;text-align:right" style-hover="color:#087F83"><span style="font-size:14px">Next →</span><span style="font-weight:600;font-size:16px">{{ lesson.next.title }}</span></a>
+            </sc-if>
+            <sc-if value="{{ lesson.isLast }}" hint-placeholder-val="{{ false }}">
+              <a href="#/my-learning" style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;min-height:48px;color:#18343B;text-decoration:none;text-align:right" style-hover="color:#087F83"><span style="font-size:14px">End of course</span><span style="font-weight:600;font-size:16px">Go to My learning →</span></a>
+            </sc-if>
+          </nav>
+        </article>
+      </div>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ isMine }}" hint-placeholder-val="{{ false }}">
+  <section aria-labelledby="mine-h1" style="padding:clamp(40px,6vw,72px) clamp(20px,4.4vw,48px) clamp(48px,7vw,96px)">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:680px">
+        <h1 id="mine-h1" ref="{{ h1Ref }}" tabindex="-1" style="margin:0;outline:none;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(34px,2vw + 22px,52px);line-height:1.1;letter-spacing:-.02em">My learning</h1>
+        <p style="margin:0;font-size:17px;line-height:1.6"><b>Saved on this device.</b> There are no accounts yet. Saved courses and completed lessons are stored in this browser only and do not sync to other devices. Clearing your browser data removes them.</p>
+      </div>
+      <sc-if value="{{ mineEmpty }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:{{ heroCols }};gap:32px clamp(32px,5vw,64px);align-items:center;background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:24px;padding:clamp(24px,4vw,48px)">
+          <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+            <h2 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:28px;line-height:1.25">Nothing saved yet</h2>
+            <p style="margin:0;font-size:17px;line-height:1.6;max-width:30em">Save a course or mark a lesson complete and it will appear here. The platform guide is the one course you can start today.</p>
+            <a href="#/courses/getting-started" style="display:inline-flex;align-items:center;gap:8px;min-height:48px;margin-top:8px;padding:14px 24px;border-radius:16px;background:#087F83;color:#F7F5EF;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#18343B;color:#F7F5EF">Open the platform guide <span aria-hidden="true">→</span></a>
+          </div>
+          <img src="assets/learn/06-learner-progress.png" alt="" width="1374" height="1145" loading="lazy" style="display:block;width:100%;max-width:320px;height:auto;justify-self:center">
+        </div>
+      </sc-if>
+      <sc-if value="{{ mineHas }}" hint-placeholder-val="{{ false }}">
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px">
+          <sc-for list="{{ mine }}" as="m" hint-placeholder-count="2">
+            <li style="display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px;background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:24px;padding:20px 24px">
+              <img src="{{ m.art }}" alt="" width="1536" height="1024" style="flex:none;width:120px;height:80px;object-fit:contain">
+              <div style="flex:1 1 260px;display:flex;flex-direction:column;gap:4px;min-width:0">
+                <h2 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:24px;line-height:1.25"><a href="{{ m.href }}" style="color:#18343B;text-underline-offset:4px" style-hover="color:#087F83">{{ m.title }}</a></h2>
+                <p style="margin:0;font-size:16px;line-height:1.5">{{ m.status }} · {{ m.progress }}</p>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <sc-if value="{{ m.resumeHref }}" hint-placeholder-val="{{ false }}">
+                  <a href="{{ m.resumeHref }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:16px;background:#087F83;color:#F7F5EF;font-weight:600;font-size:15px;text-decoration:none" style-hover="background:#18343B;color:#F7F5EF">{{ m.resumeLabel }}</a>
+                </sc-if>
+                <sc-if value="{{ m.saved }}" hint-placeholder-val="{{ false }}">
+                  <button type="button" onClick="{{ m.unsave }}" style="min-height:44px;padding:0 18px;border-radius:16px;border:1.5px solid #18343B;background:transparent;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-size:15px;font-weight:600" style-hover="background:#CDEBE3">Remove from saved</button>
+                </sc-if>
+              </div>
+            </li>
+          </sc-for>
+        </ul>
+        <div>
+          <button type="button" onClick="{{ clearAll }}" style="min-height:44px;padding:0;border:0;background:transparent;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-size:15px;font-weight:600;text-decoration:underline;text-underline-offset:4px" style-hover="color:#087F83">{{ clearLabel }}</button>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ isTP }}" hint-placeholder-val="{{ false }}">
+  <section aria-labelledby="tp-h1" style="padding:clamp(24px,3vw,40px) clamp(20px,4.4vw,48px) clamp(32px,4vw,56px)">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(24px,3vw,32px)">
+      <nav aria-label="Breadcrumb"><ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 8px;font-size:15px">
+        <li><a href="#/" style="color:#087F83">Learn</a></li><li aria-hidden="true">/</li><li aria-current="page">Talks &amp; Podcast</li>
+      </ol></nav>
+      <div style="display:grid;grid-template-columns:{{ tpHeroCols }};gap:24px clamp(32px,5vw,64px);align-items:center">
+        <div style="display:flex;flex-direction:column;gap:16px;max-width:680px">
+          <p style="margin:0;display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;letter-spacing:.12em;color:#087F83"><span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#F28C79"></span>TALKS &amp; PODCAST</p>
+          <h1 id="tp-h1" ref="{{ h1Ref }}" tabindex="-1" style="margin:0;outline:none;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(36px,2.4vw + 22px,58px);line-height:1.08;letter-spacing:-.02em;text-wrap:balance">Talks &amp; Podcast</h1>
+          <p style="margin:0;font-size:clamp(17px,.15vw + 16.4px,18px);line-height:1.6;max-width:34em;text-wrap:pretty">Recorded health talks and podcast conversations from The Youth Medical Network. Each item is labelled with the format it was published in.</p>
+        </div>
+        <img src="assets/08-sticker-lecture-microphone.png" alt="" width="1312" height="1199" style="display:block;width:100%;max-width:{{ tpMicMax }};height:auto;justify-self:center">
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ tp.sampleOn }}" hint-placeholder-val="{{ false }}">
+    <div role="note" style="max-width:1200px;margin:0 auto clamp(24px,3vw,32px);padding:0 clamp(20px,4.4vw,48px)"><p style="margin:0;padding:12px 16px;border-radius:16px;background:#FBE3DD;font-size:15px;line-height:1.5"><b>Layout review:</b> sample upcoming episodes are shown. They are not real and are never published.</p></div>
+  </sc-if>
+
+  <sc-if value="{{ tp.showFeatured }}" hint-placeholder-val="{{ true }}">
+    <section aria-labelledby="tp-feat-h" style="padding:0 clamp(20px,4.4vw,48px) clamp(40px,5vw,64px)">
+      <article style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:{{ tpFeatCols }};gap:clamp(20px,4vw,48px);align-items:center;background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:32px;padding:clamp(12px,2vw,20px)">
+        <div style="min-width:0;display:flex;flex-direction:column;gap:10px">
+          <sc-if value="{{ fp.isPoster }}" hint-placeholder-val="{{ false }}">
+            <button type="button" onClick="{{ fp.play }}" aria-label="{{ fp.playLabel }}" style="position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;border-radius:24px;overflow:hidden;background:#18343B;color:#F7F5EF;font-family:'DM Sans',Arial,sans-serif;text-align:left" style-hover="box-shadow:0 0 0 3px #F28C79">
+              <sc-if value="{{ fp.hasThumb }}" hint-placeholder-val="{{ false }}"><img src="{{ fp.art }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if>
+              <sc-if value="{{ fp.noThumb }}" hint-placeholder-val="{{ true }}">
+                <img src="assets/08-sticker-lecture-microphone.png" alt="" style="position:absolute;right:4%;bottom:6%;width:30%;height:auto">
+                <span style="position:absolute;left:6%;bottom:9%;max-width:60%;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(24px,2.4vw,40px);line-height:1.1">{{ fp.tileLabel }}</span>
+              </sc-if>
+              <span aria-hidden="true" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:80px;height:80px;border-radius:50%;background:#F28C79;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(24,52,59,.3)"><span style="width:0;height:0;margin-left:6px;border-left:24px solid #18343B;border-top:15px solid transparent;border-bottom:15px solid transparent"></span></span>
+              <span style="position:absolute;left:16px;top:16px;display:inline-flex;align-items:center;min-height:32px;padding:4px 12px;border-radius:999px;background:#F7F5EF;color:#18343B;font-size:14px;font-weight:600">Loads video from YouTube</span>
+            </button>
+          </sc-if>
+          <sc-if value="{{ fp.isFrame }}" hint-placeholder-val="{{ false }}">
+            <div style="position:relative;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:#18343B">
+              <iframe data-player="{{ fp.key }}" src="{{ fp.embedSrc }}" title="{{ fp.iframeTitle }}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowFullScreen="{{ true }}" referrerPolicy="strict-origin-when-cross-origin" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+            </div>
+          </sc-if>
+          <sc-if value="{{ fp.isMissing }}" hint-placeholder-val="{{ false }}">
+            <div role="note" style="min-height:240px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:10px;padding:clamp(24px,3vw,40px);border-radius:24px;border:1.5px dashed rgba(24,52,59,.3);background:#F7F5EF">
+              <p style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:22px;line-height:1.3">{{ fp.missTitle }}</p>
+              <p style="margin:0;font-size:16px;line-height:1.6;max-width:32em">{{ fp.missText }}</p>
+              <sc-if value="{{ fp.hasMissLink }}" hint-placeholder-val="{{ false }}"><a href="{{ fp.missHref }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;font-size:16px;text-underline-offset:4px">{{ fp.missLink }} <span aria-hidden="true">↗</span></a></sc-if>
+            </div>
+          </sc-if>
+          <sc-if value="{{ fp.hasWatch }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0;padding:0 8px;font-size:14px;line-height:1.5">On YouTube from <a href="{{ fp.channelUrl }}" target="_blank" rel="noopener noreferrer">{{ fp.channelName }}</a> · <a href="{{ fp.watchUrl }}" target="_blank" rel="noopener noreferrer">Open on YouTube <span aria-hidden="true">↗</span></a></p>
+          </sc-if>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;padding:clamp(8px,2vw,24px);min-width:0">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px">
+            <span style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#087F83">Featured</span>
+            <span style="display:inline-flex;align-items:center;min-height:28px;padding:2px 12px;border-radius:999px;background:{{ tp.feat.pillBg }};font-size:14px;font-weight:600">{{ tp.feat.format }}</span>
+            <span style="font-size:14px">{{ tp.feat.topicText }}</span>
+          </div>
+          <h2 id="tp-feat-h" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(28px,1.4vw + 18px,40px);line-height:1.15;letter-spacing:-.01em;text-wrap:balance">{{ tp.feat.heading }}</h2>
+          <p style="margin:0;font-size:17px;line-height:1.6;text-wrap:pretty">{{ tp.feat.summary }}</p>
+          <p style="margin:0;font-size:15px;line-height:1.5">{{ tp.feat.meta }}</p>
+          <a href="{{ tp.feat.href }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:14px 22px;border-radius:16px;border:1.5px solid #18343B;color:#18343B;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#CDEBE3;color:#18343B">{{ tp.feat.detailLabel }} <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </section>
+  </sc-if>
+
+  <section id="tp-browse" aria-labelledby="tp-browse-h" style="scroll-margin-top:96px;padding:clamp(40px,5vw,64px) clamp(20px,4.4vw,48px);background:#FFFFFF;border-top:1px solid rgba(24,52,59,.12);border-bottom:1px solid rgba(24,52,59,.12)">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 48px">
+        <h2 id="tp-browse-h" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(30px,1.5vw + 19px,40px);line-height:1.18;letter-spacing:-.01em">{{ tp.listTitle }}</h2>
+        <sc-if value="{{ tp.showSearch }}" hint-placeholder-val="{{ false }}">
+          <label style="flex:0 1 340px;display:flex;flex-direction:column;gap:6px;font-size:15px;font-weight:600">Search talks and episodes
+            <input type="search" value="{{ tp.query }}" onInput="{{ tp.onQuery }}" style="min-height:48px;padding:0 16px;border-radius:16px;border:1.5px solid rgba(24,52,59,.35);background:#F7F5EF;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-size:16px;font-weight:400">
+          </label>
+        </sc-if>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div role="group" aria-label="Filter by format" style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ tp.formats }}" as="f" hint-placeholder-count="4">
+            <button type="button" aria-pressed="{{ f.pressed }}" onClick="{{ f.pick }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid {{ f.border }};background:{{ f.bg }};color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-size:15px;font-weight:{{ f.weight }}" style-hover="border-color:#087F83">{{ f.label }}<span style="font-size:13px;font-weight:500">{{ f.count }}</span></button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ tp.showTopics }}" hint-placeholder-val="{{ false }}">
+          <div role="group" aria-label="Filter by topic" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px">
+            <span style="font-size:14px;font-weight:600;margin-right:4px">Topic</span>
+            <sc-for list="{{ tp.topics }}" as="t" hint-placeholder-count="3">
+              <button type="button" aria-pressed="{{ t.pressed }}" onClick="{{ t.pick }}" style="min-height:40px;padding:0 14px;border-radius:999px;border:1px solid {{ t.border }};background:{{ t.bg }};color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-size:14px;font-weight:{{ t.weight }}" style-hover="border-color:#087F83">{{ t.label }}</button>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+      <p aria-live="polite" style="margin:0;font-size:15px">{{ tp.resultText }}</p>
+
+      <sc-if value="{{ tp.showPublished }}" hint-placeholder-val="{{ true }}">
+        <sc-if value="{{ tp.hasCards }}" hint-placeholder-val="{{ true }}">
+          <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:24px">
+            <sc-for list="{{ tp.cards }}" as="c" hint-placeholder-count="2">
+              <li style="display:flex">
+                <article style="flex:1;display:flex;flex-direction:column;background:#F7F5EF;border:1px solid rgba(24,52,59,.12);border-radius:24px;overflow:hidden;transition:box-shadow .2s ease,border-color .2s ease" style-hover="box-shadow:0 12px 32px rgba(24,52,59,.08);border-color:rgba(8,127,131,.45)">
+                  <div style="position:relative;aspect-ratio:16/9;background:#18343B;color:#F7F5EF;overflow:hidden">
+                    <sc-if value="{{ c.hasThumb }}" hint-placeholder-val="{{ false }}"><img src="{{ c.art }}" alt="{{ c.thumbnailAlt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if>
+                    <sc-if value="{{ c.noThumb }}" hint-placeholder-val="{{ true }}">
+                      <img src="assets/08-sticker-lecture-microphone.png" alt="" loading="lazy" style="position:absolute;right:5%;bottom:8%;width:28%;height:auto">
+                      <span aria-hidden="true" style="position:absolute;left:7%;bottom:12%;max-width:58%;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:28px;line-height:1.1">{{ c.tileLabel }}</span>
+                    </sc-if>
+                  </div>
+                  <div style="flex:1;display:flex;flex-direction:column;gap:10px;padding:24px">
+                    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px">
+                      <span style="display:inline-flex;align-items:center;min-height:28px;padding:2px 12px;border-radius:999px;background:{{ c.pillBg }};font-size:14px;font-weight:600">{{ c.format }}</span>
+                      <span style="font-size:14px">{{ c.topicText }}</span>
+                    </div>
+                    <h3 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:24px;line-height:1.25;text-wrap:balance">{{ c.heading }}</h3>
+                    <p style="margin:0;font-size:16px;line-height:1.6;flex:1;text-wrap:pretty">{{ c.summary }}</p>
+                    <p style="margin:0;font-size:14px;line-height:1.5">{{ c.meta }}</p>
+                    <a href="{{ c.href }}" aria-label="{{ c.aria }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#087F83;font-weight:600;font-size:16px;text-underline-offset:4px" style-hover="color:#18343B">{{ c.action }} <span aria-hidden="true">→</span></a>
+                  </div>
+                </article>
+              </li>
+            </sc-for>
+          </ul>
+        </sc-if>
+        <sc-if value="{{ tp.noCards }}" hint-placeholder-val="{{ false }}">
+          <div style="border:1.5px dashed rgba(24,52,59,.3);border-radius:24px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;align-items:flex-start;gap:12px">
+            <p style="margin:0;font-family:Fraunces,Georgia,serif;font-size:24px;line-height:1.3">{{ tp.emptyTitle }}</p>
+            <p style="margin:0;font-size:16px;line-height:1.6;max-width:40em">{{ tp.emptyText }}</p>
+            <sc-if value="{{ tp.emptyIsPodcast }}" hint-placeholder-val="{{ false }}">
+              <a href="https://t.me/+P0w6oXmyPBBjODA1" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:14px 22px;border-radius:16px;background:#087F83;color:#F7F5EF;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#18343B;color:#F7F5EF">Get updates on Telegram <span aria-hidden="true">↗</span></a>
+            </sc-if>
+            <sc-if value="{{ tp.emptyCanClear }}" hint-placeholder-val="{{ false }}">
+              <button type="button" onClick="{{ tp.clear }}" style="min-height:44px;padding:0 20px;border-radius:16px;border:1.5px solid #18343B;background:transparent;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-size:16px;font-weight:600" style-hover="background:#CDEBE3">Clear filters</button>
+            </sc-if>
+          </div>
+        </sc-if>
+      </sc-if>
+
+      <sc-if value="{{ tp.showSeries }}" hint-placeholder-val="{{ false }}">
+        <sc-for list="{{ tp.series }}" as="se" hint-placeholder-count="1">
+          <div style="display:grid;grid-template-columns:{{ tpFeatCols }};gap:20px 40px;align-items:center;padding-top:16px;border-top:1px solid rgba(24,52,59,.12)">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <h3 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:26px">Watch the series: {{ se.title }}</h3>
+              <p style="margin:0;font-size:16px;line-height:1.6">{{ se.summary }}</p>
+            </div>
+            <div>
+              <sc-if value="{{ se.isPoster }}" hint-placeholder-val="{{ true }}">
+                <button type="button" onClick="{{ se.play }}" aria-label="{{ se.playLabel }}" style="position:relative;width:100%;aspect-ratio:16/9;border:0;border-radius:24px;background:#18343B;color:#F7F5EF;font-family:'DM Sans',Arial,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px" style-hover="box-shadow:0 0 0 3px #F28C79">
+                  <span aria-hidden="true" style="width:72px;height:72px;border-radius:50%;background:#F28C79;display:flex;align-items:center;justify-content:center"><span style="width:0;height:0;margin-left:6px;border-left:22px solid #18343B;border-top:14px solid transparent;border-bottom:14px solid transparent"></span></span>
+                  <span style="font-size:15px;font-weight:600">Play playlist · Loads from YouTube</span>
+                </button>
+              </sc-if>
+              <sc-if value="{{ se.isFrame }}" hint-placeholder-val="{{ false }}">
+                <div style="position:relative;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:#18343B"><iframe data-player="{{ se.key }}" src="{{ se.embedSrc }}" title="{{ se.iframeTitle }}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowFullScreen="{{ true }}" referrerPolicy="strict-origin-when-cross-origin" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-for>
+      </sc-if>
+    </div>
+  </section>
+
+  <sc-if value="{{ tp.showUpcoming }}" hint-placeholder-val="{{ true }}">
+    <section aria-labelledby="tp-up-h" style="padding:clamp(48px,6vw,80px) clamp(20px,4.4vw,48px)">
+      <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:24px">
+        <div style="display:flex;flex-direction:column;gap:8px;max-width:680px">
+          <h2 id="tp-up-h" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(30px,1.5vw + 19px,40px);line-height:1.18;letter-spacing:-.01em">Upcoming podcast episodes</h2>
+          <p style="margin:0;font-size:17px;line-height:1.6">Episodes listed here are not published yet. Their status shows how far along each one is.</p>
+        </div>
+        <sc-if value="{{ tp.hasUp }}" hint-placeholder-val="{{ false }}">
+          <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:24px">
+            <sc-for list="{{ tp.up }}" as="u" hint-placeholder-count="2">
+              <li style="display:flex">
+                <article style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:24px;padding:24px">
+                  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px">
+                    <span style="display:inline-flex;align-items:center;min-height:28px;padding:2px 12px;border-radius:999px;background:#FBE3DD;font-size:14px;font-weight:600">{{ u.statusLabel }}</span>
+                    <span style="font-size:14px">Upcoming episode</span>
+                  </div>
+                  <h3 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:24px;line-height:1.25">{{ u.heading }}</h3>
+                  <p style="margin:0;font-size:16px;line-height:1.6;flex:1;text-wrap:pretty">{{ u.teaser }}</p>
+                  <p style="margin:0;font-size:14px;line-height:1.5">{{ u.meta }}</p>
+                  <a href="{{ u.actionHref }}" target="{{ u.target }}" rel="{{ u.rel }}" aria-label="{{ u.aria }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#087F83;font-weight:600;font-size:16px;text-underline-offset:4px" style-hover="color:#18343B">{{ u.action }} <span aria-hidden="true">{{ u.arrow }}</span></a>
+                </article>
+              </li>
+            </sc-for>
+          </ul>
+        </sc-if>
+        <sc-if value="{{ tp.noUp }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px 32px;background:#CDEBE3;border-radius:24px;padding:clamp(20px,3vw,32px)">
+            <img src="assets/08-sticker-lecture-microphone.png" alt="" width="1312" height="1199" loading="lazy" style="flex:none;width:88px;height:auto">
+            <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:6px">
+              <p style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:24px;line-height:1.3">No upcoming episodes are confirmed yet.</p>
+              <p style="margin:0;font-size:16px;line-height:1.6">New episodes are announced on Telegram once their details are confirmed.</p>
+            </div>
+            <a href="https://t.me/+P0w6oXmyPBBjODA1" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:14px 22px;border-radius:16px;background:#18343B;color:#F7F5EF;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#087F83;color:#F7F5EF">Get updates <span aria-hidden="true">↗</span></a>
+          </div>
+        </sc-if>
+      </div>
+    </section>
+  </sc-if>
+</sc-if>
+
+<sc-if value="{{ isTalk }}" hint-placeholder-val="{{ false }}">
+  <section aria-labelledby="talk-h1" style="padding:clamp(24px,3vw,40px) clamp(20px,4.4vw,48px) clamp(48px,7vw,96px)">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(24px,3vw,32px)">
+      <nav aria-label="Breadcrumb"><ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 8px;font-size:15px">
+        <li><a href="#/" style="color:#087F83">Learn</a></li><li aria-hidden="true">/</li>
+        <li><a href="#/talks-and-podcast" style="color:#087F83">Talks &amp; Podcast</a></li><li aria-hidden="true">/</li>
+        <li aria-current="page">{{ talk.heading }}</li>
+      </ol></nav>
+      <div style="display:flex;flex-direction:column;gap:14px;max-width:820px">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px">
+          <span style="display:inline-flex;align-items:center;min-height:30px;padding:2px 12px;border-radius:999px;background:#CDEBE3;font-size:14px;font-weight:600">Video talk</span>
+          <span style="font-size:15px">{{ talk.tileLabel }}</span>
+        </div>
+        <h1 id="talk-h1" ref="{{ h1Ref }}" tabindex="-1" style="margin:0;outline:none;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(34px,2vw + 22px,52px);line-height:1.1;letter-spacing:-.02em;text-wrap:balance">{{ talk.heading }}</h1>
+        <p style="margin:0;font-size:clamp(17px,.15vw + 16.4px,19px);line-height:1.6;text-wrap:pretty">{{ talk.summary }}</p>
+      </div>
+
+      <div style="max-width:960px;display:flex;flex-direction:column;gap:10px">
+        <sc-if value="{{ dp.isPoster }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ dp.play }}" aria-label="{{ dp.playLabel }}" style="position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;border-radius:24px;overflow:hidden;background:#18343B;color:#F7F5EF;font-family:'DM Sans',Arial,sans-serif;text-align:left" style-hover="box-shadow:0 0 0 3px #F28C79">
+            <sc-if value="{{ dp.hasThumb }}" hint-placeholder-val="{{ false }}"><img src="{{ dp.art }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if>
+            <sc-if value="{{ dp.noThumb }}" hint-placeholder-val="{{ true }}">
+              <img src="assets/08-sticker-lecture-microphone.png" alt="" style="position:absolute;right:4%;bottom:6%;width:26%;height:auto">
+              <span style="position:absolute;left:5%;bottom:9%;max-width:60%;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(26px,3vw,48px);line-height:1.1">{{ dp.tileLabel }}</span>
+            </sc-if>
+            <span aria-hidden="true" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:88px;height:88px;border-radius:50%;background:#F28C79;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(24,52,59,.3)"><span style="width:0;height:0;margin-left:7px;border-left:26px solid #18343B;border-top:16px solid transparent;border-bottom:16px solid transparent"></span></span>
+            <span style="position:absolute;left:16px;top:16px;display:inline-flex;align-items:center;min-height:32px;padding:4px 12px;border-radius:999px;background:#F7F5EF;color:#18343B;font-size:14px;font-weight:600">Loads video from YouTube</span>
+          </button>
+        </sc-if>
+        <sc-if value="{{ dp.isFrame }}" hint-placeholder-val="{{ false }}">
+          <div style="position:relative;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:#18343B">
+            <iframe data-player="{{ dp.key }}" src="{{ dp.embedSrc }}" title="{{ dp.iframeTitle }}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowFullScreen="{{ true }}" referrerPolicy="strict-origin-when-cross-origin" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+          </div>
+        </sc-if>
+        <sc-if value="{{ dp.isMissing }}" hint-placeholder-val="{{ false }}">
+          <div role="note" style="display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:clamp(24px,3vw,40px);border-radius:24px;border:1.5px dashed rgba(24,52,59,.3);background:#FFFFFF">
+            <p style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:24px;line-height:1.3">{{ dp.missTitle }}</p>
+            <p style="margin:0;font-size:16px;line-height:1.6;max-width:36em">{{ dp.missText }}</p>
+            <sc-if value="{{ dp.hasMissLink }}" hint-placeholder-val="{{ false }}"><a href="{{ dp.missHref }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:14px 22px;border-radius:16px;background:#087F83;color:#F7F5EF;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#18343B;color:#F7F5EF">{{ dp.missLink }} <span aria-hidden="true">↗</span></a></sc-if>
+          </div>
+        </sc-if>
+        <p style="margin:0;padding:0 4px;font-size:15px;line-height:1.6">Original title: “{{ talk.title }}” · Published on YouTube by <a href="{{ talk.channelUrl }}" target="_blank" rel="noopener noreferrer">{{ talk.channelName }}</a><sc-if value="{{ dp.hasWatch }}" hint-placeholder-val="{{ false }}"> · <a href="{{ dp.watchUrl }}" target="_blank" rel="noopener noreferrer" style="font-weight:600">Open on YouTube <span aria-hidden="true">↗</span></a></sc-if></p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:{{ courseCols }};gap:clamp(32px,5vw,64px);align-items:start">
+        <div style="display:flex;flex-direction:column;gap:32px;min-width:0;max-width:720px">
+          <sc-if value="{{ talk.hasNotes }}" hint-placeholder-val="{{ false }}">
+            <section aria-labelledby="talk-notes-h" style="display:flex;flex-direction:column;gap:12px">
+              <h2 id="talk-notes-h" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:26px">Notes</h2>
+              <sc-for list="{{ talk.notesParas }}" as="np" hint-placeholder-count="2"><p style="margin:0;font-size:17px;line-height:1.6">{{ np }}</p></sc-for>
+            </section>
+          </sc-if>
+          <sc-if value="{{ talk.hasTranscript }}" hint-placeholder-val="{{ false }}">
+            <details style="border:1px solid rgba(24,52,59,.15);border-radius:16px;background:#FFFFFF;padding:0 20px">
+              <summary style="min-height:56px;display:flex;align-items:center;font-weight:600;font-size:17px">Transcript</summary>
+              <div style="padding:0 0 20px;display:flex;flex-direction:column;gap:12px"><sc-for list="{{ talk.transcriptParas }}" as="tp2" hint-placeholder-count="2"><p style="margin:0;font-size:16px;line-height:1.6">{{ tp2 }}</p></sc-for></div>
+            </details>
+          </sc-if>
+          <sc-if value="{{ talk.hasResources }}" hint-placeholder-val="{{ false }}">
+            <section aria-labelledby="talk-res-h" style="display:flex;flex-direction:column;gap:8px">
+              <h2 id="talk-res-h" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:26px">Resources</h2>
+              <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px;font-size:17px;line-height:1.6"><sc-for list="{{ talk.resources }}" as="rs" hint-placeholder-count="2"><li><a href="{{ rs.url }}" target="_blank" rel="noopener noreferrer">{{ rs.label }}</a></li></sc-for></ul>
+            </section>
+          </sc-if>
+          <sc-if value="{{ talk.noExtras }}" hint-placeholder-val="{{ true }}">
+            <p style="margin:0;font-size:16px;line-height:1.6;padding:16px 20px;border-radius:16px;background:#FFFFFF;border:1px solid rgba(24,52,59,.12)">No transcript, notes or resources have been supplied for this talk yet. Captions, where available, can be turned on in the YouTube player.</p>
+          </sc-if>
+          <sc-if value="{{ talk.hasRelated }}" hint-placeholder-val="{{ false }}">
+            <section aria-labelledby="talk-rel-h" style="display:flex;flex-direction:column;gap:12px">
+              <h2 id="talk-rel-h" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:26px">Related talks</h2>
+              <ul style="list-style:none;margin:0;padding:0;border-top:1px solid rgba(24,52,59,.15)">
+                <sc-for list="{{ talk.related }}" as="rl" hint-placeholder-count="1">
+                  <li style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 24px;padding:16px 0;border-bottom:1px solid rgba(24,52,59,.15)">
+                    <span style="display:flex;flex-direction:column;gap:2px;min-width:0"><a href="{{ rl.href }}" style="font-family:Fraunces,Georgia,serif;font-size:21px;color:#18343B;text-underline-offset:4px" style-hover="color:#087F83">{{ rl.heading }}</a><span style="font-size:14px">{{ rl.format }} · {{ rl.meta }}</span></span>
+                  </li>
+                </sc-for>
+              </ul>
+            </section>
+          </sc-if>
+          <a href="#/" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;font-size:16px;text-underline-offset:4px">More from YMN Learn <span aria-hidden="true">→</span></a>
+        </div>
+        <aside aria-label="Talk details" style="background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:15px;line-height:1.5">
+            <sc-for list="{{ talk.credits }}" as="cr" hint-placeholder-count="4"><dt style="font-weight:600">{{ cr.k }}</dt><dd style="margin:0">{{ cr.v }}</dd></sc-for>
+          </dl>
+          <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ talk.topicList }}" as="tg" hint-placeholder-count="1"><span style="display:inline-flex;align-items:center;min-height:30px;padding:2px 12px;border-radius:999px;background:#F7F5EF;border:1px solid rgba(24,52,59,.15);font-size:14px">{{ tg }}</span></sc-for></div>
+          <p style="margin:0;font-size:14px;line-height:1.5">Talks are shared for general education and are not medical advice.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ isEpisode }}" hint-placeholder-val="{{ false }}">
+  <section aria-labelledby="ep-h1" style="padding:clamp(24px,3vw,40px) clamp(20px,4.4vw,48px) clamp(48px,7vw,96px)">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(24px,3vw,32px)">
+      <nav aria-label="Breadcrumb"><ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 8px;font-size:15px">
+        <li><a href="#/" style="color:#087F83">Learn</a></li><li aria-hidden="true">/</li>
+        <li><a href="#/talks-and-podcast" style="color:#087F83">Talks &amp; Podcast</a></li><li aria-hidden="true">/</li>
+        <li aria-current="page">{{ ep.heading }}</li>
+      </ol></nav>
+      <div style="display:grid;grid-template-columns:{{ epHeadCols }};gap:24px clamp(32px,4vw,48px);align-items:center">
+        <div style="aspect-ratio:1;border-radius:24px;overflow:hidden;background:#18343B;max-width:320px;width:100%">
+          <img src="{{ ep.art }}" alt="{{ ep.artAlt }}" style="display:block;width:100%;height:100%;object-fit:{{ ep.fit }}">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;min-width:0;max-width:760px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px">
+            <span style="display:inline-flex;align-items:center;min-height:30px;padding:2px 12px;border-radius:999px;background:#FBE3DD;font-size:14px;font-weight:600">Podcast episode</span>
+            <span style="font-size:15px">{{ ep.meta }}</span>
+          </div>
+          <h1 id="ep-h1" ref="{{ h1Ref }}" tabindex="-1" style="margin:0;outline:none;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(32px,2vw + 20px,50px);line-height:1.1;letter-spacing:-.02em;text-wrap:balance">{{ ep.heading }}</h1>
+          <p style="margin:0;font-size:clamp(17px,.15vw + 16.4px,19px);line-height:1.6;text-wrap:pretty">{{ ep.description }}</p>
+        </div>
+      </div>
+      <div style="max-width:960px;display:flex;flex-direction:column;gap:10px">
+        <sc-if value="{{ ep.hasAudio }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:24px;padding:20px 24px;display:flex;flex-direction:column;gap:10px">
+            <p style="margin:0;font-size:15px;font-weight:600">Listen</p>
+            <audio controls="{{ true }}" preload="none" src="{{ ep.audioUrl }}" aria-label="{{ ep.audioLabel }}" style="width:100%"></audio>
+          </div>
+        </sc-if>
+        <sc-if value="{{ ep.embedPoster }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ ep.loadEmbed }}" style="width:100%;min-height:120px;display:flex;align-items:center;gap:20px;padding:20px 24px;border-radius:24px;border:1px solid rgba(24,52,59,.15);background:#FFFFFF;color:#18343B;font-family:'DM Sans',Arial,sans-serif;text-align:left" style-hover="border-color:#087F83">
+            <span aria-hidden="true" style="flex:none;width:64px;height:64px;border-radius:50%;background:#F28C79;display:flex;align-items:center;justify-content:center"><span style="width:0;height:0;margin-left:5px;border-left:20px solid #18343B;border-top:12px solid transparent;border-bottom:12px solid transparent"></span></span>
+            <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:17px;font-weight:600">Load the episode player</span><span style="font-size:14px">Loads the player from {{ ep.hostPlatform }}</span></span>
+          </button>
+        </sc-if>
+        <sc-if value="{{ ep.embedOn }}" hint-placeholder-val="{{ false }}">
+          <iframe data-player="{{ ep.key }}" src="{{ ep.embedUrl }}" title="{{ ep.iframeTitle }}" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" style="display:block;width:100%;height:232px;border:0;border-radius:16px"></iframe>
+        </sc-if>
+        <p style="margin:0;padding:0 4px;font-size:15px;line-height:1.6">Audio hosted on {{ ep.hostPlatform }}.</p>
+        <sc-if value="{{ ep.hasPlatforms }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ ep.platforms }}" as="pl" hint-placeholder-count="2"><a href="{{ pl.url }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid rgba(24,52,59,.3);color:#18343B;font-weight:600;font-size:15px;text-decoration:none" style-hover="border-color:#087F83;color:#18343B">{{ pl.label }} <span aria-hidden="true">↗</span></a></sc-for></div>
+        </sc-if>
+      </div>
+      <div style="display:grid;grid-template-columns:{{ courseCols }};gap:clamp(32px,5vw,64px);align-items:start">
+        <div style="display:flex;flex-direction:column;gap:32px;min-width:0;max-width:720px">
+          <sc-if value="{{ ep.hasNotes }}" hint-placeholder-val="{{ false }}">
+            <section style="display:flex;flex-direction:column;gap:12px"><h2 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:26px">Episode notes</h2><sc-for list="{{ ep.notesParas }}" as="np" hint-placeholder-count="2"><p style="margin:0;font-size:17px;line-height:1.6">{{ np }}</p></sc-for></section>
+          </sc-if>
+          <sc-if value="{{ ep.hasTranscript }}" hint-placeholder-val="{{ false }}">
+            <details style="border:1px solid rgba(24,52,59,.15);border-radius:16px;background:#FFFFFF;padding:0 20px"><summary style="min-height:56px;display:flex;align-items:center;font-weight:600;font-size:17px">Transcript</summary><div style="padding:0 0 20px;display:flex;flex-direction:column;gap:12px"><sc-for list="{{ ep.transcriptParas }}" as="tq" hint-placeholder-count="2"><p style="margin:0;font-size:16px;line-height:1.6">{{ tq }}</p></sc-for></div></details>
+          </sc-if>
+          <sc-if value="{{ ep.hasResources }}" hint-placeholder-val="{{ false }}">
+            <section style="display:flex;flex-direction:column;gap:8px"><h2 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:26px">Resources</h2><ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px;font-size:17px;line-height:1.6"><sc-for list="{{ ep.resources }}" as="rs" hint-placeholder-count="2"><li><a href="{{ rs.url }}" target="_blank" rel="noopener noreferrer">{{ rs.label }}</a></li></sc-for></ul></section>
+          </sc-if>
+          <sc-if value="{{ ep.hasRelated }}" hint-placeholder-val="{{ false }}">
+            <section style="display:flex;flex-direction:column;gap:12px"><h2 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:26px">More episodes</h2>
+              <ul style="list-style:none;margin:0;padding:0;border-top:1px solid rgba(24,52,59,.15)"><sc-for list="{{ ep.related }}" as="rl" hint-placeholder-count="1"><li style="padding:16px 0;border-bottom:1px solid rgba(24,52,59,.15);display:flex;flex-direction:column;gap:2px"><a href="{{ rl.href }}" style="font-family:Fraunces,Georgia,serif;font-size:21px;color:#18343B" style-hover="color:#087F83">{{ rl.heading }}</a><span style="font-size:14px">{{ rl.format }} · {{ rl.meta }}</span></li></sc-for></ul>
+            </section>
+          </sc-if>
+          <a href="#/talks-and-podcast" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;font-size:16px">All talks and episodes <span aria-hidden="true">→</span></a>
+        </div>
+        <aside aria-label="Episode details" style="background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:15px;line-height:1.5"><sc-for list="{{ ep.credits }}" as="cr" hint-placeholder-count="3"><dt style="font-weight:600">{{ cr.k }}</dt><dd style="margin:0">{{ cr.v }}</dd></sc-for></dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ isUpcoming }}" hint-placeholder-val="{{ false }}">
+  <section aria-labelledby="up-h1" style="padding:clamp(24px,3vw,40px) clamp(20px,4.4vw,48px) clamp(48px,7vw,96px)">
+    <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(24px,3vw,32px)">
+      <nav aria-label="Breadcrumb"><ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 8px;font-size:15px">
+        <li><a href="#/" style="color:#087F83">Learn</a></li><li aria-hidden="true">/</li>
+        <li><a href="#/talks-and-podcast" style="color:#087F83">Talks &amp; Podcast</a></li><li aria-hidden="true">/</li>
+        <li aria-current="page">{{ upc.heading }}</li>
+      </ol></nav>
+      <sc-if value="{{ upc.sample }}" hint-placeholder-val="{{ false }}"><p role="note" style="margin:0;padding:12px 16px;border-radius:16px;background:#FBE3DD;font-size:15px"><b>Layout review:</b> this is a sample record, not a real episode.</p></sc-if>
+      <div style="display:grid;grid-template-columns:{{ courseCols }};gap:clamp(32px,5vw,64px);align-items:start">
+        <div style="display:flex;flex-direction:column;gap:18px;min-width:0;max-width:720px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px">
+            <span style="display:inline-flex;align-items:center;min-height:30px;padding:2px 12px;border-radius:999px;background:#FBE3DD;font-size:14px;font-weight:600">{{ upc.statusLabel }}</span>
+            <span style="font-size:15px">Upcoming podcast episode</span>
+          </div>
+          <h1 id="up-h1" ref="{{ h1Ref }}" tabindex="-1" style="margin:0;outline:none;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(32px,2vw + 20px,50px);line-height:1.1;letter-spacing:-.02em;text-wrap:balance">{{ upc.heading }}</h1>
+          <p style="margin:0;font-size:clamp(17px,.15vw + 16.4px,19px);line-height:1.6;text-wrap:pretty">{{ upc.teaser }}</p>
+          <sc-if value="{{ upc.hasCountdown }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:4px;padding:16px 20px;border-radius:16px;background:#CDEBE3;align-self:flex-start">
+              <span style="font-size:14px;font-weight:600">Releases in</span>
+              <span style="font-family:Fraunces,Georgia,serif;font-size:26px">{{ upc.countdown }}</span>
+              <span style="font-size:14px">{{ upc.releaseText }}</span>
+            </div>
+          </sc-if>
+          <sc-for list="{{ upc.notesParas }}" as="np" hint-placeholder-count="0"><p style="margin:0;font-size:17px;line-height:1.6">{{ np }}</p></sc-for>
+          <p style="margin:0;font-size:16px;line-height:1.6;padding:16px 20px;border-radius:16px;background:#FFFFFF;border:1px solid rgba(24,52,59,.12)">This episode is not published yet, so there is nothing to play. It will be added to Talks &amp; Podcast when it is released.</p>
+          <a href="{{ upc.updatesUrl }}" target="_blank" rel="noopener noreferrer" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:14px 24px;border-radius:16px;background:#087F83;color:#F7F5EF;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#18343B;color:#F7F5EF">Get updates <span aria-hidden="true">↗</span></a>
+        </div>
+        <aside aria-label="Episode details" style="background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <img src="{{ upc.art }}" alt="" style="display:block;width:100%;height:170px;object-fit:contain">
+          <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:15px;line-height:1.5"><sc-for list="{{ upc.credits }}" as="cr" hint-placeholder-count="3"><dt style="font-weight:600">{{ cr.k }}</dt><dd style="margin:0">{{ cr.v }}</dd></sc-for></dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ isMissing }}" hint-placeholder-val="{{ false }}">
+  <section style="padding:clamp(48px,8vw,96px) clamp(20px,4.4vw,48px)">
+    <div style="max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+      <h1 ref="{{ h1Ref }}" tabindex="-1" style="margin:0;outline:none;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:40px">This page isn’t available</h1>
+      <p style="margin:0;font-size:17px;line-height:1.6">The course or lesson may not be published yet.</p>
+      <a href="#/" style="font-weight:600;min-height:44px;display:inline-flex;align-items:center">Back to Learn</a>
+    </div>
+  </section>
+</sc-if>
+</main>
+
+<footer data-dark="1" style="background:#18343B;color:#F7F5EF;padding:clamp(28px,3.5vw,44px) clamp(20px,4.4vw,48px) 32px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:clamp(20px,3vw,40px)">
+      <img src="assets/07-footer-emblem.png" alt="" width="1024" height="1536" loading="lazy" style="flex:none;display:block;width:clamp(96px,10vw,148px);height:auto;margin:16px 0 -16px">
+      <p style="margin:0;min-width:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(36px,6vw + 12px,104px);line-height:1.05;letter-spacing:-.02em;color:#F7F5EF"><span style="display:block">The Youth</span><span style="display:block">Medical <em style="font-style:italic">Network</em></span></p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:40px clamp(48px,6vw,96px);margin-top:clamp(40px,6vw,80px)">
+      <div style="flex:1 1 280px;display:flex;flex-direction:column;gap:14px">
+        <p style="margin:0 0 6px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#CDEBE3">Purpose</p>
+        <p style="margin:0;max-width:20em;font-size:17px;line-height:1.6;text-wrap:pretty">A youth-led network bringing people together through healthcare learning, community service and compassion.</p>
+        <p style="margin:0;font-family:Fraunces,Georgia,serif;font-size:18px;color:#CDEBE3">Inspire · Impact · Ignite</p>
+      </div>
+      <div style="flex:2 1 460px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:32px 24px">
+        <nav aria-label="Explore" style="display:flex;flex-direction:column;gap:4px">
+          <p style="margin:0 0 6px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#CDEBE3">Explore</p>
+          <a href="YMN Homepage v2.dc.html#about" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;text-decoration:none;text-underline-offset:5px" style-hover="color:#F28C79;text-decoration:underline">About</a>
+          <a href="YMN Homepage v2.dc.html#work" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;text-decoration:none;text-underline-offset:5px" style-hover="color:#F28C79;text-decoration:underline">Our Work</a>
+          <a href="YMN Homepage v2.dc.html#people" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;text-decoration:none;text-underline-offset:5px" style-hover="color:#F28C79;text-decoration:underline">People</a>
+          <a href="YMN Homepage v2.dc.html#join" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;text-decoration:none;text-underline-offset:5px" style-hover="color:#F28C79;text-decoration:underline">Get Involved</a>
+        </nav>
+        <nav aria-label="Learn links" style="display:flex;flex-direction:column;gap:4px">
+          <p style="margin:0 0 6px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#CDEBE3">Learn</p>
+          <a href="#/" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;text-decoration:none;text-underline-offset:5px" style-hover="color:#F28C79;text-decoration:underline">Learning Hub</a>
+          <a href="#/talks-and-podcast" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;text-decoration:none;text-underline-offset:5px" style-hover="color:#F28C79;text-decoration:underline">Talks &amp; Podcast</a>
+          <sc-if value="{{ archived }}" hint-placeholder-val="{{ false }}"><!-- ARCHIVED: Double Y (not an ongoing or confirmed project) --><a href="#/double-y" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;text-decoration:none;text-underline-offset:5px" style-hover="color:#F28C79;text-decoration:underline">Double Y</a></sc-if>
+          <a href="#/my-learning" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;text-decoration:none;text-underline-offset:5px" style-hover="color:#F28C79;text-decoration:underline">My Learning</a>
+        </nav>
+        <nav aria-label="Connect" style="display:flex;flex-direction:column;gap:4px">
+          <p style="margin:0 0 6px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#CDEBE3">Connect</p>
+          <a href="https://www.instagram.com/theyouthmedicalnetwork/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;text-decoration:none;text-underline-offset:5px" style-hover="color:#F28C79;text-decoration:underline">Instagram</a>
+          <a href="https://t.me/+P0w6oXmyPBBjODA1" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;text-decoration:none;text-underline-offset:5px" style-hover="color:#F28C79;text-decoration:underline">Telegram</a>
+          <a href="mailto:garethsum78@gmail.com?subject=YMN%20Learn%20enquiry" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;text-decoration:none;text-underline-offset:5px" style-hover="color:#F28C79;text-decoration:underline">Email</a>
+        </nav>
+      </div>
+    </div>
+    <div style="margin-top:clamp(48px,5vw,64px);border-top:1px solid rgba(247,245,239,.18);padding-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 32px;font-size:14px;line-height:1.5;color:rgba(247,245,239,.8)">
+      <p style="margin:0">© {{ year }} The Youth Medical Network</p>
+      <p style="margin:0;max-width:44em">Learning Content On This Site Is For General Education And Is <b>Not</b> Medical Advice.</p>
+      <a href="#top" onClick="{{ toTop }}" style="display:inline-flex;align-items:center;gap:6px;min-height:44px;color:#F7F5EF;font-weight:600;text-decoration:none" style-hover="color:#F28C79">Back To Top <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;customCursor&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Preferences&quot;}}">
+const KEY = 'ymn-learn-local-v1';
+const TG = 'https://t.me/+P0w6oXmyPBBjODA1';
+const COURSES = [
+  { id: 'getting-started', title: 'Getting started with YMN Learn', category: 'Platform guide', status: 'available',
+    art: 'assets/04-sticker-learning-book.png', format: 'Text lessons',
+    summary: 'A short guide to how lessons are organised, where to find sources and how saving works on this preview.',
+    objectives: ['Find your way around a lesson and its outline', 'Locate the sources a lesson is based on', 'Save courses and mark lessons complete on this device'],
+    topics: ['orientation', 'sources', 'progress'], lessons: ['how-lessons-work', 'finding-sources', 'saving-progress'] },
+  { id: 'healthcare-foundations', title: 'Healthcare foundations', category: 'Healthcare foundations', status: 'dev',
+    art: 'assets/learn/02-course-healthcare-foundations.png',
+    summary: 'Body systems, health concepts, prevention and medical vocabulary.',
+    topics: ['Body systems', 'Health concepts', 'Prevention', 'Medical vocabulary'] },
+  { id: 'community-care', title: 'Community care', category: 'Community care', status: 'dev',
+    art: 'assets/learn/03-course-community-care.png',
+    summary: 'Empathy, community service, inclusive communication and volunteer preparation.',
+    topics: ['Empathy', 'Community service', 'Inclusive communication', 'Volunteer preparation'] },
+  { id: 'health-systems', title: 'Health systems and society', category: 'Health systems and society', status: 'dev',
+    art: 'assets/learn/04-course-health-systems.png',
+    summary: 'Access, service delivery, public health and policy questions.',
+    topics: ['Access to care', 'Service delivery', 'Public health', 'Policy questions'] },
+  { id: 'research-literacy', title: 'Research literacy', category: 'Research literacy', status: 'dev',
+    art: 'assets/learn/05-course-research-literacy.png',
+    summary: 'Interpreting research, evidence quality, sources and scientific communication.',
+    topics: ['Interpreting research', 'Evidence quality', 'Sources', 'Scientific communication'] }
+];
+const LESSONS = {
+  'how-lessons-work': { course: 'getting-started', title: 'How a lesson is organised', revised: 'October 2026',
+    sources: 'This orientation lesson describes the YMN Learn preview itself and does not draw on external sources.',
+    blocks: [
+      { p: 'Every YMN Learn lesson follows the same layout, so you always know where to look.' },
+      { h: 'The outline' },
+      { p: 'The outline lists every lesson in the course. On a wide screen it sits beside the lesson; on a phone it folds into the Lessons button above the text. Each entry shows whether you have marked it complete.' },
+      { h: 'The lesson text' },
+      { p: 'Lessons are written to be read at your own pace. Headings break the text into short sections. Nothing moves on by itself, and nothing plays sound without you choosing it.' },
+      { h: 'Below the text' },
+      { list: ['Check your understanding: a question with an explanation of the answer, when the lesson has one.', 'Sources: what the lesson is based on, and when it was last revised.', 'Controls to mark the lesson complete, save the course, and move to the previous or next lesson.'] }
+    ] },
+  'finding-sources': { course: 'getting-started', title: 'Finding a lesson’s sources', revised: 'October 2026',
+    sources: 'This orientation lesson describes the YMN Learn preview itself and does not draw on external sources.',
+    blocks: [
+      { p: 'Knowing where information comes from is part of reading it well. Each YMN Learn lesson ends with a Sources block that names what the lesson is based on.' },
+      { h: 'What the Sources block tells you' },
+      { list: ['Which publications, organisations or people the content draws on.', 'When the lesson was last revised, so you can judge how current it is.', 'When a lesson draws on no outside material, the block says so plainly.'] },
+      { h: 'What it does not tell you' },
+      { p: 'Illustrations on a lesson or course are decorative. Status labels such as In development or Completed describe the platform, not the quality of the evidence. For that, read the sources themselves.' }
+    ],
+    check: { q: 'Where would you look to see what a YMN Learn lesson is based on?',
+      opts: [
+        { label: 'The Sources block at the end of the lesson', ok: true, why: 'Each lesson lists its sources and revision date there.' },
+        { label: 'The illustration on the course card', ok: false, why: 'Course artwork is decorative and says nothing about the content’s basis. The Sources block at the end of the lesson does.' },
+        { label: 'The Completed label in the outline', ok: false, why: 'That label only records that you marked the lesson complete. The Sources block at the end of the lesson lists what it is based on.' }
+      ] } },
+  'saving-progress': { course: 'getting-started', title: 'Saving your place', revised: 'October 2026',
+    sources: 'This orientation lesson describes the YMN Learn preview itself and does not draw on external sources.',
+    blocks: [
+      { p: 'YMN Learn does not have accounts yet. Instead, this preview keeps a small record in your browser.' },
+      { h: 'Save for later' },
+      { p: 'Saving a course adds it to My learning, so you can find it again. You can save courses that are still in development to follow their progress.' },
+      { h: 'Mark as complete' },
+      { p: 'A lesson is only marked complete when you press the button. Scrolling to the end does not count. You can undo it at any time.' },
+      { h: 'What is stored, and where' },
+      { list: ['Only course and lesson identifiers, plus the last lesson you opened.', 'Stored on this device, in this browser. It does not sync to your phone or another computer.', 'Clearing your browser data, or using Clear progress in My learning, removes it.'] },
+      { p: 'Completing a lesson is a record for your own reference. It is not a certificate and does not indicate competence to perform any medical task.' }
+    ] }
+};
+const words = (l) => l.blocks.reduce((n, b) => n + (b.p || b.h || (b.list || []).join(' ')).split(/\s+/).length, 0) + (l.check ? 60 : 0);
+const mins = (l) => Math.max(1, Math.round(words(l) / 200));
+const byId = (id) => COURSES.find((c) => c.id === id);
+const FILTERS = ['All', 'Platform guide', 'Healthcare foundations', 'Community care', 'Health systems and society', 'Research literacy'];
+
+function applyContent(d) {
+  const pub = (a) => (a || []).filter((r) => r.status === 'published');
+  const lines = (s) => String(s || '').split('\n').map((x) => x.trim()).filter(Boolean);
+  const toBlocks = (body) => String(body || '').split(/\n\s*\n/).map((chunk) => {
+    const ls = chunk.split('\n').map((x) => x.trim()).filter(Boolean);
+    if (!ls.length) return null;
+    if (ls[0].startsWith('## ')) return { h: ls[0].slice(3) };
+    if (ls.every((x) => x.startsWith('- '))) return { list: ls.map((x) => x.slice(2)) };
+    return { p: ls.join(' ') };
+  }).filter(Boolean);
+  const ls = pub(d.lessons);
+  Object.keys(LESSONS).forEach((k) => delete LESSONS[k]);
+  ls.forEach((x) => { let check = null; try { check = x.check ? JSON.parse(x.check) : null; } catch (e) {}
+    LESSONS[x.id] = { course: x.course, title: x.title, revised: x.revised || '', sources: x.sources, blocks: toBlocks(x.body), check: check || undefined }; });
+  const courses = pub(d.courses).filter((c) => c.kind !== 'Lecture series').map((c) => ({ id: c.id, title: c.title, category: c.category, status: 'available', art: c.art || 'assets/04-sticker-learning-book.png', format: c.format || 'Text lessons', summary: c.summary, objectives: lines(c.objectives), topics: [], lessons: (c.lessons || []).filter((id) => LESSONS[id] && LESSONS[id].course === c.id) })).filter((c) => c.lessons.length);
+  const used = new Set(courses.map((c) => c.category));
+  const cats = pub(d.learningCategories).filter((c) => !used.has(c.title)).map((c) => ({ id: c.id, title: c.title, category: c.title, status: 'dev', art: c.art, summary: c.summary, topics: lines(c.topics) }));
+  COURSES.splice(0, COURSES.length, ...courses, ...cats);
+  FILTERS.splice(0, FILTERS.length, 'All', ...Array.from(new Set(COURSES.map((c) => c.category))));
+}
+
+let MEDIA_DATA = null;
+const TP_VIEWS = ['tp', 'talk', 'episode', 'upcoming'];
+const SEARCH_MIN = 8;
+const paras = (s) => String(s || '').split(/\n\s*\n/).map((x) => x.trim()).filter(Boolean);
+const linkLines = (s) => String(s || '').split('\n').map((l) => { const i = l.indexOf(':'); return { label: l.slice(0, i).trim(), url: l.slice(i + 1).trim() }; }).filter((x) => x.label && /^https:\/\//.test(x.url));
+
+function parse() {
+  const parts = (location.hash || '').replace(/^#\/?/, '').split('/').filter(Boolean);
+  if (!parts.length) return { v: 'home' };
+  if (parts[0] === 'talks-and-podcast') {
+    if (!parts[1]) return { v: 'tp' };
+    const map = { talks: 'talk', episodes: 'episode', upcoming: 'upcoming' };
+    if (map[parts[1]] && parts[2]) return { v: map[parts[1]], id: parts[2] };
+    return { v: 'missing' };
+  }
+  if (parts[0] === 'double-y') return { v: 'home' };
+  if (parts[0] === 'my-learning') return { v: 'mine' };
+  if (parts[0] === 'courses' && byId(parts[1])) {
+    if (!parts[2]) return { v: 'course', c: parts[1] };
+    if (parts[2] === 'lessons' && LESSONS[parts[3]] && LESSONS[parts[3]].course === parts[1]) return { v: 'lesson', c: parts[1], l: parts[3] };
+  }
+  if (location.hash === '#main' || location.hash === '#top' || location.hash === '#catalogue') return null;
+  return { v: 'missing' };
+}
+
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    let prog = { saved: [], done: [], last: null };
+    try { const raw = JSON.parse(localStorage.getItem(KEY) || 'null'); if (raw) prog = { saved: raw.saved || [], done: raw.done || [], last: raw.last || null }; } catch (e) {}
+    this.state = { w: window.innerWidth, route: parse() || { v: 'home' }, query: '', filter: 'All', prog, outlineOpen: false, pick: {}, shown: {}, confirmClear: false };
+  }
+  h1Ref = React.createRef();
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onHash = () => {
+      const r = parse(); if (!r) return;
+      this.setState({ route: r, outlineOpen: false, confirmClear: false }, () => this.afterRoute(true));
+    };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('hashchange', this.onHash);
+    this.syncCursor();
+    this.afterRoute(false);
+    fetch('content/ymn-content.json', { cache: 'no-cache' }).then((r) => r.ok ? r.json() : null).then((d) => { if (d) { applyContent(d); this.setState({ route: parse() || this.state.route }); } }).catch(() => {});
+  }
+  componentDidUpdate() { this.syncCursor(); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('hashchange', this.onHash); }
+  syncCursor() { document.documentElement.setAttribute('data-custom-cursor', this.props.customCursor === false ? 'off' : 'on'); }
+  afterRoute(focus) {
+    const r = this.state.route;
+    if (r.v === 'lesson') this.persist({ ...this.state.prog, last: { c: r.c, l: r.l } });
+    requestAnimationFrame(() => {
+      if (r.anchor) { const el = document.getElementById(r.anchor); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 88 }); return; }
+      if (focus) { window.scrollTo(0, 0); this.h1Ref.current && this.h1Ref.current.focus({ preventScroll: true }); }
+    });
+  }
+  persist(prog) {
+    this.setState({ prog });
+    try { localStorage.setItem(KEY, JSON.stringify(prog)); } catch (e) {}
+  }
+  toggleIn(key, id) {
+    const p = this.state.prog; const arr = p[key].includes(id) ? p[key].filter((x) => x !== id) : [...p[key], id];
+    this.persist({ ...p, [key]: arr });
+  }
+  scrollToId(id) { const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 88, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); }
+
+  courseProgress(c) {
+    if (!c.lessons) return null;
+    const n = c.lessons.filter((l) => this.state.prog.done.includes(l)).length;
+    return { n, total: c.lessons.length, text: n + ' of ' + c.lessons.length + ' lessons marked complete' };
+  }
+  firstOpen(c) {
+    const last = this.state.prog.last;
+    if (last && last.c === c.id) return last.l;
+    return c.lessons.find((l) => !this.state.prog.done.includes(l)) || c.lessons[0];
+  }
+
+  renderVals() {
+    const s = this.state, r = s.route, p = s.prog;
+    const narrow = s.w < 900;
+    const lHref = (c, l) => '#/courses/' + c + '/lessons/' + l;
+    const statusTxt = (c) => c.status === 'available' ? 'Available' : 'In development';
+    const statusBg = (c) => c.status === 'available' ? '#CDEBE3' : '#FBE3DD';
+    const courseMins = (c) => c.lessons ? c.lessons.reduce((n, l) => n + mins(LESSONS[l]), 0) : 0;
+
+    const navItems = [
+      { href: 'YMN Homepage v2.dc.html', label: 'YMN home' },
+      { href: '#/', label: 'Learn', on: r.v !== 'mine' },
+      { href: '#/my-learning', label: 'My learning', on: r.v === 'mine' }
+    ].map((n) => ({ ...n, current: n.on ? 'page' : undefined, bg: n.on ? '#CDEBE3' : 'transparent', weight: n.on ? 600 : 500 }));
+
+    const q = s.query.trim().toLowerCase();
+    const list = COURSES.filter((c) => (s.filter === 'All' || c.category === s.filter) &&
+      (!q || [c.title, c.summary, c.category, ...(c.topics || [])].join(' ').toLowerCase().includes(q)));
+    const cards = list.map((c) => ({
+      ...c, status: statusTxt(c), statusBg: statusBg(c), href: '#/courses/' + c.id,
+      meta: c.status === 'available' ? c.lessons.length + ' lessons · About ' + courseMins(c) + ' minutes · ' + c.format : 'Planned topics: ' + c.topics.length + ' · Format to be confirmed',
+      action: c.status === 'available' ? 'View course' : 'View proposed scope', aria: (c.status === 'available' ? 'View course: ' : 'View proposed scope: ') + c.title
+    }));
+
+    let resume = null;
+    if (p.last && byId(p.last.c) && LESSONS[p.last.l]) {
+      const c = byId(p.last.c);
+      resume = { href: lHref(c.id, p.last.l), lessonTitle: LESSONS[p.last.l].title, courseTitle: c.title, progressText: this.courseProgress(c).text };
+    }
+
+    let course = null;
+    if (r.v === 'course') {
+      const c = byId(r.c), dev = c.status !== 'available', saved = p.saved.includes(c.id), pr = this.courseProgress(c);
+      course = {
+        ...c, status: statusTxt(c), statusBg: statusBg(c), isDev: dev, hasObjectives: !!c.objectives,
+        outlineTitle: dev ? 'Proposed topics' : 'Lessons',
+        rows: dev ? c.topics.map((t, i) => ({ num: String(i + 1).padStart(2, '0'), title: t, plain: true, meta: 'In development' }))
+          : c.lessons.map((id, i) => ({ num: String(i + 1).padStart(2, '0'), title: LESSONS[id].title, href: lHref(c.id, id),
+              meta: mins(LESSONS[id]) + ' min read' + (p.done.includes(id) ? ' · Completed' : '') })),
+        facts: dev ? [{ k: 'Status', v: 'In development' }, { k: 'Category', v: c.category }, { k: 'Format', v: 'To be confirmed' }]
+          : [{ k: 'Status', v: 'Available' }, { k: 'Lessons', v: String(c.lessons.length) }, { k: 'Duration', v: 'About ' + courseMins(c) + ' minutes' }, { k: 'Format', v: c.format }, { k: 'Progress', v: pr.text }],
+        canStart: !dev, startHref: !dev ? lHref(c.id, this.firstOpen(c)) : '', startLabel: !dev && pr.n + (p.last && p.last.c === c.id ? 1 : 0) > 0 ? 'Resume' : 'Start course',
+        saved: saved ? 'true' : 'false', saveBg: saved ? '#CDEBE3' : 'transparent', saveLabel: saved ? 'Saved for later ✓' : 'Save for later',
+        toggleSave: () => this.toggleIn('saved', c.id)
+      };
+    }
+
+    let lesson = null;
+    if (r.v === 'lesson') {
+      const c = byId(r.c), L = LESSONS[r.l], idx = c.lessons.indexOf(r.l), done = p.done.includes(r.l), saved = p.saved.includes(c.id);
+      const pk = s.pick[r.l], sh = s.shown[r.l];
+      lesson = {
+        title: L.title, courseTitle: c.title, courseHref: '#/courses/' + c.id, pos: (idx + 1) + ' of ' + c.lessons.length,
+        minutes: mins(L) + ' min read', format: 'Text', revised: L.revised, sources: L.sources,
+        blocks: L.blocks.map((b) => ({ isH: !!b.h, isP: !!b.p, isList: !!b.list, text: b.h || b.p || '', items: b.list || [] })),
+        outline: c.lessons.map((id, i) => ({ href: lHref(c.id, id), num: String(i + 1).padStart(2, '0'), title: LESSONS[id].title,
+          current: id === r.l ? 'page' : undefined, bg: id === r.l ? '#CDEBE3' : 'transparent', weight: id === r.l ? 600 : 500,
+          state: p.done.includes(id) ? 'Completed' : 'Not marked complete' })),
+        hasCheck: !!L.check,
+        check: L.check ? {
+          q: L.check.q, noPick: pk === undefined, btnOp: pk === undefined ? .45 : 1, shown: !!sh,
+          verdict: sh && L.check.opts[pk].ok ? 'Correct.' : 'Not quite.', why: sh ? L.check.opts[pk].why : '',
+          fbBg: sh && L.check.opts[pk].ok ? '#CDEBE3' : '#FBE3DD',
+          submit: () => this.setState((x) => ({ shown: { ...x.shown, [r.l]: true } })),
+          opts: L.check.opts.map((o, i) => ({ label: o.label, checked: pk === i,
+            border: pk === i ? '#087F83' : 'rgba(24,52,59,.15)', bg: sh && pk === i ? (o.ok ? '#E8F5F1' : '#FDF0EC') : '#F7F5EF',
+            pick: () => this.setState((x) => ({ pick: { ...x.pick, [r.l]: i }, shown: { ...x.shown, [r.l]: false } })) }))
+        } : {},
+        done: done ? 'true' : 'false', doneBg: done ? '#CDEBE3' : '#087F83', doneFg: done ? '#18343B' : '#F7F5EF',
+        doneLabel: done ? 'Completed ✓ (undo)' : 'Mark as complete', toggleDone: () => this.toggleIn('done', r.l),
+        saved: saved ? 'true' : 'false', saveBg: saved ? '#CDEBE3' : 'transparent', saveLabel: saved ? 'Course saved ✓' : 'Save for later',
+        toggleSave: () => this.toggleIn('saved', c.id),
+        prev: idx > 0 ? { href: lHref(c.id, c.lessons[idx - 1]), title: LESSONS[c.lessons[idx - 1]].title } : null,
+        next: idx < c.lessons.length - 1 ? { href: lHref(c.id, c.lessons[idx + 1]), title: LESSONS[c.lessons[idx + 1]].title } : null,
+        isLast: idx === c.lessons.length - 1
+      };
+    }
+
+    const mineIds = COURSES.filter((c) => p.saved.includes(c.id) || (c.lessons && (c.lessons.some((l) => p.done.includes(l)) || (p.last && p.last.c === c.id))));
+    const mine = mineIds.map((c) => {
+      const pr = this.courseProgress(c);
+      return { title: c.title, art: c.art, href: '#/courses/' + c.id, status: statusTxt(c), saved: p.saved.includes(c.id),
+        progress: pr ? pr.text : 'No lessons published yet',
+        resumeHref: c.lessons ? lHref(c.id, this.firstOpen(c)) : (c.status !== 'available' ? '' : ''),
+        resumeLabel: pr && pr.n === pr.total ? 'Review' : 'Resume',
+        unsave: () => this.toggleIn('saved', c.id) };
+    });
+
+    return {
+      year: new Date().getFullYear(), navItems, narrow, h1Ref: this.h1Ref,
+      isHome: r.v === 'home', isCourse: r.v === 'course', isLesson: r.v === 'lesson', isMine: r.v === 'mine', isMissing: r.v === 'missing',
+      heroCols: narrow ? 'minmax(0,1fr)' : 'minmax(0,1.05fr) minmax(0,1fr)', archived: false, dyCols: narrow ? 'minmax(0,1fr)' : 'minmax(0,1.4fr) minmax(0,1fr)',
+      courseCols: narrow ? 'minmax(0,1fr)' : 'minmax(0,1fr) 340px', lessonCols: narrow ? 'minmax(0,1fr)' : '260px minmax(0,1fr)',
+      outlinePos: narrow ? 'static' : 'sticky', bodySize: narrow ? '17px' : '18px',
+      showOutline: !narrow || s.outlineOpen, outlineOpen: s.outlineOpen ? 'true' : 'false', outlineSign: s.outlineOpen ? '−' : '+',
+      toggleOutline: () => this.setState((x) => ({ outlineOpen: !x.outlineOpen })), closeOutline: () => this.setState({ outlineOpen: false }),
+      hasResume: !!resume, resume: resume || {},
+      query: s.query, onQuery: (e) => this.setState({ query: e.target.value }),
+      filters: FILTERS.map((f) => ({ label: f, pressed: s.filter === f ? 'true' : 'false', bg: s.filter === f ? '#CDEBE3' : '#FFFFFF',
+        border: s.filter === f ? '#087F83' : 'rgba(24,52,59,.2)', weight: s.filter === f ? 600 : 500, pick: () => this.setState({ filter: f }) })),
+      cards, hasResults: cards.length > 0, noResults: cards.length === 0,
+      resultText: cards.length + (cards.length === 1 ? ' item' : ' items') + (s.filter !== 'All' ? ' in ' + s.filter : '') + (q ? ' matching “' + s.query.trim() + '”' : ''),
+      filterSuffix: s.filter !== 'All' ? ' in ' + s.filter : '',
+      clearSearch: () => this.setState({ query: '', filter: 'All' }),
+      toCatalogue: (e) => { e.preventDefault(); this.scrollToId('catalogue'); },
+      skipToMain: (e) => { e.preventDefault(); const m = document.getElementById('main'); m && m.focus(); },
+      toTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); },
+      course: course || { rows: [], facts: [], objectives: [] }, lesson: lesson || { blocks: [], outline: [], check: { opts: [] } },
+      mine, mineEmpty: mine.length === 0, mineHas: mine.length > 0,
+      clearLabel: s.confirmClear ? 'Press again to confirm: clear all progress on this device' : 'Clear progress on this device',
+      clearAll: () => s.confirmClear ? this.setState({ confirmClear: false }, () => this.persist({ saved: [], done: [], last: null })) : this.setState({ confirmClear: true })
+    };
+  }
+}
+</script>
+</body>
+</html>
