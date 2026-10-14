@@ -1,0 +1,20 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/YMN Homepage v2.dc.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/YMN%20Homepage%20v2.dc.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/YMN Learn.dc.html",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}

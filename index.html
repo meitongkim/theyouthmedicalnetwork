@@ -1,4 +1,1301 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><title>The Youth Medical Network</title>
-<meta http-equiv="refresh" content="0; url=YMN%20Homepage%20v2.dc.html">
-</head><body><a href="YMN%20Homepage%20v2.dc.html">The Youth Medical Network</a></body></html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&amp;display=swap">
+<style>
+html{scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:#F7F5EF;color:#18343B;font-family:'DM Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%}
+a{color:#087F83}
+a:hover{color:#18343B}
+:focus-visible{outline:3px solid #18343B;outline-offset:3px}
+[data-dark] :focus-visible{outline-color:#CDEBE3}
+@media (hover: hover) and (pointer: fine){
+body{cursor:url('assets/cursor-default-32.png') 4 2,auto}
+a[href],button:not(:disabled),[role='button']:not([aria-disabled='true']),summary,label,input[type='checkbox'],input[type='radio']{cursor:url('assets/cursor-link-32.png') 12 2,pointer !important}
+input:not([type='checkbox']):not([type='radio']):not([type='submit']):not([type='button']),textarea,[contenteditable='true']{cursor:text}
+:disabled,[aria-disabled='true']{cursor:not-allowed}
+html[data-custom-cursor='off'] body{cursor:auto}
+html[data-custom-cursor='off'] :is(a[href],button:not(:disabled),summary,label){cursor:pointer !important}
+}
+@media (forced-colors: active){body{cursor:auto}a[href],button:not(:disabled),summary{cursor:pointer !important}}
+@keyframes ymnNetworkHue{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none !important;animation:none !important}}
+</style>
+<script>
+(function(){
+  if (window.__ymnIntroInit) return; window.__ymnIntroInit = true;
+  var KEY = 'ymn-intro-seen';
+  function reduced(){ try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e){ return false; } }
+  window.__ymnPlayIntro = function(force){
+    if (reduced() && !force) return false;
+    try { if (!force && sessionStorage.getItem(KEY)) return false; sessionStorage.setItem(KEY, '1'); } catch(e){}
+    var old = document.getElementById('ymn-veil'); if (old) old.remove();
+    var v = document.createElement('div');
+    v.id = 'ymn-veil'; v.setAttribute('aria-hidden', 'true'); v.setAttribute('inert', '');
+    v.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#F7F5EF;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;pointer-events:none;transition:opacity 250ms ease';
+    v.innerHTML = '<img src="assets/ymn-logo.png" alt="" width="160" height="160" style="display:block;width:160px;height:auto;opacity:0;transform:scale(.96);transition:opacity 300ms ease,transform 300ms ease">'
+      + '<div style="font:600 20px/1.3 \'DM Sans\',Arial,sans-serif;color:#18343B;opacity:0;transform:translateY(6px);transition:opacity 300ms ease 200ms,transform 300ms ease 200ms">The Youth Medical Network</div>'
+      + '<div style="font:500 14px/1.3 \'DM Sans\',Arial,sans-serif;letter-spacing:.16em;color:#087F83;opacity:0;transition:opacity 300ms ease 300ms">Inspire · Impact · Ignite</div>';
+    (document.body || document.documentElement).appendChild(v);
+    window.__ymnIntroEnd = Date.now() + 1400;
+    setTimeout(function(){ for (var i = 0; i < v.children.length; i++){ v.children[i].style.opacity = '1'; v.children[i].style.transform = 'none'; } }, 16);
+    setTimeout(function(){ v.style.opacity = '0'; }, 1400);
+    setTimeout(function(){ if (v.parentNode) v.parentNode.removeChild(v); }, 1700);
+    return true;
+  };
+  window.__ymnPlayIntro(/[?&]intro=1/.test(location.search));
+})();
+</script>
+</helmet>
+<div style="background:#F7F5EF;color:#18343B;font-family:'DM Sans',Arial,sans-serif">
+<a href="#main" style="position:absolute;left:-9999px;top:12px;z-index:100;background:#18343B;color:#F7F5EF;padding:14px 24px;border-radius:16px;font-weight:600;text-decoration:none" style-focus="left:16px">Skip to main content</a>
+
+<header style="position:sticky;top:0;z-index:50;height:104px;background:#F7F5EF;border-bottom:1px solid rgba(24,52,59,.12);padding:0 clamp(20px,4.4vw,48px)">
+  <div style="max-width:1200px;height:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#top" style="flex:none;display:flex;align-items:center;gap:12px;text-decoration:none;color:#18343B;min-height:48px">
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <img src="assets/ymn-logo.png" alt="" width="640" height="640" fetchpriority="high" style="flex:none;display:block;width:72px;height:72px;object-fit:contain">
+        <span style="flex:none;white-space:nowrap;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:20px;line-height:1.15">The Youth<br>Medical Network</span>
+      </sc-if>
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+        <img src="assets/ymn-logo.png" alt="" width="640" height="640" style="flex:none;display:block;width:56px;height:56px;object-fit:contain">
+        <span style="flex:none;white-space:nowrap;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:17px;line-height:1.15">The Youth<br>Medical Network</span>
+      </sc-if>
+    </a>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Primary" style="display:flex;align-items:center;gap:28px">
+        <ul style="list-style:none;margin:0;padding:4px;display:flex;gap:2px;background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:999px;box-shadow:0 4px 16px rgba(24,52,59,.06)">
+          <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+            <li><a href="{{ n.href }}" aria-current="{{ n.current }}" style="display:flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;color:#18343B;text-decoration:none;font-weight:{{ n.weight }};font-size:16px;border-radius:999px;background:{{ n.bg }};transition:background 180ms ease" style-hover="background:#CDEBE3;color:#18343B"><span aria-hidden="true" style="width:6px;height:6px;border-radius:50%;background:{{ n.dot }}"></span>{{ n.label }}</a></li>
+          </sc-for>
+        </ul>
+        <a href="#join" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:14px 24px;border-radius:16px;background:#087F83;color:#F7F5EF;font-weight:600;font-size:16px;line-height:1.2;text-decoration:none" style-hover="background:#18343B;color:#F7F5EF">Get Involved</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+      <button ref="{{ menuBtnRef }}" type="button" aria-expanded="{{ menuOpen }}" aria-controls="mobile-menu" onClick="{{ toggleMenu }}" style="min-height:48px;min-width:48px;padding:0 20px;border-radius:16px;border:1.5px solid #18343B;background:#F7F5EF;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-weight:600;font-size:16px">{{ menuLabel }}</button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ menuVisible }}" hint-placeholder-val="{{ false }}">
+    <div id="mobile-menu" style="position:fixed;left:0;right:0;top:104px;background:#F7F5EF;border-bottom:1px solid rgba(24,52,59,.12);box-shadow:0 24px 64px rgba(24,52,59,.12);padding:16px 20px 32px;max-height:calc(100vh - 104px);overflow-y:auto">
+      <div style="display:flex;justify-content:flex-end">
+        <button type="button" onClick="{{ closeMenuFocus }}" style="min-height:48px;padding:0 16px;border-radius:16px;border:0;background:#CDEBE3;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-weight:600;font-size:16px">Close menu ✕</button>
+      </div>
+      <nav aria-label="Primary mobile">
+        <ul style="list-style:none;margin:8px 0 24px;padding:0;display:flex;flex-direction:column">
+          <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+            <li style="border-bottom:1px solid rgba(24,52,59,.12)"><a ref="{{ n.ref }}" href="{{ n.href }}" aria-current="{{ n.current }}" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:56px;color:#18343B;text-decoration:none;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:24px">{{ n.label }}</a></li>
+          </sc-for>
+        </ul>
+        <a href="#join" onClick="{{ closeMenu }}" style="display:flex;align-items:center;justify-content:center;min-height:48px;padding:14px 24px;border-radius:16px;background:#087F83;color:#F7F5EF;font-weight:600;font-size:16px;text-decoration:none">Get involved</a>
+      </nav>
+    </div>
+  </sc-if>
+</header>
+
+<main id="main">
+
+
+<section id="top" aria-labelledby="hero-title" style="scroll-margin-top:104px;padding:clamp(40px,6vw,80px) clamp(20px,4.4vw,48px) clamp(48px,7vw,88px)">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:{{ heroCols }};gap:{{ heroGap }};align-items:center">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:640px">
+      <p data-hero="0" style="margin:0;display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:#087F83"><span aria-hidden="true" style="flex:none;width:10px;height:10px;border-radius:50%;background:#F28C79"></span>Youth-led healthcare learning and community service.</p>
+      <h1 id="hero-title" style="margin:0;padding:4px 0 8px;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(40px,2.4vw + 30px,64px);line-height:1.16;letter-spacing:-.012em;word-spacing:.04em"><span style="display:block"><span data-word="1" style="display:inline-block">A</span> <span data-word="1" style="display:inline-block">Healthier</span> <span data-word="1" style="display:inline-block">Future</span></span><span style="display:block"><span data-word="1" style="display:inline-block">Begins</span> <span data-word="1" style="display:inline-block">With</span> <span data-word="1" style="display:inline-block">a</span> <span data-underline="1" style="background-image:linear-gradient(rgba(242,140,121,.55),rgba(242,140,121,.55));background-repeat:no-repeat;background-position:0 88%;background-size:100% .42em;padding:0 .04em;margin:0 -.04em;-webkit-box-decoration-break:clone;box-decoration-break:clone"><span data-word="1" style="display:inline-block">Community</span></span></span><span style="display:block"><span data-underline="1" style="background-image:linear-gradient(rgba(242,140,121,.55),rgba(242,140,121,.55));background-repeat:no-repeat;background-position:0 88%;background-size:100% .42em;padding:0 .04em;margin:0 -.04em;-webkit-box-decoration-break:clone;box-decoration-break:clone"><span data-word="1" style="display:inline-block">that</span></span> <span data-word="1" style="display:inline-block"><i>Cares.</i></span></span></h1>
+      <p data-hero="2" style="margin:0;font-size:clamp(17px,.15vw + 16.4px,18px);line-height:1.6;max-width:34em;text-wrap:pretty">The <b><i>Youth Medical Network </i></b>brings together people interested in medicine, health and community service. Through educational activities, conversations and outreach, we create opportunities to learn from one another and contribute with compassion.</p>
+      <div data-hero="3" style="display:flex;flex-wrap:wrap;gap:12px;padding-top:12px">
+        <a href="#work" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:14px 24px;border-radius:16px;background:#087F83;color:#F7F5EF;font-weight:600;font-size:16px;line-height:1.2;text-decoration:none" style-hover="background:#18343B;color:#F7F5EF">Explore Our Work <span aria-hidden="true">→</span></a>
+        <a href="#join" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12.5px 24px;border-radius:16px;border:1.5px solid #18343B;color:#18343B;font-weight:600;font-size:16px;line-height:1.2;text-decoration:none" style-hover="background:#CDEBE3;color:#18343B">Get Community Updates</a>
+      </div>
+    </div>
+    <div style="position:relative;width:100%;max-width:{{ heroArtMax }};justify-self:center;aspect-ratio:1/1.02;transform:scale({{ heroScale }});transform-origin:0 0;margin-bottom:{{ heroScaleMb }}">
+      <div data-hero-blob="1" aria-hidden="true" style="position:absolute;inset:4% 2% 10% 6%;background:#CDEBE3;border-radius:46% 54% 42% 58% / 52% 44% 56% 48%"></div>
+      <div aria-hidden="true" style="position:absolute;right:4%;top:6%;width:16%;aspect-ratio:1;border-radius:50%;background:#F28C79;opacity:.9" data-hero-dot="1"></div>
+      <div data-hero-art="1" style="position:absolute;left:{{ heroArtBleed }};right:{{ heroArtBleed }};top:12%;display:flex;justify-content:center">
+        <img ref="{{ heroArtRef }}" src="assets/15-hero-illustration.png" alt="" width="1536" height="1024" fetchpriority="high" style="display:block;width:100%;height:auto;object-fit:contain">
+      </div>
+      <figure data-hero-photo="1" onMouseEnter="{{ heroHold }}" onMouseLeave="{{ heroRelease }}" onFocus="{{ heroHold }}" onBlur="{{ heroRelease }}" style="position:absolute;left:0;bottom:0;width:46%;margin:0;background:#FFFFFF;padding:8px 8px 10px;border-radius:20px;box-shadow:0 24px 64px rgba(24,52,59,.12);transform:rotate(-4deg)">
+        <div style="display:grid;border-radius:14px;overflow:hidden;background:#CDEBE3">
+          <sc-for list="{{ heroSlides }}" as="hs" hint-placeholder-count="0">
+            <div role="img" aria-label="{{ hs.alt }}" aria-hidden="{{ hs.hidden }}" style="grid-area:1/1;width:100%;aspect-ratio:4/3;background-image:{{ hs.bg }};background-size:cover;background-position:center;opacity:{{ hs.op }};transition:opacity 900ms ease"></div>
+          </sc-for>
+        </div>
+        <figcaption style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 4px 0;font-size:13px;font-weight:600;line-height:1.35">
+          <span aria-live="off" style="min-width:0">{{ heroCaption }}</span>
+          <button type="button" aria-label="{{ heroToggleLabel }}" onClick="{{ heroToggle }}" style="flex:none;width:44px;height:44px;margin:-10px -6px -10px 0;border:0;background:transparent;color:#18343B;font-size:14px;cursor:pointer" style-hover="color:#087F83">{{ heroToggleIcon }}</button>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section><div role="region" aria-label="Brand tagline" data-dark="1" style="background:#087F83;color:#F7F5EF;display:flex;align-items:center;gap:16px;padding:0 clamp(20px,4.4vw,48px);overflow:hidden">
+  <sc-if value="{{ ribbonAnimated }}" hint-placeholder-val="{{ false }}">
+    <p style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);margin:0">Inspire · Impact · Ignite</p>
+    <div aria-hidden="true" style="flex:1;min-width:0;overflow:hidden;padding:18px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)">
+      <div ref="{{ marqueeRef }}" style="display:flex;width:max-content">
+        <sc-for list="{{ ribbonReps }}" as="r" hint-placeholder-count="12">
+          <span style="display:flex;align-items:center;gap:28px;padding-right:28px;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(20px,1.2vw + 14px,26px);white-space:nowrap">Inspire<span style="width:8px;height:8px;border-radius:50%;background:#F28C79"></span>Impact<span style="width:8px;height:8px;border-radius:50%;background:#CDEBE3"></span>Ignite<span style="width:8px;height:8px;border-radius:50%;background:#F28C79"></span></span>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ ribbonStatic }}" hint-placeholder-val="{{ true }}">
+    <p style="flex:1;margin:0;padding:20px 0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px 28px;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(20px,1.2vw + 14px,26px)">Inspire<span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#F28C79"></span>Impact<span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#CDEBE3"></span>Ignite</p>
+  </sc-if>
+</div>
+
+
+
+<section id="about" aria-labelledby="about-title" style="scroll-margin-top:104px;padding:clamp(48px,8.4vw,96px) clamp(20px,4.4vw,48px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,6vw,72px)">
+    
+
+    <div style="display:flex;flex-direction:column;gap:clamp(24px,3vw,40px)">
+      <div data-reveal="1" style="display:flex;flex-direction:column;gap:12px">
+        <p style="margin:0;display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:#087F83"><span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#F28C79"></span>About · Est. 2024</p>
+        <h2 id="about-title" data-type="1" style="position:relative;margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(30px,3.1vw + 8px,48px);line-height:1.15;letter-spacing:-.01em;text-wrap:balance;max-width:100%;overflow-x:clip;white-space:{{ aboutWrap }}"><span data-type-ghost="1" style="color:transparent">An interest in healthcare. A shared commitment to people.</span><span data-type-live="1" aria-hidden="true" style="position:absolute;inset:0">An interest in healthcare. A shared commitment to people.</span></h2>
+      </div>
+      <div style="display:grid;grid-template-columns:{{ splitCols }};gap:32px clamp(48px,5vw,64px);align-items:center">
+        <p style="margin: 0; font-size: clamp(20px,.9vw + 13px,26px); line-height: 1.55; max-width: 34em; text-wrap: pretty; text-align: justify">The <b><i>Youth Medical Network</i></b> is a community of aspiring healthcare leaders and like-minded youths (aged 13–21) who are passionate about medicine, health and people. Through our medical projects, we hope to <b>Inspire, Ignite and Impact</b> our society.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));grid-auto-rows:1fr;gap:24px;align-items:stretch">
+          <sc-for list="{{ ideals }}" as="c" hint-placeholder-count="2">
+          <button type="button" aria-pressed="{{ c.flipped }}" onClick="{{ c.toggle }}" style="display:block;width:100%;height:100%;padding:0;border:0;background:transparent;text-align:left;perspective:1200px;font-family:'DM Sans',Arial,sans-serif;color:#18343B;border-radius:24px">
+            <span style="display:grid;height:100%;transform-style:preserve-3d;transition:transform 650ms cubic-bezier(.2,.7,.2,1);transform:{{ c.rot }}">
+              <span style="grid-area:1/1;display:flex;flex-direction:column;gap:12px;padding:24px;min-height:320px;border-radius:24px;background:{{ c.frontBg }};border:1px solid rgba(24,52,59,.12);backface-visibility:hidden;-webkit-backface-visibility:hidden">
+                <span style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+                  <span style="font-size: 18px; font-weight: 600">{{ c.label }}</span>
+                  <span aria-hidden="true" style="display: inline-flex; align-items: center; gap: 6px; min-height: 28px; padding: 2px 10px; border-radius: 999px; background: #F7F5EF; font-size: 15px; font-weight: 600">Tap To Read</span>
+                </span>
+                <img src="{{ c.img }}" alt="" width="{{ c.iw }}" height="{{ c.ih }}" loading="lazy" style="flex:1;display:block;width:100%;max-height:170px;height:auto;object-fit:contain;margin:4px 0">
+                <span style="font-family: Fraunces,Georgia,serif; font-weight: 500; font-size: 21px; line-height: 1.2; text-align: center; align-self: center">{{ c.teaser }}</span>
+              </span>
+              <span style="grid-area:1/1;display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:24px;min-height:320px;border-radius:24px;background:#18343B;color:#F7F5EF;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden">
+                <span style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+                  <span style="font-size: 18px; font-weight: 600; color: #CDEBE3">{{ c.label }}</span>
+                  <img src="{{ c.img }}" alt="" width="{{ c.iw }}" height="{{ c.ih }}" loading="lazy" style="width:44px;height:40px;object-fit:contain">
+                </span>
+                <span style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(20px,.6vw + 16px,24px);line-height:1.35;text-wrap:balance">{{ c.text }}</span>
+                <span aria-hidden="true" style="align-self:center;font-size:13px;font-weight:600;color:#CDEBE3">Tap to flip back ↻</span>
+              </span>
+            </span>
+          </button>
+          </sc-for>
+        </div>
+      </div>
+    </div><div style="display:flex;flex-direction:column;gap:24px">
+      <div data-reveal="1" style="display:flex;flex-direction:column;gap:12px">
+        <h3 id="pathways-title" style="margin: 0; font-family: Fraunces,Georgia,serif; font-weight: 500; font-size: clamp(40px,.3vw + 21px,26px); line-height: 1.25">Explore your Pathway</h3>
+        <p style="margin: 0; font-size: 23px; line-height: 1.6; max-width: 34em">Three ways to take part. Choose one to see where it leads.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:{{ pathCols }};gap:24px;align-items:stretch">
+        <div role="tablist" aria-labelledby="pathways-title" aria-orientation="{{ pathOrient }}" style="display:grid;grid-template-columns:{{ pathTabCols }};gap:12px">
+          <sc-for list="{{ paths }}" as="p" hint-placeholder-count="3">
+            <button type="button" role="tab" id="{{ p.tabId }}" data-path="{{ $index }}" aria-selected="{{ p.sel }}" aria-controls="pathway-panel" tabIndex="{{ p.ti }}" onClick="{{ p.pick }}" onKeyDown="{{ pathKey }}" style="display:flex;align-items:center;gap:20px;width:100%;text-align:left;min-height:88px;padding:14px 18px;border-radius:16px;border:2px solid {{ p.border }};background:{{ p.bg }};color:#18343B;font-family:'DM Sans',Arial,sans-serif;transition:background 180ms ease,border-color 180ms ease" style-hover="border-color:#087F83">
+              <img src="{{ p.img }}" alt="" width="{{ p.iw }}" height="{{ p.ih }}" loading="lazy" data-tab-art="1" style="flex:none;width:92px;height:84px;object-fit:contain">
+              <span style="display:flex;flex-direction:column;gap:4px;min-width:0;flex:1">
+                <span style="font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(24px,.3vw + 21px,26px);line-height:1.2">{{ p.title }}</span>
+                <span style="font-size:16px;line-height:1.5">{{ p.short }}</span>
+              </span>
+              <sc-if value="{{ p.sel }}" hint-placeholder-val="{{ false }}">
+                <span style="flex:none;display:inline-flex;align-items:center;min-height:28px;padding:2px 10px;border-radius:999px;background:#18343B;color:#F7F5EF;font-size:13px;font-weight:600">Selected</span>
+              </sc-if>
+            </button>
+          </sc-for>
+        </div>
+        <div ref="{{ pathPanelRef }}" id="pathway-panel" role="tabpanel" aria-labelledby="{{ pathActive.tabId }}" tabIndex="0" style="background:#CDEBE3;border-radius:16px;padding:clamp(24px,3vw,40px) clamp(24px,4vw,56px);display:grid;grid-template-columns:{{ pathPanelCols }};gap:20px clamp(24px,3vw,40px);align-items:center">
+          <div id="pathway-art-wrap" style="display:flex;justify-content:center;align-items:center;min-width:0;order:{{ pathImgOrder }}">
+            <img id="pathway-art" src="{{ pathActive.img }}" alt="" width="{{ pathActive.iw }}" height="{{ pathActive.ih }}" loading="lazy" style="display:block;width:100%;max-width:{{ pathImgMax }};height:auto;aspect-ratio:1;object-fit:contain">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <p style="margin:0;font-size:15px;font-weight:600">Pathway {{ pathActive.num }} of 3</p>
+            <h4 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(36px,1.6vw + 24px,52px);line-height:1.08">{{ pathActive.title }}</h4>
+          </div>
+          <p style="margin:0;font-size:clamp(17px,.15vw + 16.4px,18px);line-height:1.6;max-width:44em;text-wrap:pretty">{{ pathActive.long }}</p>
+          <div style="display:flex;flex-direction:column;gap:12px;padding-top:8px">
+            <p style="margin:0;font-size:15px;font-weight:600">{{ pathActive.relHeading }}</p>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ pathActive.related }}" as="r" hint-placeholder-count="2">
+                <li><sc-if value="{{ r.isPlain }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(24,52,59,.2);background:#F7F5EF;color:#18343B;font-weight:500;font-size:15px">{{ r.title }}</span></sc-if><sc-if value="{{ r.isLink }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ r.go }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(24,52,59,.2);white-space:nowrap;background:#F7F5EF;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-weight:500;font-size:15px" style-hover="border-color:#18343B">{{ r.title }} <span aria-hidden="true">→</span></button></sc-if></li>
+              </sc-for>
+            </ul>
+          </div>
+          <div style="padding-top:16px;margin-top:auto">
+            <a href="{{ pathActive.href }}" onClick="{{ pathActive.onClick }}" style="display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:14px 24px;border-radius:16px;background:#087F83;color:#F7F5EF;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#18343B;color:#F7F5EF">{{ pathActive.cta }} <span aria-hidden="true">→</span></a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" aria-labelledby="work-title" style="scroll-margin-top:104px;padding:clamp(48px,8.4vw,96px) clamp(20px,4.4vw,48px);background:#FFFFFF;border-top:1px solid rgba(24,52,59,.12);border-bottom:1px solid rgba(24,52,59,.12)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(40px,5vw,64px)">
+    <div style="display:grid;grid-template-columns:{{ splitCols }};gap:12px clamp(48px,5vw,64px);align-items:end">
+      <div data-reveal="1" style="display:flex;flex-direction:column;gap:12px">
+        <p style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 600; color: #087F83"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: rgb(242, 140, 121);"></span>Our Work</p>
+        <h2 id="work-title" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(30px,1.5vw + 19px,40px);line-height:1.18;letter-spacing:-.01em">Care Takes Many Forms.</h2>
+      </div>
+      <p style="margin: 0; font-size: clamp(18px,.15vw + 16.4px,18px); line-height: 1.6; max-width: 34em; text-wrap: pretty">Explore the activities, conversations and community projects described in our portfolio. Discover what happened, who contributed and what the network learned.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: {{ featCols }}; gap: clamp(40px,5vw,64px); align-items: start;width:100%;max-width:1200px">
+      <sc-if value="{{ stickyMode }}" hint-placeholder-val="{{ true }}">
+        
+      </sc-if>
+      <div style="position:{{ stickyPos }};top:104px;height:{{ stickyH }};max-height:760px;min-width:0;display:flex;flex-direction:column;justify-content:center">
+          <figure style="margin:0;display:flex;flex-direction:column;gap:16px">
+            <div style="position:relative">
+              <div style="position:relative;aspect-ratio:4/3;background:#CDEBE3;border-radius:32px;overflow:hidden;box-shadow:0 12px 32px rgba(24,52,59,.08)">
+                <sc-for list="{{ featured }}" as="s" hint-placeholder-count="3">
+                  <img src="{{ s.photo.src }}" alt="{{ s.photo.alt }}" aria-hidden="{{ s.hiddenImg }}" width="{{ s.photo.w }}" height="{{ s.photo.h }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:{{ s.photo.fit }};opacity:{{ s.op }};transition:opacity 300ms ease">
+                </sc-for>
+              </div>
+              <sc-for list="{{ featured }}" as="s" hint-placeholder-count="3">
+                <img src="{{ s.img }}" alt="" width="{{ s.iw }}" height="{{ s.ih }}" loading="lazy" style="position:absolute;right:-20px;bottom:-28px;width:112px;height:104px;object-fit:contain;opacity:{{ s.op }};transition:opacity 300ms ease;pointer-events:none">
+              </sc-for>
+            </div>
+            <figcaption style="font-size:14px;line-height:1.5;display:flex;gap:8px;align-items:center;padding-right:96px"><span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#F28C79;flex:none"></span>{{ activeCaption }}</figcaption>
+          </figure>
+        </div><div style="display:flex;flex-direction:column">
+        <sc-for list="{{ featured }}" as="s" hint-placeholder-count="3">
+          <article data-feat="{{ $index }}" aria-labelledby="{{ s.hid }}" style="min-height: {{ featMinH }}; display: flex; flex-direction: column; justify-content: center; gap: 16px; padding: 40px 0; border-top: 1px solid rgba(24,52,59,.12); width:100%; max-width:642px;">
+            <sc-if value="{{ s.inlineImg }}" hint-placeholder-val="{{ false }}">
+              <figure style="margin:0 0 8px;display:flex;flex-direction:column;gap:10px">
+                <div style="aspect-ratio:4/3;background:#CDEBE3;border-radius:24px;overflow:hidden">
+                  <img src="{{ s.photo.src }}" alt="{{ s.photo.alt }}" width="{{ s.photo.w }}" height="{{ s.photo.h }}" loading="lazy" style="display:block;width:100%;height:100%;object-fit:{{ s.photo.fit }}">
+                </div>
+                <figcaption style="font-size:14px;line-height:1.5">{{ s.photo.caption }}</figcaption>
+              </figure>
+            </sc-if>
+            <p style="margin:0;font-size:15px;font-weight:600;color:#087F83">Story {{ s.num }} · {{ s.cat }}</p>
+            <h3 id="{{ s.hid }}" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(28px,1.2vw + 20px,36px);line-height:1.18;text-wrap:balance">{{ s.title }}</h3>
+            <p style="margin:0;font-size:clamp(17px,.15vw + 16.4px,18px);line-height:1.6;max-width:30em;text-wrap:pretty">{{ s.summary }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:12px">
+              <button id="{{ s.btnId }}" type="button" aria-expanded="{{ s.open }}" aria-controls="{{ s.panelId }}" onClick="{{ s.toggle }}" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:12.5px 22px;border-radius:16px;border:1.5px solid #18343B;background:transparent;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-weight:600;font-size:16px" style-hover="background:#CDEBE3">Read activity summary <span aria-hidden="true">{{ s.sign }}</span></button>
+              <button type="button" onClick="{{ s.openPhotos }}" style="display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 8px;border:0;background:transparent;color:#087F83;font-family:'DM Sans',Arial,sans-serif;font-weight:600;font-size:16px;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px" style-hover="color:#18343B">{{ s.photosLabel }}</button>
+            </div>
+            <sc-if value="{{ s.open }}" hint-placeholder-val="{{ false }}">
+              <div id="{{ s.panelId }}" role="region" aria-label="{{ s.panelLabel }}" style="background:#F7F5EF;border:1px solid rgba(24,52,59,.12);border-radius:24px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:20px">
+                <dl style="margin:0;display:grid;gap:16px">
+                  <sc-for list="{{ s.facts }}" as="f" hint-placeholder-count="2">
+                    <div style="display:grid;gap:4px">
+                      <dt style="font-size:15px;font-weight:600;color:#087F83">{{ f.k }}</dt>
+                      <dd style="margin:0;font-size:17px;line-height:1.6;max-width:34em">{{ f.v }}</dd>
+                    </div>
+                  </sc-for>
+                </dl>
+                <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+                  <a href="#join" style="display:inline-flex;align-items:center;min-height:48px;padding:14px 24px;border-radius:16px;background:#087F83;color:#F7F5EF;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#18343B;color:#F7F5EF">Get community updates</a>
+                  <button type="button" onClick="{{ s.close }}" style="min-height:48px;padding:0 20px;border-radius:16px;border:0;background:#CDEBE3;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-weight:600;font-size:16px">Close summary</button>
+                </div>
+              </div>
+            </sc-if>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+
+    <div aria-labelledby="gallery-title" role="region" style="display:flex;flex-direction:column;gap:20px;padding-top:16px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <h3 id="gallery-title" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(24px,.3vw + 21px,26px);line-height:1.25"><button type="button" aria-expanded="{{ galOpen }}" aria-controls="gallery-body" onClick="{{ galToggle }}" style="display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:0;border:0;background:transparent;color:#18343B;font:inherit;text-align:left;cursor:pointer">Moments from Our Work <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid rgb(24, 52, 59); font-family: &quot;DM Sans&quot;, Arial, sans-serif; font-size: 16px; transition: transform 300ms; transform: rotate(180deg);">⌄</span></button></h3>
+          <p style="margin:0;font-size:15px">{{ galSub }}</p>
+        </div>
+        <sc-if value="{{ galOpen }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;gap:8px">
+          <button type="button" aria-label="Previous photos" disabled="{{ galAtStart }}" onClick="{{ galPrev }}" style="width:48px;height:48px;border-radius:50%;border:1.5px solid #18343B;background:#FFFFFF;color:#18343B;font-size:20px;opacity:{{ galPrevOp }}">←</button>
+          <button type="button" aria-label="Next photos" disabled="{{ galAtEnd }}" onClick="{{ galNext }}" style="width:48px;height:48px;border-radius:50%;border:1.5px solid #18343B;background:#FFFFFF;color:#18343B;font-size:20px;opacity:{{ galNextOp }}">→</button>
+        </div>
+        </sc-if>
+      </div>
+      <sc-if value="{{ galOpen }}" hint-placeholder-val="{{ true }}">
+      <ul id="gallery-body" ref="{{ galRef }}" onScroll="{{ galScroll }}" style="list-style:none;margin:0;padding:4px 4px 12px;display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:4px;overscroll-behavior-x:contain">
+        <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="4">
+          <li data-gal="{{ $index }}" style="flex:0 0 min(78%,360px);scroll-snap-align:start">
+            <button type="button" onClick="{{ g.open }}" aria-label="{{ g.aria }}" style="display:flex;flex-direction:column;gap:12px;width:100%;padding:0;border:0;background:transparent;text-align:left;cursor:zoom-in;color:#18343B;font-family:'DM Sans',Arial,sans-serif;border-radius:24px">
+              <span style="display:block;width:100%;aspect-ratio:4/3;border-radius:24px;overflow:hidden;background:#CDEBE3;transition:transform 180ms ease" style-hover="transform:translateY(-2px)">
+                <img src="{{ g.src }}" alt="" width="{{ g.w }}" height="{{ g.h }}" loading="lazy" style="display:block;width:100%;height:100%;object-fit:{{ g.fit }}">
+              </span>
+              <span style="display:flex;flex-direction:column;gap:2px">
+                <span style="font-size:15px;font-weight:600">{{ g.activity }}</span>
+                <span style="font-size:14px;line-height:1.5">{{ g.caption }}</span>
+              </span>
+            </button>
+          </li>
+        </sc-for>
+      </ul>
+      </sc-if>
+    </div>
+
+    <div id="index" ref="{{ indexRef }}" style="scroll-margin-top:120px;display:flex;flex-direction:column;gap:24px;padding-top:16px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <h3 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(24px,.3vw + 21px,26px);line-height:1.3">Activity Explorer</h3>
+          <p role="status" aria-live="polite" style="margin:0;font-size:15px;line-height:1.4">{{ countText }}</p>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px">
+        <div role="group" aria-label="Filter activities by type" style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ filters }}" as="fl" hint-placeholder-count="4">
+            <button type="button" aria-pressed="{{ fl.on }}" onClick="{{ fl.pick }}" style="min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid {{ fl.border }};background:{{ fl.bg }};color:{{ fl.fg }};font-family:'DM Sans',Arial,sans-serif;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:8px">{{ fl.label }}<span style="font-weight:500">{{ fl.n }}</span></button>
+          </sc-for>
+        </div>
+        </div>
+      </div>
+      <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="border:1px dashed rgba(24,52,59,.3);border-radius:24px;padding:32px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+          <p style="margin:0;font-size:17px">No activities match this filter yet.</p>
+          <button type="button" onClick="{{ showAll }}" style="min-height:48px;padding:0 20px;border-radius:16px;border:1.5px solid #18343B;background:transparent;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-weight:600;font-size:16px">Show all activities</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ viewIsList }}" hint-placeholder-val="{{ true }}">
+      <ul style="list-style:none;margin:0;padding:0;border-top:1px solid rgba(24,52,59,.15)">
+        <sc-for list="{{ indexItems }}" as="a" hint-placeholder-count="7">
+          <li style="border-bottom:1px solid rgba(24,52,59,.15)">
+            <h4 style="margin:0">
+              <button type="button" aria-expanded="{{ a.open }}" aria-controls="{{ a.rowPanelId }}" onClick="{{ a.toggle }}" style="width:100%;display:flex;align-items:center;gap:clamp(12px,2vw,24px);min-height:80px;padding:14px 4px;border:0;background:transparent;color:#18343B;text-align:left;font-family:'DM Sans',Arial,sans-serif;cursor:pointer" style-hover="background:rgba(205,235,227,.4)">
+                <img src="{{ a.img }}" alt="" width="{{ a.iw }}" height="{{ a.ih }}" loading="lazy" style="flex:none;width:48px;height:44px;object-fit:contain">
+                <span style="flex:1;min-width:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(20px,.4vw + 17px,24px);line-height:1.3;text-wrap:balance">{{ a.title }}</span>
+                <span style="flex:none;display:{{ a.chipDisplay }};align-items:center;min-height:28px;padding:2px 12px;border-radius:999px;background:#CDEBE3;font-size:14px;font-weight:600;white-space:nowrap">{{ a.cat }}</span>
+                <span aria-hidden="true" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:1.5px solid #18343B;font-size:16px;transition:transform 300ms ease;transform:rotate({{ a.chev }})">⌄</span>
+              </button>
+            </h4>
+            <sc-if value="{{ a.open }}" hint-placeholder-val="{{ false }}">
+              <div id="{{ a.rowPanelId }}" role="region" aria-label="{{ a.panelLabel }}" style="display:flex;flex-wrap:wrap;gap:24px clamp(24px,4vw,48px);padding:8px 4px 32px clamp(4px,5vw,76px)">
+                <sc-if value="{{ a.hasPhotos }}" hint-placeholder-val="{{ false }}">
+                  <button type="button" onClick="{{ a.openPhotos }}" aria-label="{{ a.photosLabel }}" style="flex:1 1 260px;max-width:420px;padding:0;border:0;border-radius:16px;overflow:hidden;background:#CDEBE3;aspect-ratio:4/3;cursor:zoom-in"><img src="{{ a.photo.src }}" alt="{{ a.photo.alt }}" width="{{ a.photo.w }}" height="{{ a.photo.h }}" loading="lazy" style="display:block;width:100%;height:100%;object-fit:{{ a.photo.fit }}"></button>
+                </sc-if>
+                <div style="flex:2 1 320px;min-width:0;display:flex;flex-direction:column;gap:16px">
+                  <p style="margin:0;font-size:18px;line-height:1.6;text-wrap:pretty;max-width:40em">{{ a.summary }}</p>
+                  <dl style="margin:0;display:grid;gap:12px">
+                    <sc-for list="{{ a.facts }}" as="f" hint-placeholder-count="2">
+                      <div style="display:grid;gap:2px">
+                        <dt style="font-size:15px;font-weight:600;color:#087F83">{{ f.k }}</dt>
+                        <dd style="margin:0;font-size:16px;line-height:1.55">{{ f.v }}</dd>
+                      </div>
+                    </sc-for>
+                  </dl>
+                  <sc-if value="{{ a.hasPhotos }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ a.openPhotos }}" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;padding:0;border:0;background:transparent;color:#087F83;font-family:'DM Sans',Arial,sans-serif;font-weight:600;font-size:16px;text-decoration:underline;text-underline-offset:4px" style-hover="color:#18343B">{{ a.photosLabel }}</button></sc-if>
+                </div>
+              </div>
+            </sc-if>
+          </li>
+        </sc-for>
+      </ul>
+      </sc-if>
+      <sc-if value="{{ viewIsCards }}" hint-placeholder-val="{{ false }}">
+      <ul data-reveal="group" style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:24px">
+        <sc-for list="{{ indexItems }}" as="a" hint-placeholder-count="7">
+          <li id="{{ a.cardId }}" style="background:#F7F5EF;border:1px solid rgba(24,52,59,.12);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:transform 180ms ease,box-shadow 180ms ease" style-hover="transform:translateY(-2px);box-shadow:0 12px 32px rgba(24,52,59,.08)">
+            <div style="aspect-ratio:4/3;background:#CDEBE3;overflow:hidden">
+              <img src="{{ a.photo.src }}" alt="{{ a.photo.alt }}" width="{{ a.photo.w }}" height="{{ a.photo.h }}" loading="lazy" style="display:block;width:100%;height:100%;object-fit:{{ a.photo.fit }}">
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:12px;padding:clamp(24px,2.4vw,28px)">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
+                <span style="display:inline-flex;align-items:center;min-height:28px;padding:2px 12px;border-radius:999px;background:#CDEBE3;font-size:14px;font-weight:600">{{ a.cat }}</span>
+                <img src="{{ a.img }}" alt="" width="{{ a.iw }}" height="{{ a.ih }}" loading="lazy" style="flex:none;width:52px;height:48px;object-fit:contain">
+              </div>
+              <h4 id="{{ a.hid }}" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(22px,.3vw + 19px,24px);line-height:1.25;text-wrap:balance">{{ a.title }}</h4>
+              <p style="margin:0;font-size:17px;line-height:1.6;text-wrap:pretty">{{ a.summary }}</p>
+              <div style="margin-top:auto;padding-top:12px;display:flex;flex-wrap:wrap;gap:4px 20px">
+                <button id="{{ a.btnId }}" type="button" aria-expanded="{{ a.open }}" aria-controls="{{ a.panelId }}" onClick="{{ a.toggle }}" style="display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0;border:0;background:transparent;color:#087F83;font-family:'DM Sans',Arial,sans-serif;font-weight:600;font-size:16px;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px" style-hover="color:#18343B">Read activity summary <span aria-hidden="true">{{ a.sign }}</span></button>
+                <sc-if value="{{ a.hasPhotos }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ a.openPhotos }}" style="display:inline-flex;align-items:center;min-height:48px;padding:0;border:0;background:transparent;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-weight:500;font-size:16px;text-decoration:underline;text-underline-offset:4px" style-hover="color:#087F83">{{ a.photosLabel }}</button></sc-if>
+              </div>
+              <sc-if value="{{ a.open }}" hint-placeholder-val="{{ false }}">
+                <div id="{{ a.panelId }}" role="region" aria-label="{{ a.panelLabel }}" style="border-top:1px solid rgba(24,52,59,.12);padding-top:16px;display:flex;flex-direction:column;gap:16px">
+                  <dl style="margin:0;display:grid;gap:12px">
+                    <sc-for list="{{ a.facts }}" as="f" hint-placeholder-count="2">
+                      <div style="display:grid;gap:2px">
+                        <dt style="font-size:15px;font-weight:600;color:#087F83">{{ f.k }}</dt>
+                        <dd style="margin:0;font-size:16px;line-height:1.55">{{ f.v }}</dd>
+                      </div>
+                    </sc-for>
+                  </dl>
+                  <button type="button" onClick="{{ a.close }}" style="align-self:flex-start;min-height:44px;padding:0 18px;border-radius:16px;border:0;background:#CDEBE3;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-weight:600;font-size:15px">Close summary</button>
+                </div>
+              </sc-if>
+            </div>
+          </li>
+        </sc-for>
+      </ul>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<section id="next" aria-labelledby="next-title" style="scroll-margin-top:104px;padding:clamp(48px,8.4vw,96px) clamp(20px,4.4vw,48px)">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:{{ upCols }};gap:32px clamp(32px,4vw,48px);align-items:start">
+    <div data-reveal="1" style="display: flex; flex-direction: column; gap: 12px">
+      <img src="assets/11-icon-calendar.png" alt="" width="1254" height="1254" loading="lazy" style="width:clamp(112px,8vw,148px);height:clamp(112px,8vw,148px);object-fit:contain;margin-bottom:16px">
+      <p style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: clamp(18px,.5vw + 15px,22px); font-weight: 600; color: #087F83"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: rgb(242, 140, 121);"></span>Upcoming Plans</p>
+      <h2 id="next-title" style="margin: 0; font-family: Fraunces,Georgia,serif; font-weight: 600; font-size: clamp(40px,3vw + 16px,64px); line-height: 1.18; letter-spacing: -.01em;">What's Next</h2>
+    </div>
+    <div role="region" aria-roledescription="carousel" aria-label="Upcoming plans" style="display:flex;flex-direction:column;gap:20px;min-width:0">
+      <div style="overflow:hidden;border-radius:24px">
+        <ul aria-live="polite" style="list-style:none;margin:0;padding:0;display:flex;gap:24px;transition:transform 520ms cubic-bezier(.2,.7,.2,1);transform:translateX({{ upShift }})">
+          <sc-for list="{{ upSlides }}" as="u" hint-placeholder-count="3">
+            <li aria-roledescription="slide" aria-label="{{ u.pos }}" aria-hidden="{{ u.hidden }}" onClick="{{ u.go }}" style="flex:0 0 {{ upCardW }};min-width:0;display:flex;opacity:{{ u.op }};transition:opacity 400ms ease;cursor:{{ u.cursor }}">
+              <article style="flex:1;background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:24px;padding:clamp(24px,2.4vw,32px);display:flex;flex-direction:column;gap:12px;min-height:320px">
+                <span style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:28px;padding:2px 12px;border-radius:999px;border:1px solid rgba(24,52,59,.25);font-size:14px;font-weight:500;white-space:nowrap"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid rgb(24, 52, 59);"></span>{{ u.badge }}</span>
+                <h3 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(24px,.6vw + 20px,30px);line-height:1.22;text-wrap:balance">{{ u.title }}</h3>
+                <p style="margin:0;font-size:17px;line-height:1.6;flex:1;text-wrap:pretty;max-width:32em">{{ u.text }}</p>
+                <a href="#join" tabIndex="{{ u.ti }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:48px;margin-top:12px;color:#087F83;font-weight:600;font-size:16px;text-underline-offset:4px;text-decoration-thickness:1.5px" style-hover="color:#18343B">Get Updates <span aria-hidden="true">→</span></a>
+              </article>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <sc-for list="{{ upcoming }}" as="u" hint-placeholder-count="3">
+            <button type="button" aria-label="{{ u.dotLabel }}" aria-current="{{ u.cur }}" onClick="{{ u.go }}" style="width:44px;height:44px;padding:0;border:0;background:transparent;display:flex;align-items:center;justify-content:center"><span aria-hidden="true" style="display:block;height:8px;width:{{ u.dotW }};border-radius:999px;background:{{ u.dotBg }};transition:width 300ms ease,background 300ms ease"></span></button>
+          </sc-for>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span style="font-size:15px;font-weight:600">{{ upPos }}</span>
+          <button type="button" aria-label="Previous plan" disabled="{{ upAtStart }}" onClick="{{ upPrev }}" style="width:48px;height:48px;border-radius:50%;border:1.5px solid #18343B;background:#F7F5EF;color:#18343B;font-size:18px;opacity:{{ upPrevOp }}" style-hover="background:#CDEBE3">←</button>
+          <button type="button" aria-label="Next plan" disabled="{{ upAtEnd }}" onClick="{{ upNext }}" style="width:48px;height:48px;border-radius:50%;border:0;background:#087F83;color:#F7F5EF;font-size:18px;opacity:{{ upNextOp }}" style-hover="background:#18343B">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><section id="people" aria-labelledby="people-title" style="scroll-margin-top:104px;padding:clamp(48px,8.4vw,96px) clamp(20px,4.4vw,48px);background:#CDEBE3">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,6vw,72px)">
+    <sc-for list="{{ people }}" as="pp" hint-placeholder-count="1">
+      <article aria-labelledby="{{ pp.hid }}" style="display:grid;grid-template-columns:{{ founderCols }};gap:32px clamp(48px,6vw,80px);align-items:center">
+        <div style="width:100%;max-width:{{ founderImgMax }};aspect-ratio:922/1083;border-radius:32px;overflow:hidden;background:#F7F5EF;box-shadow:0 12px 32px rgba(24,52,59,.08)">
+          <img src="{{ pp.photo }}" alt="{{ pp.photoAlt }}" width="{{ pp.pw }}" height="{{ pp.phh }}" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;max-width:34em">
+          <p data-reveal="1" style="margin:0;display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:#18343B"><span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#F28C79"></span>People</p>
+          <h2 id="people-title" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(30px,1.5vw + 19px,40px);line-height:1.18;letter-spacing:-.01em">Meet the founder</h2>
+          <div style="display:flex;flex-direction:column;gap:4px;padding-top:8px">
+            <h3 id="{{ pp.hid }}" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(24px,.3vw + 21px,26px);line-height:1.25">{{ pp.name }}</h3>
+            <p style="margin:0;font-size:15px;font-weight:600">{{ pp.role }}</p>
+          </div>
+          <p style="margin:0;font-size:clamp(17px,.15vw + 16.4px,18px);line-height:1.6;text-wrap:pretty">{{ pp.bio }}</p>
+          <sc-if value="{{ pp.quote }}" hint-placeholder-val="{{ false }}"><blockquote style="margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:8px"><p style="margin:0;font-family:Fraunces,Georgia,serif;font-style:italic;font-weight:500;font-size:clamp(19px,.4vw + 16px,22px);line-height:1.45;text-wrap:pretty">“{{ pp.quote }}”</p><footer style="font-size:15px;font-weight:600">{{ pp.name }}, on YMN’s initiatives</footer></blockquote></sc-if>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding-top:16px">
+            <a href="{{ pp.mailto }}" style="display:inline-flex;align-items:center;gap:.3em;min-height:48px;padding:14px 24px;border-radius:16px;background:#087F83;color:#F7F5EF;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#18343B;color:#F7F5EF"><span>Email</span><span>{{ pp.first }}</span></a>
+            <a href="{{ pp.mailto }}" style="color:#18343B;font-weight:500;font-size:16px;text-underline-offset:4px;min-height:48px;display:inline-flex;align-items:center;overflow-wrap:anywhere" style-hover="color:#087F83">{{ pp.email }}</a>
+            <a href="tel:+6597274692" style="color:#18343B;font-weight:500;font-size:16px;text-underline-offset:4px;min-height:48px;display:inline-flex;align-items:center" style-hover="color:#087F83">+65 9727 4692</a>
+            <a href="https://www.linkedin.com/in/gareth-sum-jun-rong-1ba3b230a/" target="_blank" rel="noopener noreferrer" style="color:#18343B;font-weight:500;font-size:16px;text-underline-offset:4px;min-height:48px;display:inline-flex;align-items:center" style-hover="color:#087F83">LinkedIn ↗</a>
+          </div>
+        </div>
+      </article><div id="collaborate" data-reveal="1" style="scroll-margin-top: 120px; border-top: 1px solid rgba(24,52,59,.2); padding-top: clamp(40px,5vw,56px); display: grid; grid-template-columns: {{ collabCols }}; gap: 24px clamp(48px,6vw,80px); align-items: center; width:100%; max-width:1198px;">
+      <img src="assets/12-icon-partnerships.png" alt="" width="1312" height="1199" loading="lazy" style="display: block; width:100%; max-width:432px; max-width: 380px; height: 344px; object-fit: contain; justify-self: center">
+      <div style="display:flex;flex-direction:column;gap:16px;max-width:34em">
+        <h2 id="collab-title" style="margin: 0; font-family: Fraunces,Georgia,serif; font-weight: 600; font-size: clamp(40px,1.5vw + 19px,40px); line-height: 1.18; letter-spacing: -.01em; text-wrap: balance; width:100%; max-width:726px;">Community Work is <i>Collaborative Work.</i></h2>
+        <p style="margin: 0; font-size: clamp(23px,.15vw + 16.4px,18px); line-height: 1.6; text-wrap: pretty; width:100%; max-width:718px;">Our activity stories acknowledge the organisations, professionals and volunteers involved in each project. Explore individual stories for specific roles and contributions.</p><div style="padding-top:12px">
+          <a href="mailto:garethsum78@gmail.com?subject=YMN%20collaboration%20enquiry" style="display:inline-flex;align-items:center;min-height:48px;padding:12.5px 24px;border-radius:16px;border:1.5px solid #18343B;color:#18343B;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#F7F5EF;color:#18343B">Discuss a Collaboration</a>
+        </div>
+        
+      </div>
+    </div>
+    </sc-for>
+
+    
+  </div>
+</section><section id="join" aria-labelledby="join-title" style="scroll-margin-top:104px;padding:clamp(48px,8.4vw,96px) clamp(20px,4.4vw,48px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(40px,5vw,56px)">
+    <div data-reveal="1" style="display:flex;flex-direction:column;gap:12px;max-width:720px">
+      <p style="margin:0;display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:#087F83"><span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#F28C79"></span>Get involved</p>
+      <h2 id="join-title" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(30px,1.5vw + 19px,40px);line-height:1.18;letter-spacing:-.01em">Three ways to get started.</h2>
+    </div>
+    <div data-reveal="group" style="display:grid;grid-template-columns:{{ joinCols }};gap:16px">
+      <article style="background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:12px;padding:clamp(20px,2vw,24px);display:flex;flex-direction:column;gap:12px">
+        <img src="assets/09-sticker-network-chat.png" alt="" width="1312" height="1199" loading="lazy" style="width:56px;height:52px;object-fit:contain;margin-bottom:4px">
+        <h3 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(21px,.3vw + 18px,24px);line-height:1.25">Get Updates</h3>
+        <p style="margin:0;font-size:16px;line-height:1.55;flex:1;text-wrap:pretty">Follow announcements, activity recaps and opportunities through our Telegram community and Instagram.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px">
+          <a href="https://t.me/+P0w6oXmyPBBjODA1" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;min-height:48px;padding:14px 20px;border-radius:16px;background:#087F83;color:#F7F5EF;font-weight:600;font-size:16px;text-decoration:none;text-align:center" style-hover="background:#18343B;color:#F7F5EF">Telegram Community Updates</a>
+          <a href="https://www.instagram.com/theyouthmedicalnetwork/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;min-height:48px;padding:12.5px 20px;border-radius:16px;border:1.5px solid #18343B;color:#18343B;font-weight:600;font-size:16px;text-decoration:none;text-align:center" style-hover="background:#CDEBE3;color:#18343B">Follow on Instagram</a>
+        </div>
+      </article>
+      <article style="background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:12px;padding:clamp(20px,2vw,24px);display:flex;flex-direction:column;gap:12px">
+        <img src="assets/10-icon-opportunities.png" alt="" width="1295" height="1214" loading="lazy" style="width:56px;height:52px;object-fit:contain;margin-bottom:4px">
+        <h3 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(21px,.3vw + 18px,24px);line-height:1.25">Explore Volunteering</h3>
+        <p style="margin:0;font-size:16px;line-height:1.55;flex:1;text-wrap:pretty">Volunteering opportunities are announced through our community updates. Each announcement sets out its own eligibility, preparation and commitment.</p>
+        <a href="https://t.me/+P0w6oXmyPBBjODA1" target="_blank" rel="noopener noreferrer" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:48px;margin-top:12px;color:#087F83;font-weight:600;font-size:16px;text-underline-offset:4px;text-decoration-thickness:1.5px" style-hover="color:#18343B">Watch for Announcements on Telegram <span aria-hidden="true">↗</span></a>
+      </article>
+      <article style="background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:12px;padding:clamp(20px,2vw,24px);display:flex;flex-direction:column;gap:12px">
+        <img src="assets/12-icon-partnerships.png" alt="" width="1312" height="1199" loading="lazy" style="width:56px;height:52px;object-fit:contain;margin-bottom:4px">
+        <h3 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(21px,.3vw + 18px,24px);line-height:1.25">Discuss a Collaboration</h3>
+        <p style="margin:0;font-size:16px;line-height:1.55;flex:1;text-wrap:pretty">Have an idea for a learning session, community project or health conversation? Share your organisation, proposed activity, intended audience and tentative timeline.</p>
+        <a href="mailto:garethsum78@gmail.com?subject=YMN%20collaboration%20enquiry" style="display:flex;align-items:center;justify-content:center;min-height:48px;margin-top:4px;padding:12.5px 20px;border-radius:16px;border:1.5px solid #18343B;color:#18343B;font-weight:600;font-size:16px;text-decoration:none" style-hover="background:#CDEBE3;color:#18343B">Send a Collaboration Enquiry</a>
+      </article>
+    </div>
+
+    <div id="contact" data-reveal="1" style="scroll-margin-top:120px;display:flex;flex-wrap:wrap;align-items:center;gap:24px clamp(32px,5vw,64px);padding:clamp(24px,3vw,32px);border-radius:24px;background:#FFFFFF;border:1px solid rgba(24,52,59,.12)">
+      <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:10px;max-width:30em">
+        <h3 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(26px,1vw + 20px,32px);line-height:1.2">Write to Us</h3>
+        <p style="margin:0;font-size:17px;line-height:1.6;text-wrap:pretty">Have a question, want to collaborate, or want to join? Email Gareth and we reply by email.</p>
+      </div>
+      <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:12px">
+        <p style="margin:0;font-size:15px;font-weight:600">I'm writing to</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <a href="mailto:garethsum78@gmail.com?subject=YMN%20website%3A%20Ask%20a%20Question&body=What%20would%20you%20like%20to%20know%3F" style="display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:999px;border:1.5px solid rgba(24,52,59,.3);background:#FFFFFF;color:#18343B;font-weight:600;font-size:16px;text-decoration:none" style-hover="border-color:#087F83;background:#CDEBE3">Ask a Question</a>
+          <a href="mailto:garethsum78@gmail.com?subject=YMN%20website%3A%20Collaborate&body=Your%20organisation%2C%20proposed%20activity%2C%20intended%20audience%20and%20tentative%20timeline%3A" style="display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:999px;border:1.5px solid rgba(24,52,59,.3);background:#FFFFFF;color:#18343B;font-weight:600;font-size:16px;text-decoration:none" style-hover="border-color:#087F83;background:#CDEBE3">Collaborate</a>
+          <a href="mailto:garethsum78@gmail.com?subject=YMN%20website%3A%20Join%20YMN&body=A%20little%20about%20yourself%20and%20what%20you%20would%20like%20to%20be%20involved%20in%3A" style="display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:999px;border:1.5px solid rgba(24,52,59,.3);background:#FFFFFF;color:#18343B;font-weight:600;font-size:16px;text-decoration:none" style-hover="border-color:#087F83;background:#CDEBE3">Join YMN</a>
+          <a href="mailto:garethsum78@gmail.com?subject=YMN%20website%3A%20Something%20Else&body=" style="display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:999px;border:1.5px solid rgba(24,52,59,.3);background:#FFFFFF;color:#18343B;font-weight:600;font-size:16px;text-decoration:none" style-hover="border-color:#087F83;background:#CDEBE3">Something Else</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="follow" data-reveal="1" style="scroll-margin-top:120px;display:flex;flex-wrap:wrap;gap:32px clamp(48px,5vw,64px);align-items:flex-start;padding-top:16px">
+      <div style="flex:1 1 280px;display:flex;flex-direction:column;gap:12px;max-width:26em">
+        <h3 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(28px,1vw + 22px,34px);line-height:1.2">Connect With Us</h3>
+        <p style="margin:0;font-size:17px;line-height:1.6;text-wrap:pretty">Scan with your phone camera, or tap to open.</p>
+      </div>
+      <ul style="flex:999 1 560px;min-width:0;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:16px">
+        <sc-for list="{{ socials }}" as="so" hint-placeholder-count="3">
+          <li style="background:#FFFFFF;border:1px solid rgba(24,52,59,.12);border-radius:24px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+            <img src="{{ so.qr }}" alt="{{ so.qrAlt }}" width="160" height="160" loading="lazy" style="display:block;width:160px;height:160px;max-width:100%;border-radius:8px">
+            <a href="{{ so.url }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:48px;padding:0 16px;border-radius:16px;color:#087F83;font-weight:600;font-size:16px;text-underline-offset:4px;text-decoration-thickness:1.5px" style-hover="color:#18343B">{{ so.label }} <span aria-hidden="true">↗</span></a>
+          </li>
+        </sc-for>
+      </ul>
+    </div><div id="faq" style="display:flex;flex-wrap:wrap;gap:24px clamp(48px,5vw,64px);align-items:flex-start;padding-top:16px">
+      <h3 style="flex: 1 1 240px; margin: 0; font-family: Fraunces,Georgia,serif; font-weight: 600; font-size: clamp(35px,1vw + 22px,34px); line-height: 1.2; width:100%; max-width:347px;"><i style=" width:100%; max-width:267px;"><span style="font-style: normal;">Frequently Asked <br>Questions</span><br>(FAQ)<br></i></h3>
+      <div style="flex:999 1 560px;min-width:0;border-top:1px solid rgba(24,52,59,.2)">
+        <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+          <div style="border-bottom:1px solid rgba(24,52,59,.2)">
+            <h4 style="margin:0">
+              <button id="{{ q.btnId }}" type="button" aria-expanded="{{ q.open }}" aria-controls="{{ q.panelId }}" onClick="{{ q.toggle }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:16px 0;border:0;background:transparent;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-weight:600;font-size:clamp(17px,.15vw + 16.4px,18px);text-align:left" style-hover="color:#087F83">{{ q.q }}<span aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:50%;background:#CDEBE3;display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1">{{ q.sign }}</span></button>
+            </h4>
+            <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+              <div id="{{ q.panelId }}" role="region" aria-labelledby="{{ q.btnId }}" style="padding:0 48px 20px 0">
+                <p style="margin: 0; font-size: 17px; line-height: 1.6; max-width: 34em; width:100%; max-width:960px;">{{ q.a }}</p>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    
+  </div>
+</section>
+
+
+</main><footer data-dark="1" style="background:#18343B;color:#F7F5EF;padding:clamp(28px,3.5vw,44px) clamp(20px,4.4vw,48px) 32px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column">
+    
+    <div data-reveal="1" style="display: flex; align-items: center; gap: clamp(20px,3vw,40px); width:100%; max-width:1200px;">
+      <img src="assets/07-footer-emblem.png" alt="" width="1024" height="1536" loading="lazy" style="flex:none;display:block;width:clamp(96px,10vw,148px);height:auto;margin:16px 0 -16px">
+      <p style="margin:0;min-width:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(36px,6vw + 12px,104px);line-height:1.05;letter-spacing:-.02em;color:#F7F5EF"><span style="display:block">The Youth</span><span style="display:block">Medical {{ networkWord }}</span></p>
+    </div><div style="display:flex;flex-wrap:wrap;gap:40px clamp(48px,6vw,96px);margin-top:clamp(40px,6vw,80px)">
+      <div style="flex:1 1 280px;display:flex;flex-direction:column;gap:14px">
+        <p style="margin: 0 0 6px; font-size: 16px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #CDEBE3">Purpose</p>
+        <p style="margin: 0; max-width: 25em; font-size: 17px; line-height: 1.6; text-wrap: pretty; width:100%; max-width:401px;">A youth-led network bringing people together through healthcare learning, community service and compassion.</p>
+        <p style="margin:0;font-family:Fraunces,Georgia,serif;font-size:18px;color:#CDEBE3"><i>Inspire · Impact · Ignite</i></p>
+      </div>
+      <div style="flex:2 1 460px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:32px 24px">
+        <nav aria-label="Explore" style="display:flex;flex-direction:column;gap:4px">
+          <p style="margin: 0 0 6px; font-size: 18px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #CDEBE3">Explore</p>
+          <a href="#about" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;line-height:1.6;text-decoration:none;text-underline-offset:5px;text-decoration-thickness:1.5px" style-hover="color:#F28C79;text-decoration:underline">About</a>
+          <a href="#work" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;line-height:1.6;text-decoration:none;text-underline-offset:5px;text-decoration-thickness:1.5px" style-hover="color:#F28C79;text-decoration:underline">Our Work</a>
+          <a href="#people" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;line-height:1.6;text-decoration:none;text-underline-offset:5px;text-decoration-thickness:1.5px" style-hover="color:#F28C79;text-decoration:underline">People</a>
+          <a href="#join" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;line-height:1.6;text-decoration:none;text-underline-offset:5px;text-decoration-thickness:1.5px" style-hover="color:#F28C79;text-decoration:underline">Get Involved</a>
+        </nav>
+                <nav aria-label="Connect" style="display:flex;flex-direction:column;gap:4px">
+          <p style="margin: 0 0 6px; font-size: 18px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #CDEBE3">Connect</p>
+          <a href="https://www.instagram.com/theyouthmedicalnetwork/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;line-height:1.6;text-decoration:none;text-underline-offset:5px;text-decoration-thickness:1.5px" style-hover="color:#F28C79;text-decoration:underline">Instagram</a>
+          <a href="https://t.me/+P0w6oXmyPBBjODA1" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;line-height:1.6;text-decoration:none;text-underline-offset:5px;text-decoration-thickness:1.5px" style-hover="color:#F28C79;text-decoration:underline">Telegram</a>
+          <a href="https://youtube.com/@theyouthmedicalnetwork" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;line-height:1.6;text-decoration:none;text-underline-offset:5px;text-decoration-thickness:1.5px" style-hover="color:#F28C79;text-decoration:underline">YouTube</a>
+          <a href="mailto:garethsum78@gmail.com?subject=YMN%20enquiry" style="display:inline-flex;align-items:center;min-height:40px;color:#F7F5EF;font-size:17px;line-height:1.6;text-decoration:none;text-underline-offset:5px;text-decoration-thickness:1.5px" style-hover="color:#F28C79;text-decoration:underline">Email</a>
+        </nav>
+      </div>
+    </div><div style="margin-top: clamp(48px,5vw,64px); border-top: 1px solid rgba(247,245,239,.18); padding-top: 24px; display: flex; flex-direction: column; gap: 12px; font-size: 14px; line-height: 1.5; color: rgba(247,245,239,.8); width:100%; max-width:1206px;">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 32px">
+        <p style="margin:0">© {{ year }} The Youth Medical Network</p>
+        <p style="margin:0;max-width:44em">Learning Content On This Site Is For General Education And Is <b>Not</b> Medical Advice.</p>
+        <a href="#top" style="display:inline-flex;align-items:center;gap:6px;min-height:44px;color:#F7F5EF;font-weight:600;text-decoration:none" style-hover="color:#F28C79">Back To Top <span aria-hidden="true">↑</span></a>
+      </div>
+      <nav aria-label="Privacy and data" style="display:flex;flex-wrap:wrap;gap:4px 24px">
+        <button type="button" onClick="{{ openPrivacy }}" style="min-height:44px;padding:0;border:0;background:transparent;color:rgba(247,245,239,.8);font-family:'DM Sans',Arial,sans-serif;font-size:14px;font-weight:500;text-decoration:underline;text-underline-offset:4px" style-hover="color:#F28C79">Privacy &amp; Data Notice</button>
+      </nav>
+    </div>
+    
+  </div>
+</footer>
+
+<sc-if value="{{ legalOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ legalBackdrop }}" style="position:fixed;inset:0;z-index:210;background:rgba(24,52,59,.6);display:flex;align-items:center;justify-content:center;padding:clamp(12px,3vw,32px)">
+    <div role="dialog" aria-modal="true" aria-labelledby="legal-title" data-legal="1" onClick="{{ stop }}" onKeyDown="{{ legalKey }}" style="width:100%;max-width:720px;max-height:100%;overflow-y:auto;background:#F7F5EF;color:#18343B;border-radius:32px;padding:clamp(24px,4vw,48px);box-shadow:0 24px 64px rgba(24,52,59,.12);display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+        <h2 id="legal-title" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(28px,1vw + 22px,34px);line-height:1.2">Privacy &amp; Data Notice</h2>
+        <button type="button" onClick="{{ legalClose }}" style="flex:none;min-height:48px;padding:0 18px;border-radius:16px;border:1.5px solid #18343B;background:transparent;color:#18343B;font-family:'DM Sans',Arial,sans-serif;font-weight:600;font-size:16px" style-hover="background:#CDEBE3">Close ✕</button>
+      </div>
+      <sc-for list="{{ legalAll }}" as="lg" hint-placeholder-count="3">
+        <section aria-labelledby="{{ lg.hid }}" style="display:flex;flex-direction:column;gap:20px;padding-top:24px;border-top:1px solid rgba(24,52,59,.12)">
+          <h3 id="{{ lg.hid }}" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(22px,.3vw + 19px,24px);line-height:1.25">{{ lg.title }}</h3>
+          <sc-for list="{{ lg.items }}" as="it" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <h4 style="margin:0;font-size:16px;font-weight:600">{{ it.h }}</h4>
+              <p style="margin:0;font-size:16px;line-height:1.6;max-width:36em">{{ it.p }}</p>
+            </div>
+          </sc-for>
+        </section>
+      </sc-for>
+      <p style="margin:0;padding-top:16px;border-top:1px solid rgba(24,52,59,.12);font-size:15px;line-height:1.6">Questions or requests about your personal data: <a href="mailto:garethsum78@gmail.com?subject=YMN%20personal%20data%20request" style="color:#087F83;font-weight:600">garethsum78@gmail.com</a></p>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+  <div ref="{{ lbRef }}" role="dialog" aria-modal="true" aria-labelledby="lb-title" data-dark="1" onKeyDown="{{ lbKey }}" style="position:fixed;inset:0;z-index:200;background:rgba(24,52,59,.96);color:#F7F5EF;display:flex;flex-direction:column;gap:16px;padding:clamp(12px,3vw,32px)">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
+      <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
+        <p style="margin:0;font-size:14px">Photo {{ lb.pos }} of {{ lb.total }}</p>
+        <h2 id="lb-title" style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(20px,1vw + 16px,24px);line-height:1.25">{{ lb.activity }}</h2>
+      </div>
+      <button ref="{{ lbCloseRef }}" type="button" onClick="{{ lbClose }}" style="flex:none;min-height:48px;padding:0 18px;border-radius:16px;border:1.5px solid #F7F5EF;background:transparent;color:#F7F5EF;font-family:'DM Sans',Arial,sans-serif;font-weight:600;font-size:16px" style-hover="background:#087F83">Close ✕</button>
+    </div>
+    <div style="position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center">
+      <img ref="{{ lbImgRef }}" data-src="{{ lb.src }}" alt="{{ lb.alt }}" width="{{ lb.w }}" height="{{ lb.h }}" style="display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:16px;opacity:{{ lb.imgOp }};transition:opacity 200ms ease">
+      <div role="status" aria-live="polite" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none">
+        <sc-if value="{{ lb.loading }}" hint-placeholder-val="{{ false }}">
+          <span style="display:flex;align-items:center;gap:12px;padding:12px 18px;border-radius:999px;background:#F7F5EF;color:#18343B;font-size:15px;font-weight:600"><img src="assets/14-brand-emblem.png" alt="" width="1342" height="1172" style="width:28px;height:auto">Loading photograph</span>
+        </sc-if>
+        <sc-if value="{{ lb.failed }}" hint-placeholder-val="{{ false }}">
+          <span style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px;border-radius:24px;background:#F7F5EF;color:#18343B;max-width:340px;text-align:center;pointer-events:auto">
+            <span style="font-size:17px;font-weight:600">This photograph couldn't be loaded.</span>
+            <span style="font-size:15px;line-height:1.5">Check your connection, then try again.</span>
+            <button type="button" onClick="{{ lbRetry }}" style="min-height:48px;padding:0 22px;border-radius:16px;border:0;background:#087F83;color:#F7F5EF;font-family:'DM Sans',Arial,sans-serif;font-weight:600;font-size:16px">Try again</button>
+          </span>
+        </sc-if>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <button type="button" onClick="{{ lbPrev }}" aria-label="Previous photo" style="flex:none;width:48px;height:48px;border-radius:50%;border:1.5px solid #F7F5EF;background:transparent;color:#F7F5EF;font-size:20px" style-hover="background:#087F83">←</button>
+      <p style="margin:0;font-size:15px;line-height:1.5;text-align:center;max-width:40em">{{ lb.caption }}</p>
+      <button type="button" onClick="{{ lbNext }}" aria-label="Next photo" style="flex:none;width:48px;height:48px;border-radius:50%;border:1.5px solid #F7F5EF;background:transparent;color:#F7F5EF;font-size:20px" style-hover="background:#087F83">→</button>
+    </div>
+  </div>
+</sc-if>
+</div>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#087F83"/><text x="50" y="64" font-family="Georgia,serif" font-size="40" font-weight="700" fill="#F7F5EF" text-anchor="middle">YMN</text></svg></template>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ribbonAnimated&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;introPreview&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;once-per-session&quot;,&quot;every-load&quot;,&quot;off&quot;],&quot;default&quot;:&quot;once-per-session&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;featuredLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;sticky&quot;,&quot;stacked&quot;],&quot;default&quot;:&quot;sticky&quot;,&quot;tsType&quot;:&quot;'sticky' | 'stacked'&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;customCursor&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Preferences&quot;},&quot;simulatePhotoFailure&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Review states&quot;}}">
+const ASSET = {
+  book: ['assets/04-sticker-learning-book.png', 1536, 1024],
+  hands: ['assets/05-sticker-community-hands.png', 1254, 1254],
+  steth: ['assets/06-sticker-health-stethoscope.png', 1254, 1254],
+  micro: ['assets/07-sticker-research-microscope.png', 1145, 1374],
+  mic: ['assets/08-sticker-lecture-microphone.png', 1312, 1199],
+  chat: ['assets/09-sticker-network-chat.png', 1312, 1199],
+  opp: ['assets/10-icon-opportunities.png', 1295, 1214],
+};
+const CONTACT = { email: 'garethsum78@gmail.com', telegram: 'https://t.me/+P0w6oXmyPBBjODA1', instagram: 'https://www.instagram.com/theyouthmedicalnetwork/', youtube: 'https://youtube.com/@theyouthmedicalnetwork' };
+
+// Founder-draft photographs. fit: 'cover' for 4:3 photos, 'contain' for graphics/screenshots.
+const PHOTO = {
+  care: { src: 'assets/photos/care-package-outreach.png', w: 922, h: 692, fit: 'cover', alt: 'YMN volunteers standing in a residential block lobby beside bags of care packages.', caption: 'Volunteers at the rental-flat care-package outreach.' },
+  screen1: { src: 'assets/photos/screening-01.png', w: 905, h: 679, fit: 'cover', alt: 'Residents seated at a community health-screening area in a void deck, with volunteers in white shirts nearby.', caption: 'Community health-screening activity.' },
+  screen2: { src: 'assets/photos/screening-02.png', w: 579, h: 435, fit: 'cover', alt: 'Volunteers and organisers posing with a Youth Medical Network team sign at a community health screening.', caption: 'The volunteer team at the screening.' },
+  cancer: { src: 'assets/photos/conversations-on-cancer.png', w: 508, h: 381, fit: 'cover', alt: 'Five young people at a podcast table with microphones, in front of Singapore Cancer Society banners.', caption: 'Recording a Conversations on Cancer podcast.' },
+  edu1: { src: 'assets/photos/education-01.jpg', w: 1600, h: 1200, fit: 'cover', alt: 'Volunteers and participants seated around a table during an interactive session, with a story illustration projected on the wall.', caption: 'An interactive educational session.' },
+  edu2: { src: 'assets/photos/education-02.jpg', w: 1600, h: 1200, fit: 'cover', alt: 'Volunteers and participants smiling together after an educational session.', caption: 'Volunteers and participants after a session.' },
+  doctors: { src: 'assets/photos/doctors-in-conversation.png', w: 1164, h: 671, fit: 'contain', alt: "Screenshot of YMN's video channel showing two recorded health talks.", caption: 'Recorded health talks on the YMN channel.' },
+  events: { src: 'assets/photos/health-event-support.png', w: 504, h: 378, fit: 'cover', alt: 'Three YMN volunteers standing beside a health-awareness exhibition panel.', caption: 'Volunteers at a community health event.' },
+  campaign: { src: 'assets/photos/awareness-campaign-01.png', w: 808, h: 725, fit: 'contain', alt: 'A grid of YMN social media posts for Hair for Hope 2026, featuring volunteers and Children’s Cancer Foundation messages.', caption: 'Posts from a health-awareness campaign.' },
+  hosp1: { src: 'assets/photos/hospice-festival-01.png', w: 624, h: 437, fit: 'cover', alt: 'Citizens seated at tables in a mall atrium, watching a stage performance in front of event banners.', caption: 'Stage entertainment for citizens at the festival.' },
+  hosp2: { src: 'assets/photos/hospice-festival-02.png', w: 465, h: 436, fit: 'cover', alt: 'An escape-room set built as a living room for the festival, with a Tamil-language framed message on the wall, a bookshelf, a sofa and a table with blue balls in a clear box.', caption: 'Educational escape room for players at the festival.' },
+  mh1: { src: 'assets/photos/mental-health-group-01.png', w: 587, h: 440, fit: 'cover', alt: 'Handwritten brainstorming sheets on a green table, listing target groups such as isolated elderly and students, with ideas for activities and solutions.', caption: 'Brainstorming sheets from a group session.' },
+  mh2: { src: 'assets/photos/mental-health-group-02.png', w: 581, h: 435, fit: 'cover', alt: 'Young people sitting around green picnic tables in an outdoor common area, talking and writing together.', caption: 'Members meeting to brainstorm initiatives.' },
+  ccf1: { src: 'assets/photos/ccf-lessons-01.png', w: 415, h: 312, fit: 'cover', alt: 'A volunteer and two children at a table with worksheets, a drink bottle and a plate-portion activity sheet. The children’s faces are covered with smiley icons.', caption: 'A nutrition worksheet activity.' },
+  ccf2: { src: 'assets/photos/ccf-lessons-02.png', w: 415, h: 310, fit: 'cover', alt: 'Two children in blue shirts at a table spread with snacks and drinks, with volunteers beside them. The children’s faces are covered with smiley icons.', caption: 'Looking at food and drink choices.' },
+  ccf3: { src: 'assets/photos/ccf-lessons-03.png', w: 420, h: 562, fit: 'cover', alt: 'Volunteers and children around a table with a laptop, phones, snacks and drinks during a lesson. The children’s faces are covered with smiley icons.', caption: 'Learning with a laptop and phones.' },
+  camp2: { src: 'assets/photos/campaign-ymn-hits-the-hospice.png', w: 807, h: 454, fit: 'cover', alt: 'Two volunteers laughing on a paved plaza, with the title text “YMN hits the hospice” across the frame.', caption: 'YMN hits the hospice, a Myth vs Fact reel on palliative care.' },
+  book: { src: 'assets/photos/sugar-traffic-jam-cover.png', w: 436, h: 592, fit: 'contain', alt: 'Cover of The Sugar Traffic Jam: a pink, hand-drawn cover with the title in yellow letters above a slice of cake with a cherry.', caption: 'Cover of The Sugar Traffic Jam.' },
+};
+
+// Activity records — edit here. facts: only confirmed, public-safe fields.
+const ACTIVITIES = [
+  { id: 'care', title: 'Medical Care-package Distribution', cat: 'Community service', a: 'hands', photos: ['care'],
+    summary: 'Medical care packages for elderly residents living in rental flats, with essential food and hygiene supplies.',
+    facts: [{ k: 'What it is', v: 'Distribution of essential food and hygiene supplies to residents living in rental flats.' }, { k: 'Impact', v: 'Helped support basic daily needs while easing financial pressures for vulnerable households.' }, { k: 'Organisation credited', v: 'ALittleChange' }] },
+  { id: 'screening', title: 'Free community health screenings', cat: 'Community service', a: 'steth', photos: ['screen1', 'screen2'],
+    summary: 'Free health screenings for estate residents, organised with Dr PAP doctors and Jurong Spring volunteers.',
+    facts: [{ k: 'Collaborators', v: 'Dr PAP (doctors) and Jurong Spring volunteers' }, { k: 'Impact', v: 'Residents who were previously unaware of underlying conditions received referrals for appropriate medical follow-up.' }, { k: 'Clinical care', v: 'Health screening and any clinical consultation are carried out by qualified healthcare professionals. YMN does not provide medical services.' }] },
+  { id: 'cancer', title: 'Collaboration with Singapore Cancer Society', cat: 'Conversations', a: 'mic', photos: ['cancer'],
+    summary: 'Invited healthcare professionals like medical social workers onboard to talk about common concerns or questions to allow general public to have their doubts answered.',
+    facts: [{ k: 'Formats', v: 'Physical exhibitions, podcast, Comics of Hope' }, { k: 'Organisation credited', v: 'Singapore Cancer Society' }] },
+  { id: 'ccf-lessons', title: "Lessons with Children's Cancer Foundation", cat: 'Learning', a: 'book', photos: ['ccf1', 'ccf2', 'ccf3'],
+    summary: "Lessons on diets and oral health, and academic support sessions for children undergoing recovery.",
+    facts: [{ k: 'Impact', v: 'Helped students catch up on concepts missed during treatment and ease their transition back to mainstream schooling.' }, { k: 'Organisation credited', v: "Children's Cancer Foundation" }] },
+  { id: 'hair-for-hope', title: 'Hair for Hope 2026', cat: 'Community service', a: 'hands', photos: ['campaign'],
+    summary: "Supporting Children's Cancer Foundation with Hair for Hope 2026.",
+    facts: [{ k: 'Organisation credited', v: "Children's Cancer Foundation" }] },
+  { id: 'diabetes-book', title: "The Sugar Traffic Jam", cat: 'Learning', a: 'book', photos: ['book'],
+    summary: "Published a children’s book that simplifies diabetes and glucose metabolism through engaging storytelling, helping young readers understand the effects of excessive glucose intake while encouraging healthier lifelong habits.",
+    facts: [{ k: 'Authors', v: 'Gareth Sum Jun Rong, Kim Mei Tong, Joshua Joe and others. Illustrated by Anna Tan.' }, { k: 'Format', v: 'Kindle edition, for readers aged 4–10' }, { k: 'Published', v: '25 September 2026' }] },
+  { id: 'doctors', title: 'Healthcare podcast & public outreach', cat: 'Conversations', a: 'chat', photos: ['doctors'],
+    summary: 'Podcast sessions with doctors to address and break the stigma on cancer and mental health.',
+    facts: [{ k: 'Format', v: 'Physical and online discussions with private doctors and the Singapore Cancer Society.' }, { k: 'Impact', v: 'Addressed common health questions, improved public health literacy and provided encouragement to individuals facing similar health challenges.' }] },
+  { id: 'hospice', title: 'Live Well. Leave Well. Festival', cat: 'Community service', a: 'steth', photos: ['hosp1', 'hosp2'],
+    summary: 'The Live Well. Leave Well. Festival, in collaboration with the Singapore Hospice Council.',
+    facts: [{ k: 'Organisation credited', v: 'Singapore Hospice Council' }] },
+  { id: 'mh-group', title: 'Mental Health Interest Group', cat: 'Conversations', a: 'chat', photos: ['mh1', 'mh2'],
+    summary: 'A group where members brainstorm initiatives to impact society.',
+    facts: [{ k: 'What it is', v: 'A member interest group focused on mental health.' }] },
+  { id: 'education', title: 'Educational sessions', cat: 'Learning', a: 'book', photos: ['edu1', 'edu2'],
+    summary: 'Interactive learning activities bringing volunteers and young participants together.',
+    facts: [{ k: 'What it is', v: 'Hands-on sessions where volunteers and young participants learn through shared activities and discussion.' }] },
+  { id: 'events', title: 'Supporting health events', cat: 'Community service', a: 'opp', photos: ['events'],
+    summary: 'Volunteer support for community health activities run by event organisers.',
+    facts: [{ k: "YMN's role", v: 'Volunteers support organisers in running community health activities.' }] },
+  { id: 'campaigns', title: 'Health-awareness campaigns', cat: 'Learning', a: 'micro', photos: ['camp2'],
+    summary: 'Digital content introducing health-related themes to young audiences.',
+    facts: [{ k: 'Format', v: 'Online content shared through YMN channels.' }] },
+];
+const GALLERY_EXTRA = [
+];
+const FEATURED = ['care', 'screening', 'cancer'];
+const GALLERY_HIDE = ['ccf2'];
+const GALLERY = ACTIVITIES.flatMap((a) => a.photos.filter((k) => !GALLERY_HIDE.includes(k)).map((k) => ({ ...PHOTO[k], key: k, activityId: a.id, activity: a.title }))).concat(GALLERY_EXTRA);
+const PATHS = [
+  { key: 'learn', title: 'Learn', a: 'book', short: 'Explore health-related ideas.',
+    long: 'Explore health-related ideas through educational sessions, awareness activities and conversations. Follow published resources and announcements to find the topics and formats that interest you.',
+    related: [{ id: 'ccf-lessons', label: 'Educational Lessons' }, { id: 'cancer', label: 'Singapore Cancer Society Podcast' }, { id: 'doctors', label: 'Online Podcast with Private Doctors' }, { id: 'diabetes-book', label: 'Publications' }], href: '#learn', cta: 'Go to learning and conversations' },
+  { key: 'connect', title: 'Connect', a: 'chat', short: 'Meet people with shared interests.',
+    long: 'Meet people with shared interests through topic-focused interest groups and networking opportunities.', relHeading: 'Ways to connect',
+    related: [{ label: 'Topic Focused Interest Groups' }, { label: 'Networking Opportunities' }], href: '#join', cta: 'Get community updates' },
+  { key: 'serve', title: 'Serve', a: 'hands', short: 'Take part in community activities.',
+    long: 'Discover community activities and volunteering opportunities as they are announced. Each activity sets out its own eligibility, preparation and commitment.',
+    related: ['care', 'screening', 'events'], href: '#index', cta: 'Browse community service', filter: 'Community service' },
+];
+const PEOPLE = [{ id: 'gareth', name: 'Gareth Sum', first: 'Gareth', role: 'Founder & Director', photo: 'assets/photos/gareth-sum.jpg', pw: 922, phh: 1083, photoAlt: 'Portrait of Gareth Sum.', quote: "Through these initiatives, I came to appreciate that meaningful healthcare often begins beyond hospital walls, where small acts of service, education, and support can make a significant difference in people’s daily lives. I am grateful to have worked alongside dedicated volunteers and partners to support various community initiatives.",
+  bio: 'Gareth Sum is the Founder & Director of The Youth Medical Network. For enquiries about the network or potential collaborations, contact Gareth using the enquiry email below.' }];
+const FAQS = [
+  { q: 'Do I need to study medicine?', a: "YMN is a community for youths aged 13–21 who are passionate about medicine, health and people. You do not need to study medicine. Individual opportunities may have additional requirements; check the published activity details." },
+  { q: 'How can I hear about activities?', a: 'Follow Telegram and Instagram for announcements and activity updates.' },
+  { q: 'Can I join every opportunity?', a: "Eligibility, preparation and available places vary by activity. Follow each opportunity's published requirements." },
+  { q: 'How can an organisation collaborate?', a: "Email us with your idea, intended audience and tentative timeline." },
+];
+const HERO_KEYS = ['care', 'screen2', 'cancer', 'edu1', 'events'];
+const HERO_CAP = { care: 'Care-package Outreach', screen2: 'Community Health Screening', cancer: 'Conversations on Cancer', edu1: 'Educational Sessions', events: 'Community Health Events' };
+const UPCOMING = [
+  { title: "Palliative Care: Myth vs Fact Series", text: "A Myth vs Fact series on palliative health, with educational videos, on 31 October.", date: "31 October" },
+  { title: "Family Day with Rare Disorders Society Singapore", text: "A family day with sports and games on 7 November.", date: "7 November" },
+  { title: "BeKind SG", text: "A Christmas party for children beneficiaries in mid December.", date: "Mid December" },
+  { title: "Autoimmune Diseases Singapore Podcast", text: "Planned for 2026: a podcast to raise awareness of autoimmune diseases. Details will be shared when confirmed." },
+];
+// Privacy notices — reflect what this site actually does. Review before publishing.
+const LEGAL = [
+  { key: 'pdpa', label: 'PDPA Notice', title: 'Personal Data Protection (PDPA) notice', items: [
+    { h: 'Our approach', p: "The Youth Medical Network aims to handle personal data in line with Singapore's Personal Data Protection Act 2012 (PDPA)." },
+    { h: 'What we collect', p: 'This website has no sign-up forms or accounts and does not ask you to submit personal data. If you email us, we receive your email address and anything you include in your message.' },
+    { h: 'How we use it', p: 'We use what you send us to reply to your enquiry and, where relevant, to discuss the activity or collaboration you asked about. We do not sell personal data.' },
+    { h: 'Your choices', p: 'You may ask to access or correct personal data you have sent us, or withdraw consent for its use, by emailing us at the address below.' },
+    { h: 'Photographs', p: 'Photographs on this site were taken at YMN activities. If you appear in one and would like it removed, email us and we will review your request.' },
+  ] },
+  { key: 'cookies', label: 'Cookie Notice', title: 'Cookie Notice', items: [
+    { h: 'Cookies', p: 'This website does not set advertising or analytics cookies.' },
+    { h: 'Browser storage', p: "One small item is kept in your browser's session storage so the opening animation plays only once per visit. It is removed when you close the tab." },
+    { h: 'Fonts', p: 'Fonts are loaded from Google Fonts. Your browser shares your IP address with Google as part of that request.' },
+  ] },
+  { key: 'data', label: 'Data Notice', title: 'Data Notice', items: [
+    { h: 'Third-party services', p: 'QR codes are generated by QR Server. Links to Telegram, Instagram and YouTube, and emails sent to our Gmail address, are handled by those providers under their own privacy policies.' },
+    { h: 'Health information', p: 'Please do not send medical or health details about yourself or others. YMN does not provide medical advice or medical services.' },
+    { h: 'Educational content', p: 'Learning content on this site is for general education and is not medical advice.' },
+  ] },
+];
+const CATS = ['All', 'Learning', 'Conversations', 'Community service'];
+const NAV = [{ href: '#about', label: 'About', id: 'about' }, { href: '#work', label: 'Work', id: 'work' }, { href: '#people', label: 'People', id: 'people' }];
+const EASE = 'cubic-bezier(.2,.7,.2,1)';
+const safeFinish = (a, ms) => setTimeout(() => { try { if (a.playState !== 'finished') a.finish(); } catch (e) { a.cancel(); } }, ms);
+
+function applyContent(d) {
+  const pub = (a) => (a || []).filter((r) => r.status === 'published');
+  const lines = (s) => String(s || '').split('\n').map((x) => x.trim()).filter(Boolean);
+  const imgs = pub(d.images).filter((i) => i.permission !== 'Not permitted');
+  if (imgs.length) { Object.keys(PHOTO).forEach((k) => delete PHOTO[k]); imgs.forEach((i) => { PHOTO[i.id] = { src: i.src, w: +i.w, h: +i.h, fit: i.fit || 'cover', alt: i.alt, caption: i.caption || '' }; }); }
+  const st = pub(d.stories);
+  if (st.length) {
+    ACTIVITIES.splice(0, ACTIVITIES.length, ...st.map((s) => ({ id: s.id, title: s.title, cat: s.cat, a: ASSET[s.icon] ? s.icon : 'book', summary: s.summary,
+      photos: (s.photos || []).filter((k) => PHOTO[k]),
+      facts: lines(s.facts).map((l) => { const i = l.indexOf(':'); return i > 0 ? { k: l.slice(0, i).trim(), v: l.slice(i + 1).trim() } : { k: 'Note', v: l }; }) })));
+    const feat = st.filter((s) => s.featured === 'Yes').map((s) => s.id);
+    if (feat.length) FEATURED.splice(0, FEATURED.length, ...feat);
+    GALLERY.splice(0, GALLERY.length, ...ACTIVITIES.flatMap((a) => a.photos.filter((k) => !GALLERY_HIDE.includes(k)).map((k) => ({ ...PHOTO[k], key: k, activityId: a.id, activity: a.title }))), ...GALLERY_EXTRA);
+  }
+  const pp = pub(d.people).filter((p) => p.publicationApproved === 'Yes');
+  if (pp.length) PEOPLE.splice(0, PEOPLE.length, ...pp.map((p) => ({ id: p.id, name: p.name, first: p.first || p.name.split(' ')[0], role: p.role, photo: p.photo, pw: +p.pw, phh: +p.phh, photoAlt: p.photoAlt, bio: p.bio, quote: p.quote || '' })));
+  if (d.faqs) FAQS.splice(0, FAQS.length, ...pub(d.faqs).map((f) => ({ q: f.q, a: f.a })));
+  if (d.events) UPCOMING.splice(0, UPCOMING.length, ...pub(d.events).map((e) => ({ title: e.title, text: e.description, date: e.displayDate || '' })));
+  const em = pub(d.contacts).find((c) => c.id === 'email'); if (em) CONTACT.email = em.value;
+}
+
+class Component extends DCLogic {
+  state = { w: window.innerWidth, h: window.innerHeight, menuOpen: false, open: null, filter: 'All', faq: null, paused: false, hover: false,
+    active: 0, rm: false, path: 0, dyOpen: false, nav: null, gal: 0, galEnd: false, lb: null, lbStatus: 'loading', lbNonce: 0,
+    topic: 'Ask a Question', cName: '', cEmail: '', cMsg: '', cStatus: 'idle', hero: 0, heroOff: false, heroHeld: false };
+  async sendContact(e) {
+    e.preventDefault();
+    const s = this.state;
+    if (s.cStatus === 'sending') return;
+    if (!s.cName.trim() || !/^\S+@\S+\.\S+$/.test(s.cEmail.trim()) || !s.cMsg.trim()) { this.setState({ cStatus: 'invalid' }); return; }
+    this.setState({ cStatus: 'sending' });
+    try {
+      const r = await fetch('https://formsubmit.co/ajax/' + CONTACT.email, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ _subject: 'YMN website: ' + s.topic, _template: 'table', _captcha: 'false', topic: s.topic, name: s.cName, email: s.cEmail, _replyto: s.cEmail, message: s.cMsg }),
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || j.success === 'false' || j.success === false) throw new Error(j.message || 'failed');
+      this.setState({ cStatus: 'sent', cName: '', cEmail: '', cMsg: '' });
+    } catch (err) { this.setState({ cStatus: 'error' }); }
+  }
+  menuBtnRef = React.createRef(); firstLinkRef = React.createRef(); marqueeRef = React.createRef(); heroArtRef = React.createRef();
+  pathPanelRef = React.createRef(); galRef = React.createRef(); indexRef = React.createRef(); lbRef = React.createRef(); lbCloseRef = React.createRef();
+
+  fitAbout = () => {
+    const el = document.getElementById('about-title'); if (!el) return;
+    if (window.innerWidth < 700) { el.style.fontSize = ''; return; }
+    const ghost = el.querySelector('[data-type-ghost]'); if (!ghost) return;
+    el.style.fontSize = '40px';
+    const avail = el.parentElement.clientWidth, w = ghost.getBoundingClientRect().width;
+    if (w > 0) el.style.fontSize = Math.min(72, Math.floor(40 * avail / w * 0.97 * 10) / 10) + 'px';
+  };
+  componentDidMount() {
+    this._cleanUrl = () => { if (location.hash && !location.hash.startsWith('#/')) history.replaceState(history.state, '', location.pathname + location.search); };
+    window.addEventListener('hashchange', this._cleanUrl); setTimeout(this._cleanUrl, 800);
+    this._galTimer = setInterval(() => {
+      const ul = this.galRef.current, s = this.state;
+      if (!ul || s.rm || s.lb !== null || s.legal || document.hidden || ul.matches(':hover') || ul.contains(document.activeElement)) return;
+      const r = ul.getBoundingClientRect(); if (r.bottom < 0 || r.top > window.innerHeight) return;
+      if (ul.scrollLeft + ul.clientWidth >= ul.scrollWidth - 4) ul.scrollTo({ left: 0, behavior: 'smooth' }); else this.galStep(1);
+    }, 3500);
+    this._heroTimer = setInterval(() => { const s = this.state; if (s.heroOff || s.heroHeld || s.rm || document.hidden) return; this.setState({ hero: (s.hero + 1) % HERO_KEYS.length }); }, 4500);
+    this._fitR = () => this.fitAbout(); window.addEventListener('resize', this._fitR);
+    setTimeout(this._fitR, 50); if (document.fonts && document.fonts.ready) document.fonts.ready.then(this._fitR);
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    this.mq = mq;
+    this.onMq = () => this.setState({ rm: mq.matches });
+    mq.addEventListener && mq.addEventListener('change', this.onMq);
+    this.onResize = () => this.setState({ w: window.innerWidth, h: window.innerHeight, menuOpen: window.innerWidth < 1024 ? this.state.menuOpen : false });
+    window.addEventListener('resize', this.onResize);
+    this.onKey = (e) => {
+      if (this.state.legal) {
+        const d = document.querySelector('[data-legal]');
+        if (e.key === 'Escape' && !(d && d.contains(document.activeElement))) this.closeLegal();
+        return;
+      }
+      if (this.state.lb !== null) {
+        const dlg = document.querySelector('[role="dialog"][aria-modal="true"]');
+        const inside = dlg && dlg.contains(document.activeElement);
+        if (!inside && ['Escape', 'ArrowLeft', 'ArrowRight', 'Tab'].includes(e.key)) this.lbKey(e);
+        return;
+      }
+      if (e.key === 'Escape' && this.state.menuOpen) this.closeMenu(true);
+    };
+    document.addEventListener('keydown', this.onKey);
+    fetch('content/ymn-content.json', { cache: 'no-cache' }).then((r) => r.ok ? r.json() : null).then((d) => { if (d) { applyContent(d); this.forceUpdate(); } }).catch(() => {});
+    document.documentElement.setAttribute('data-custom-cursor', this.props.customCursor === false ? 'off' : 'on');
+    const mode = this.props.introPreview || 'once-per-session';
+    if (mode === 'off') { const v = document.getElementById('ymn-veil'); v && v.remove(); window.__ymnIntroEnd = 0; }
+    else if (mode === 'every-load' && !document.getElementById('ymn-veil') && window.__ymnPlayIntro) window.__ymnPlayIntro(true);
+    this.setState({ rm: mq.matches }, () => {
+      if (!mq.matches) { this.heroMotion(); this.setupReveal(); }
+      this.syncMotion();
+    });
+    this.setupObservers();
+  }
+  lbImgRef = (el) => {
+    if (this.lbImgEl === el) return;
+    if (this.lbImgEl) { this.lbImgEl.removeEventListener('load', this.onLbLoad); this.lbImgEl.removeEventListener('error', this.onLbErr); }
+    this.lbImgEl = el;
+    if (el) {
+      el.addEventListener('load', this.onLbLoad); el.addEventListener('error', this.onLbErr);
+      const want = el.getAttribute('data-src') || '';
+      if (want && want.indexOf('{{') < 0) el.setAttribute('src', want);
+    }
+  };
+  onLbLoad = () => { const el = this.lbImgEl; if (el && el.naturalWidth && el.getAttribute('src')) this.setState({ lbStatus: 'loaded' }); };
+  onLbErr = () => { const el = this.lbImgEl; if (el && el.getAttribute('src')) this.setState({ lbStatus: 'error' }); };
+  componentDidUpdate(prev) {
+    if (prev && prev.introPreview !== this.props.introPreview && this.props.introPreview === 'every-load' && window.__ymnPlayIntro) window.__ymnPlayIntro(true);
+    document.documentElement.setAttribute('data-custom-cursor', this.props.customCursor === false ? 'off' : 'on');
+    this.syncMotion();
+    const st = this.state;
+    const lbKey = st.lb === null ? null : st.lb + ':' + st.lbNonce;
+    const el = this.lbImgEl;
+    if (el) {
+      const want = el.getAttribute('data-src') || '';
+      if (want && want.indexOf('{{') < 0 && el.getAttribute('src') !== want) el.setAttribute('src', want);
+      else if (lbKey !== null && lbKey !== this._prevLbKey && el.complete && el.getAttribute('src')) { el.naturalWidth ? this.onLbLoad() : this.onLbErr(); }
+    }
+    this._prevLbKey = lbKey;
+    if (this._prevPath !== undefined && this._prevPath !== st.path && !st.rm) {
+      const el = document.getElementById('pathway-panel');
+      if (el && el.animate) safeFinish(el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 180, easing: 'ease-out', fill: 'backwards' }), 400);
+      const art = document.getElementById('pathway-art');
+      if (art && art.animate) art.animate([{ transform: 'scale(.78) rotate(-6deg)', opacity: 0 }, { transform: 'scale(1.06) rotate(2deg)', opacity: 1, offset: .6 }, { transform: 'scale(1) rotate(0deg)', opacity: 1 }], { duration: 620, easing: 'cubic-bezier(.2,.8,.2,1)' });
+      const tab = document.querySelector('[data-path="' + st.path + '"] [data-tab-art]');
+      if (tab && tab.animate) tab.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.18) rotate(-8deg)', offset: .4 }, { transform: 'scale(.96) rotate(3deg)', offset: .7 }, { transform: 'scale(1)' }], { duration: 520, easing: 'ease-out' });
+    }
+    this._prevPath = st.path;
+  }
+  openLegal(key) {
+    if (!this.state.legal) { this.legalReturn = document.activeElement; document.body.style.overflow = 'hidden'; }
+    this.setState({ legal: key });
+    const tryF = (n) => { const d = document.querySelector('[data-legal]'); const b = d && d.querySelector('button'); if (b) { if (!d.contains(document.activeElement)) b.focus(); } else if (n > 0) setTimeout(() => tryF(n - 1), 30); };
+    setTimeout(() => tryF(15), 0);
+  }
+  closeLegal() {
+    document.body.style.overflow = '';
+    this.setState({ legal: null }, () => { this.legalReturn && this.legalReturn.focus && this.legalReturn.focus({ preventScroll: true }); });
+    setTimeout(() => { this.legalReturn && document.contains(this.legalReturn) && this.legalReturn.focus({ preventScroll: true }); }, 30);
+  }
+  focusDialog(n) {
+    const d = document.querySelector('[role="dialog"][aria-modal="true"]');
+    const b = d && d.querySelector('button');
+    if (b) { if (!d.contains(document.activeElement)) b.focus(); }
+    else if (n > 0) setTimeout(() => this.focusDialog(n - 1), 30);
+  }
+  componentWillUnmount() {
+    clearInterval(this._galTimer); clearInterval(this._heroTimer); window.removeEventListener('hashchange', this._cleanUrl);
+    window.removeEventListener('resize', this.onResize);
+    document.removeEventListener('keydown', this.onKey);
+    this.mq && this.mq.removeEventListener && this.mq.removeEventListener('change', this.onMq);
+    [this.featObs, this.revObs, this.navObs].forEach((o) => o && o.disconnect());
+    document.body.style.overflow = '';
+  }
+
+  heroMotion() {
+    const base = Math.max(0, (window.__ymnIntroEnd || 0) - Date.now());
+    document.querySelectorAll('[data-hero]').forEach((el) => {
+      const i = +el.getAttribute('data-hero');
+      if (!el.animate) return;
+      safeFinish(el.animate([{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], { duration: 500, delay: base + i * 80, easing: EASE, fill: 'backwards' }), base + 1200);
+    });
+    const pop = (sel, frames, opts, extra) => { const el = document.querySelector(sel); if (el && el.animate) safeFinish(el.animate(frames, { easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards', ...opts }), opts.delay + opts.duration + 600); };
+    pop('[data-hero-blob]', [{ opacity: 0, transform: 'scale(.86)' }, { opacity: 1, transform: 'none' }], { duration: 900, delay: base });
+    pop('[data-hero-dot]', [{ opacity: 0, transform: 'scale(.4)' }, { opacity: .9, transform: 'none' }], { duration: 700, delay: base + 350 });
+    pop('[data-hero-art]', [{ opacity: 0, transform: 'translateY(24px) scale(.94)' }, { opacity: 1, transform: 'none' }], { duration: 900, delay: base + 150 });
+    pop('[data-hero-photo]', [{ opacity: 0, transform: 'translate(-24px,32px) rotate(-10deg)' }, { opacity: 1, transform: 'rotate(-4deg)' }], { duration: 900, delay: base + 550 });
+    const words = Array.from(document.querySelectorAll('[data-word]'));
+    words.forEach((el, i) => {
+      if (!el.animate) return;
+      safeFinish(el.animate([
+        { opacity: 0, transform: 'translateY(.45em) rotate(2deg)', filter: 'blur(6px)' },
+        { opacity: 1, transform: 'none', filter: 'blur(0)' },
+      ], { duration: 650, delay: base + 80 + i * 70, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' }), base + 2000);
+    });
+    const uDelay = base + 80 + words.length * 70 + 250;
+    const u = document.querySelector('[data-underline]');
+    if (u && u.animate) safeFinish(u.animate([{ backgroundSize: '0% .14em' }, { backgroundSize: '100% .14em' }], { duration: 700, delay: uDelay, easing: EASE, fill: 'backwards' }), uDelay + 1200);
+  }
+  typeOut(h) {
+    const live = h.querySelector('[data-type-live]');
+    if (!live || h._typed) return;
+    h._typed = true;
+    const full = live.textContent;
+    live.textContent = '';
+    const txt = document.createTextNode('');
+    const caret = document.createElement('span');
+    caret.style.cssText = 'display:inline-block;width:.08em;height:.9em;margin-left:.06em;vertical-align:-.08em;background:#087F83;border-radius:2px';
+    live.appendChild(txt); live.appendChild(caret);
+    const blink = caret.animate ? caret.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 520, iterations: Infinity, direction: 'alternate', easing: 'steps(1,end)' }) : null;
+    let i = 0;
+    const step = () => {
+      i++;
+      txt.textContent = full.slice(0, i);
+      if (i < full.length) setTimeout(step, full[i - 1] === '.' ? 260 : 34);
+      else setTimeout(() => { blink && blink.cancel(); caret.remove(); live.textContent = full; }, 1400);
+    };
+    setTimeout(step, 200);
+  }
+  setupReveal() {
+    if (!('IntersectionObserver' in window)) return;
+    this.typeObs = new IntersectionObserver((entries) => entries.forEach((en) => {
+      if (!en.isIntersecting) return;
+      this.typeObs.unobserve(en.target);
+      this.typeOut(en.target);
+    }), { threshold: 0.6 });
+    document.querySelectorAll('[data-type]').forEach((el) => this.typeObs.observe(el));
+    this.revObs = new IntersectionObserver((entries) => entries.forEach((en) => {
+      if (!en.isIntersecting) return;
+      const el = en.target;
+      this.revObs.unobserve(el);
+      const group = el.getAttribute('data-reveal') === 'group';
+      const targets = group ? Array.from(el.children).slice(0, 3) : [el];
+      targets.forEach((t, i) => {
+        if (!t.animate) return;
+        safeFinish(t.animate([{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }], { duration: group ? 450 : 400, delay: i * 60, easing: EASE, fill: 'backwards' }), 1000);
+      });
+    }), { threshold: 0.15 });
+    document.querySelectorAll('[data-reveal]').forEach((el) => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.85) return;
+      this.revObs.observe(el);
+    });
+  }
+  setupObservers() {
+    if (!('IntersectionObserver' in window)) return;
+    // Active story = last story whose top has crossed the viewport midline; re-queried each frame so remounted nodes are never stale.
+    this.onFeatScroll = () => {
+      if (this.featRaf) return;
+      this.featRaf = requestAnimationFrame(() => {
+        this.featRaf = null;
+        // Match the story whose heading block sits closest to the sticky photo's vertical centre.
+        const fig = document.querySelector('#work figure');
+        const fr = fig ? fig.getBoundingClientRect() : null;
+        const line = fr && fr.height ? fr.top + fr.height / 2 : window.innerHeight * 0.5;
+        let act = 0, best = Infinity;
+        document.querySelectorAll('article[data-feat]').forEach((el) => {
+          const h = el.querySelector('h3') || el;
+          const r = h.getBoundingClientRect();
+          const d = Math.abs(r.top + r.height / 2 - line);
+          if (d < best) { best = d; act = +el.getAttribute('data-feat'); }
+        });
+        if (act !== this.state.active) this.setState({ active: act });
+      });
+    };
+    window.addEventListener('scroll', this.onFeatScroll, { passive: true });
+    window.addEventListener('resize', this.onFeatScroll);
+    this.featObs = { disconnect: () => { window.removeEventListener('scroll', this.onFeatScroll); window.removeEventListener('resize', this.onFeatScroll); } };
+    this.onFeatScroll();
+    this.navObs = new IntersectionObserver((entries) => entries.forEach((en) => {
+      if (en.isIntersecting) this.setState({ nav: en.target.id });
+    }), { rootMargin: '-40% 0px -55% 0px' });
+    ['top', 'about', 'work', 'next', 'people', 'join'].forEach((id) => { const el = document.getElementById(id); el && this.navObs.observe(el); });
+  }
+  syncMotion() {
+    const hero = this.heroArtRef.current;
+    if (this.state.rm) { if (this.heroAnim) { this.heroAnim.cancel(); this.heroAnim = null; } }
+    else if (hero && hero.animate && !this.heroAnim) {
+      this.heroAnim = hero.animate([{ transform: 'translateY(0) rotate(0deg)' }, { transform: 'translateY(-8px) rotate(-.6deg)' }], { duration: 6000, iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' });
+    }
+    const blob = document.querySelector('[data-hero-blob]');
+    if (!this.state.rm && blob && blob.animate && !this.blobAnim) {
+      this.blobAnim = blob.animate([
+        { borderRadius: '46% 54% 42% 58% / 52% 44% 56% 48%', transform: 'rotate(0deg)' },
+        { borderRadius: '56% 44% 52% 48% / 44% 56% 46% 54%', transform: 'rotate(4deg)' },
+      ], { duration: 9000, iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' });
+    } else if (this.state.rm && this.blobAnim) { this.blobAnim.cancel(); this.blobAnim = null; }
+    const m = this.marqueeRef.current;
+    if (m !== this.marqEl) { if (this.marq) this.marq.cancel(); this.marq = null; this.marqEl = m; }
+    if (m && m.animate && !this.marq) this.marq = m.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-50%)' }], { duration: 50000, iterations: Infinity });
+    if (this.marq) (this.state.paused || this.state.hover) ? this.marq.pause() : this.marq.play();
+  }
+
+  closeMenu(focus) { this.setState({ menuOpen: false }, () => { if (focus && this.menuBtnRef.current) this.menuBtnRef.current.focus(); }); }
+  togglePanel(key) { this.setState((s) => ({ open: s.open === key ? null : key })); }
+  closePanel(key) { this.setState({ open: null }, () => { const b = document.getElementById('btn-' + key); b && b.focus({ preventScroll: true }); }); }
+  setFilter(c, cb) {
+    const bar = this.indexRef.current;
+    const before = bar ? bar.getBoundingClientRect().top : 0;
+    this.setState({ filter: c, open: null }, () => {
+      if (bar && !cb) { const d = bar.getBoundingClientRect().top - before; if (Math.abs(d) > 1) window.scrollBy(0, d); }
+      cb && cb();
+    });
+  }
+  scrollToEl(el) {
+    if (!el) return;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 128, behavior: this.state.rm ? 'auto' : 'smooth' });
+  }
+  openActivity(id) {
+    this.setState({ filter: 'All', open: 'i-' + id }, () => {
+      const card = document.getElementById('card-i-' + id);
+      this.scrollToEl(card);
+      const b = document.getElementById('btn-i-' + id); b && b.focus({ preventScroll: true });
+    });
+  }
+  galStep(dir) {
+    const ul = this.galRef.current; if (!ul) return;
+    const li = ul.querySelector('li'); const step = li ? li.getBoundingClientRect().width + 24 : 300;
+    ul.scrollBy({ left: dir * step, behavior: this.state.rm ? 'auto' : 'smooth' });
+  }
+  onGalScroll() {
+    const ul = this.galRef.current; if (!ul) return;
+    const li = ul.querySelector('li'); const step = li ? li.getBoundingClientRect().width + 24 : 300;
+    const gal = Math.min(GALLERY.length - 1, Math.round(ul.scrollLeft / step));
+    const galEnd = ul.scrollLeft + ul.clientWidth >= ul.scrollWidth - 4;
+    if (gal !== this.state.gal || galEnd !== this.state.galEnd) this.setState({ gal, galEnd });
+  }
+  openLb(i) {
+    this.lbReturn = document.activeElement;
+    document.body.style.overflow = 'hidden';
+    this.setState({ lb: i, lbStatus: 'loading' });
+    setTimeout(() => this.focusDialog(15), 0);
+  }
+  closeLb() {
+    document.body.style.overflow = '';
+    this.setState({ lb: null }, () => { this.lbReturn && this.lbReturn.focus && this.lbReturn.focus({ preventScroll: true }); });
+  }
+  moveLb(d) { this.setState((s) => ({ lb: (s.lb + d + GALLERY.length) % GALLERY.length, lbStatus: 'loading' })); }
+  lbKey(e) {
+    if (e.key === 'Escape') { e.preventDefault(); this.closeLb(); return; }
+    if (e.key === 'ArrowRight') { e.preventDefault(); this.moveLb(1); return; }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); this.moveLb(-1); return; }
+    if (e.key === 'Tab') {
+      const dlg = document.querySelector('[role="dialog"][aria-modal="true"]');
+      const f = dlg ? Array.from(dlg.querySelectorAll('button')) : [];
+      if (!f.length) return;
+      const i = f.indexOf(document.activeElement);
+      e.preventDefault();
+      f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+    }
+  }
+  pathKey(e) {
+    const i = +e.currentTarget.getAttribute('data-path');
+    const map = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
+    let n = null;
+    if (map[e.key]) n = (i + map[e.key] + PATHS.length) % PATHS.length;
+    else if (e.key === 'Home') n = 0; else if (e.key === 'End') n = PATHS.length - 1;
+    if (n === null) return;
+    e.preventDefault();
+    this.setState({ path: n }, () => { const t = document.getElementById('tab-' + PATHS[n].key); t && t.focus({ preventScroll: true }); });
+  }
+
+  renderVals() {
+    const s = this.state, p = this.props;
+    const { w, h, open, filter, rm } = s;
+    const wide = w >= 1024, tablet = w >= 700;
+    const stickyMode = wide && h >= 720 && !rm && p.featuredLayout !== 'stacked';
+    const ribbonAnimated = p.ribbonAnimated !== false && !rm;
+    const byId = Object.fromEntries(ACTIVITIES.map((a) => [a.id, a]));
+    const img = (k) => ({ img: ASSET[k][0], iw: ASSET[k][1], ih: ASSET[k][2] });
+    const galIndexOf = (id) => GALLERY.findIndex((g) => g.activityId === id);
+    const mkStory = (r, prefix, i) => {
+      const key = prefix + '-' + r.id, isOpen = open === key, n = r.photos.length;
+      return { ...r, ...img(r.a), photo: PHOTO[r.photos[0]] || { src: ASSET[r.a][0], w: ASSET[r.a][1], h: ASSET[r.a][2], fit: 'contain', alt: '' }, hasPhotos: n > 0, num: String(i + 1).padStart(2, '0'), hid: 'h-' + key, btnId: 'btn-' + key, panelId: 'panel-' + key, cardId: 'card-' + key,
+        panelLabel: r.title + ' summary', open: isOpen, sign: isOpen ? '−' : '+',
+        photosLabel: n > 1 ? `View ${n} photos` : 'View photo',
+        toggle: () => this.togglePanel(key), close: () => this.closePanel(key), openPhotos: () => this.openLb(galIndexOf(r.id)) };
+    };
+    const featured = FEATURED.map((id, i) => ({ ...mkStory(byId[id], 'f', i), op: i === s.active ? 1 : 0, hiddenImg: i !== s.active, inlineImg: !stickyMode }));
+    const list = ACTIVITIES.filter((a) => filter === 'All' || a.cat === filter);
+    const paths = PATHS.map((pa, i) => ({ ...pa, ...img(pa.a), num: i + 1, tabId: 'tab-' + pa.key, sel: s.path === i, ti: s.path === i ? 0 : -1,
+      bg: s.path === i ? '#FFFFFF' : 'transparent', border: s.path === i ? '#18343B' : 'rgba(24,52,59,.18)', pick: () => this.setState({ path: i }) }));
+    const pa = paths[s.path];
+    const pathActive = { ...pa, relHeading: pa.relHeading || 'Related activities', related: pa.related.map((r) => { const id = typeof r === 'string' ? r : r.id; return id ? { title: (r.label || byId[id].title), isLink: true, isPlain: false, go: () => this.openActivity(id) } : { title: r.label, isLink: false, isPlain: true }; }),
+      onClick: pa.filter ? () => this.setFilter(pa.filter, () => {}) : undefined };
+    const navId = s.nav;
+    const navItems = NAV.map((n, i) => {
+      const cur = navId === n.id;
+      return { ...n, current: cur ? 'true' : undefined, weight: cur ? 600 : 500, bg: cur ? '#CDEBE3' : 'transparent', dot: cur ? '#F28C79' : 'rgba(24,52,59,.25)', ref: i === 0 ? this.firstLinkRef : undefined };
+    });
+    const g = s.lb !== null ? GALLERY[s.lb] : null;
+    const lbSrc = g ? (p.simulatePhotoFailure ? g.src.replace('assets/photos/', 'assets/photos/missing-') : g.src) + (s.lbNonce ? '?r=' + s.lbNonce : '') : '';
+
+    return {
+      wide, narrow: !wide, navItems,
+      menuOpen: s.menuOpen, menuVisible: !wide && s.menuOpen, menuLabel: s.menuOpen ? 'Close' : 'Menu', menuBtnRef: this.menuBtnRef,
+      toggleMenu: () => s.menuOpen ? this.closeMenu(true) : this.setState({ menuOpen: true }, () => this.firstLinkRef.current && this.firstLinkRef.current.focus()),
+      closeMenu: () => this.closeMenu(false), closeMenuFocus: () => this.closeMenu(true),
+      heroArtRef: this.heroArtRef, heroArtMax: wide ? '620px' : '520px', heroScale: wide ? 1.16 : 1.04, heroScaleMb: wide ? '9%' : '4%', heroArtBleed: wide ? '-6%' : '0', marqueeRef: this.marqueeRef,
+      heroCols: wide ? 'minmax(0,6fr) minmax(0,5fr)' : 'minmax(0,1fr)', heroGap: wide ? 'clamp(48px,5vw,72px)' : '32px',
+      splitCols: wide ? 'minmax(0,5fr) minmax(0,6fr)' : 'minmax(0,1fr)',
+      pathPanelCols: tablet ? 'minmax(240px,460px) minmax(0,1fr)' : 'minmax(0,1fr)', pathTabCols: 'repeat(auto-fit,minmax(min(100%,360px),1fr))', pathOrient: tablet ? 'horizontal' : 'vertical',
+      pathImgOrder: tablet ? 0 : -1, pathImgMax: tablet ? '460px' : '320px',
+      pathCols: 'minmax(0,1fr)',
+      dyCols: tablet ? 'minmax(0,7fr) minmax(0,4fr)' : 'minmax(0,1fr)',
+      upCols: wide ? 'minmax(0,4fr) minmax(0,8fr)' : 'minmax(0,1fr)',
+      founderCols: tablet ? 'minmax(0,400px) minmax(0,1fr)' : 'minmax(0,1fr)', founderImgMax: tablet ? '400px' : '360px',
+      collabCols: tablet ? 'minmax(0,400px) minmax(0,1fr)' : 'minmax(0,1fr)',
+      galOpen: s.galOpen !== false, galChevron: s.galOpen !== false ? '180deg' : '0deg', galToggle: () => this.setState(x => ({ galOpen: x.galOpen === false })),
+      galSub: s.galOpen !== false ? 'Photo ' + (s.gal + 1) + ' of ' + GALLERY.length + ' · select a photo to view it larger' : GALLERY.length + ' photos · open to browse',
+      stickyPos: stickyMode ? 'sticky' : 'static', stickyH: stickyMode ? 'calc(100vh - 104px)' : 'auto',
+      aboutWrap: tablet ? 'nowrap' : 'normal',
+      heroSlides: HERO_KEYS.map((k, i) => ({ bg: 'url(' + PHOTO[k].src + ')', w: PHOTO[k].w, h: PHOTO[k].h, alt: i === s.hero ? PHOTO[k].alt : '', hidden: i !== s.hero, op: i === s.hero ? 1 : 0 })),
+      heroCaption: HERO_CAP[HERO_KEYS[s.hero]],
+      heroHold: () => this.setState({ heroHeld: true }), heroRelease: () => this.setState({ heroHeld: false }),
+      heroToggle: () => this.setState(x => ({ heroOff: !x.heroOff })),
+      heroToggleLabel: s.heroOff ? 'Play photo rotation' : 'Pause photo rotation', heroToggleIcon: s.heroOff ? '▶' : '❚❚',
+      joinCols: tablet ? 'repeat(3,minmax(0,1fr))' : 'minmax(0,1fr)',
+      networkWord: this.networkEl || (this.networkEl = React.createElement('em', { style: { fontStyle: 'italic', paddingRight: '.08em', color: '#F7F5EF', backgroundImage: 'linear-gradient(90deg,#F7F5EF 0%,#F28C79 20%,#CDEBE3 40%,#F7F5EF 60%,#F28C79 80%,#F7F5EF 100%)', backgroundSize: '300% 100%', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'ymnNetworkHue 9s linear infinite' } }, 'Network')),
+      topics: ['Ask a Question', 'Collaborate', 'Join YMN', 'Something Else'].map(t => ({ label: t, sel: s.topic === t, bg: s.topic === t ? '#CDEBE3' : '#FFFFFF', border: s.topic === t ? '#087F83' : 'rgba(24,52,59,.3)', pick: () => this.setState({ topic: t }) })),
+      pickCollab: () => this.setState({ topic: 'Collaborate' }),
+      msgHint: { 'Ask a Question': 'What would you like to know?', 'Collaborate': 'Your organisation, proposed activity, intended audience and tentative timeline.', 'Join YMN': 'Tell us a little about yourself and what you would like to be involved in.', 'Something Else': 'Your message' }[s.topic],
+      cName: s.cName, cEmail: s.cEmail, cMsg: s.cMsg,
+      setName: e => this.setState({ cName: e.target.value, cStatus: s.cStatus === 'sending' ? 'sending' : 'idle' }),
+      setEmail: e => this.setState({ cEmail: e.target.value }),
+      setMsg: e => this.setState({ cMsg: e.target.value }),
+      submitContact: e => this.sendContact(e),
+      sending: s.cStatus === 'sending', sendLabel: s.cStatus === 'sending' ? 'Sending…' : 'Send Message',
+      statusText: { idle: '', sending: '', sent: 'Thank you. Your message has been sent.', invalid: 'Please add your name, a valid email and a message.', error: 'Sorry, that didn’t send. Please try again, or email ' + CONTACT.email + '.' }[s.cStatus],
+      statusColor: s.cStatus === 'error' || s.cStatus === 'invalid' ? '#A3402E' : '#087F83',
+      socials: [['Telegram', CONTACT.telegram], ['Instagram', CONTACT.instagram], ['YouTube', CONTACT.youtube]].map(([label, url]) => ({ label, url, qr: 'https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=8&color=18343B&bgcolor=FFFFFF&data=' + encodeURIComponent(url), qrAlt: 'QR code for YMN on ' + label })),
+      ribbonAnimated, ribbonStatic: !ribbonAnimated, ribbonReps: Array.from({ length: 12 }, (_, i) => i),
+      ribbonBtn: s.paused ? 'Play' : 'Pause', ribbonBtnAria: s.paused ? 'Play tagline animation' : 'Pause tagline animation',
+      toggleRibbon: () => this.setState((x) => ({ paused: !x.paused })),
+      hoverOn: () => this.setState({ hover: true }), hoverOff: () => this.setState({ hover: false }),
+      paths, pathActive, pathPanelRef: this.pathPanelRef, pathKey: (e) => this.pathKey(e),
+      featCols: stickyMode ? 'minmax(0,5fr) minmax(0,6fr)' : 'minmax(0,1fr)',
+      stickyMode, featured, featMinH: stickyMode ? '60vh' : 'auto',
+      activeCaption: featured[s.active] ? featured[s.active].photo.caption : '',
+      gallery: GALLERY.map((x, i) => ({ ...x, aria: `View larger: ${x.activity}, ${x.caption}`, open: () => this.openLb(i) })),
+      galRef: this.galRef, galScroll: () => this.onGalScroll(), galPos: s.gal + 1, galTotal: GALLERY.length,
+      galAtStart: s.gal === 0, galAtEnd: s.galEnd, galPrevOp: s.gal === 0 ? 0.35 : 1, galNextOp: s.galEnd ? 0.35 : 1,
+      galPrev: () => this.galStep(-1), galNext: () => this.galStep(1),
+      indexRef: this.indexRef,
+      filters: CATS.map((c) => {
+        const on = filter === c;
+        return { label: c, on, n: c === 'All' ? ACTIVITIES.length : ACTIVITIES.filter((a) => a.cat === c).length,
+          bg: on ? '#18343B' : 'transparent', fg: on ? '#F7F5EF' : '#18343B', border: on ? '#18343B' : 'rgba(24,52,59,.3)', pick: () => this.setFilter(c) };
+      }),
+      countText: `Showing ${list.length} of ${ACTIVITIES.length} activities${filter === 'All' ? '' : ' · ' + filter}`,
+      isEmpty: list.length === 0, showAll: () => this.setFilter('All'),
+      indexItems: list.map((r, i) => { const m = mkStory(r, 'i', i); return { ...m, rowPanelId: 'row-' + r.id, chev: m.open ? '180deg' : '0deg', chipDisplay: tablet ? 'inline-flex' : 'none' }; }),
+      viewIsList: false, viewIsCards: true, listBtnBg: (s.view || 'list') === 'list' ? '#CDEBE3' : 'transparent', cardsBtnBg: s.view === 'cards' ? '#CDEBE3' : 'transparent', setList: () => this.setState({ view: 'list' }), setCards: () => this.setState({ view: 'cards' }),
+      pickLearning: () => this.setFilter('Learning', () => {}), pickConvo: () => this.setFilter('Conversations', () => {}),
+      archived: false, dyOpen: s.dyOpen, dySign: s.dyOpen ? '−' : '+', toggleDy: () => this.setState((x) => ({ dyOpen: !x.dyOpen })),
+      ideals: [
+        { key: 'mission', label: 'Our Mission', teaser: 'Why We Exist', a: 'steth', frontBg: '#CDEBE3', text: 'To be a platform for individuals passionate about medicine, health and people to serve the community together.' },
+        { key: 'vision', label: 'Our Vision', teaser: 'What We Work Towards', a: 'hands', frontBg: '#FFFFFF', text: 'To promote the value of service and compassion through collaborative community work.' },
+      ].map((c) => {
+        const f = !!(s.flips && s.flips[c.key]);
+        return { ...c, ...img(c.a), flipped: f, rot: f ? 'rotateY(180deg)' : 'rotateY(0deg)',
+          toggle: () => this.setState((x) => ({ flips: { ...(x.flips || {}), [c.key]: !(x.flips && x.flips[c.key]) } })) };
+      }),
+      ...(() => { const n = UPCOMING.length, i = Math.min(s.up || 0, n - 1), cw = tablet ? '72%' : '88%';
+        const go = (k) => this.setState({ up: ((k % n) + n) % n });
+        return { upcoming: UPCOMING.map((u, k) => ({ ...u, badge: u.date || 'Details Pending', pos: (k + 1) + ' of ' + n, hidden: k !== i, op: k === i ? 1 : .45, cursor: k === i ? 'default' : 'pointer', ti: k === i ? 0 : -1, go: () => go(k), cur: k === i ? 'true' : undefined, dotLabel: 'Show plan ' + (k + 1), dotW: k === i ? '28px' : '8px', dotBg: k === i ? '#087F83' : 'rgba(24,52,59,.25)' })),
+          upCardW: cw, upShift: '0', upSlides: UPCOMING.map((_, d) => { const k = (i + d) % n, u = UPCOMING[k]; return { ...u, badge: u.date || 'Details Pending', pos: (k + 1) + ' of ' + n, hidden: d !== 0, op: d === 0 ? 1 : .45, cursor: d === 0 ? 'default' : 'pointer', ti: d === 0 ? 0 : -1, go: () => go(k) }; }), upPos: (i + 1) + ' / ' + n, upAtStart: false, upAtEnd: false, upPrevOp: 1, upNextOp: 1, upPrev: () => go(i - 1), upNext: () => go(i + 1) }; })(),
+      people: PEOPLE.map((pp) => ({ ...pp, hid: 'p-' + pp.id, email: CONTACT.email, mailto: `mailto:${CONTACT.email}?subject=YMN%20enquiry` })),
+      faqs: FAQS.map((f, i) => ({ ...f, open: s.faq === i, sign: s.faq === i ? '−' : '+', btnId: 'faq-b' + i, panelId: 'faq-p' + i,
+        toggle: () => this.setState((x) => ({ faq: x.faq === i ? null : i })) })),
+      footerLinks: [...NAV.map(({ href, label }) => ({ href, label })), { href: '#next', label: "What's next" }, { href: '#join', label: 'Get involved' }],
+      year: new Date().getFullYear(),
+      legalOpen: !!s.legal,
+      legalAll: LEGAL.map((l) => ({ ...l, hid: 'legal-' + l.key })),
+      openPrivacy: () => this.openLegal('all'),
+      legal: LEGAL.find((l) => l.key === s.legal) || LEGAL[0],
+      legalLinks: LEGAL.map((l) => {
+        const on = s.legal === l.key;
+        return { label: l.label, on, bg: on ? '#18343B' : 'transparent', fg: on ? '#F7F5EF' : '#18343B', border: on ? '#18343B' : 'rgba(24,52,59,.3)',
+          open: () => this.openLegal(l.key) };
+      }),
+      legalClose: () => this.closeLegal(), legalBackdrop: () => this.closeLegal(), stop: (e) => e.stopPropagation(),
+      legalKey: (e) => {
+        if (e.key === 'Escape') { e.preventDefault(); this.closeLegal(); }
+        else if (e.key === 'Tab') {
+          const d = document.querySelector('[data-legal]'); const f = d ? Array.from(d.querySelectorAll('button,a[href]')) : [];
+          if (!f.length) return; const i = f.indexOf(document.activeElement); e.preventDefault();
+          f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+        }
+      },
+      lbOpen: !!g, lbRef: this.lbRef, lbCloseRef: this.lbCloseRef,
+      lb: g ? { ...g, src: lbSrc, pos: s.lb + 1, total: GALLERY.length, loading: s.lbStatus === 'loading', failed: s.lbStatus === 'error', imgOp: s.lbStatus === 'loaded' ? 1 : 0 } : {},
+      lbImgRef: this.lbImgRef,
+      lbRetry: () => this.setState((x) => ({ lbStatus: 'loading', lbNonce: x.lbNonce + 1 })),
+      lbClose: () => this.closeLb(), lbPrev: () => this.moveLb(-1), lbNext: () => this.moveLb(1), lbKey: (e) => this.lbKey(e),
+    };
+  }
+}
+</script>
+</body>
+</html>
